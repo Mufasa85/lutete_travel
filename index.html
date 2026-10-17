@@ -1,500 +1,3184 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Lutete Travel – Randonnées, excursions, safaris et voyages</title>
-<meta name="description" content="Lutete Travel organise randonnées, excursions, safaris et voyages avec des guides professionnels. Réservez votre prochaine aventure.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root{--g:#1E7A46;--g2:#48B96C;--lime:#9ED03A;--bg:#fff;--bg2:#F5F7F6;--tx:#2F3437;--mut:#667074;--card:#fff;--gold:#C9A24B;--sh:0 10px 30px rgba(20,40,30,.09);--r:16px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121618;--bg2:#1a2023;--tx:#e8eeec;--mut:#9aa6a2;--card:#212a2d;--sh:0 10px 30px rgba(0,0,0,.4)}}
-:root[data-theme="dark"]{--bg:#121618;--bg2:#1a2023;--tx:#e8eeec;--mut:#9aa6a2;--card:#212a2d;--sh:0 10px 30px rgba(0,0,0,.4)}
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{margin:0;font-family:Poppins,Inter,system-ui,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;animation:pg .8s ease both}
-@keyframes pg{from{opacity:0}to{opacity:1}}
-a{color:inherit;text-decoration:none}img,svg{display:block}
-.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
-section{padding:96px 0}.alt{background:var(--bg2)}
-.eyebrow{color:var(--g2);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem}
-h2{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.15;margin:.3rem 0 .6rem}
-.lead{color:var(--mut);max-width:620px}
-.head{margin-bottom:44px}
-.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font:600 .95rem Poppins,sans-serif;padding:14px 26px;border-radius:999px;background:linear-gradient(135deg,var(--g),var(--g2));color:#fff;transition:.3s;box-shadow:0 8px 20px rgba(30,122,70,.3)}
-.btn:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(30,122,70,.4)}
-.btn.ghost{background:rgba(255,255,255,.12);border:1.5px solid #fff;box-shadow:none;backdrop-filter:blur(6px)}
-.btn.ghost:hover{background:#fff;color:var(--g)}
-.btn.sm{padding:10px 18px;font-size:.85rem}
-:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--g2),var(--gold));z-index:200}
-#loader{position:fixed;inset:0;background:radial-gradient(circle at 50% 40%,#3a4144,#23282a);z-index:300;display:grid;place-items:center;overflow:hidden;transition:transform .9s cubic-bezier(.77,0,.18,1),visibility 0s .9s}
-#loader.off{transform:translateY(-100%);visibility:hidden}
-.ldr{position:relative;z-index:1;text-align:center;color:#fff}.ldr svg{overflow:visible}
-.trk{fill:none;stroke:rgba(255,255,255,.12);stroke-width:4}
-.arc{fill:none;stroke:#9ED03A;stroke-width:4;stroke-linecap:round;stroke-dasharray:339.3;stroke-dashoffset:339.3;transform:rotate(-90deg);transform-origin:60px 60px;filter:drop-shadow(0 0 6px #9ED03A)}
-.nd{transform-origin:60px 60px;animation:swing 2s ease-in-out infinite}
-@keyframes swing{0%,100%{transform:rotate(-55deg)}50%{transform:rotate(45deg)}}
-.lt{font-weight:800;font-size:1.7rem;color:var(--lime);margin:14px 0 2px;line-height:1.1}
-.lt span{display:block;color:#fff;font-weight:500;font-size:.7rem;letter-spacing:.55em;margin-top:4px}
-#lpc{color:#aab4b0;font-size:.8rem;letter-spacing:.2em}
-.lm{position:absolute;left:0;bottom:0;width:100%;height:32%;animation:rise 1.6s cubic-bezier(.2,.8,.2,1) both}
-@keyframes rise{from{transform:translateY(100%)}}
-header{position:fixed;top:0;left:0;right:0;z-index:100;padding-top:env(safe-area-inset-top,0px);transition:.35s;color:#fff}
-header.sc{background:var(--bg);color:var(--tx);box-shadow:0 2px 20px rgba(0,0,0,.08)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:14px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.35rem;color:var(--lime);line-height:1}
-.logo small{display:block;font-weight:500;font-size:.6rem;letter-spacing:.45em;color:#fff;margin-top:3px}
-header.sc .logo small{color:var(--mut)}
-nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:.88rem;font-weight:500}
-nav a{position:relative;padding:6px 0}nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--g2);transition:.3s}nav a:hover::after{width:100%}
-.act{display:flex;align-items:center;gap:10px}
-.ib{width:40px;height:40px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;background:rgba(255,255,255,.15);color:inherit;transition:.3s}
-header.sc .ib{background:var(--bg2)}.ib:hover{transform:scale(1.1)}
-.wa{background:#25D366!important;color:#fff!important}
-select.lang{background:transparent;color:inherit;border:1px solid currentColor;border-radius:8px;padding:6px 8px;font:500 .8rem Poppins}
-select.lang option{color:#2F3437}
-#burger{display:none}
-@media(max-width:1020px){#burger{display:grid}nav{position:fixed;top:0;right:-100%;width:min(300px,80%);height:100%;background:var(--bg);color:var(--tx);padding:90px 28px;transition:.4s;box-shadow:-10px 0 30px rgba(0,0,0,.2)}nav.open{right:0}nav ul{flex-direction:column;gap:18px;font-size:1rem}.act .btn,.act select{display:none}}
-.hero{position:relative;min-height:100vh;display:grid;align-items:center;overflow:hidden;color:#fff;padding:120px 0 150px;background:linear-gradient(180deg,#1b3a2c 0%,#2c6b45 45%,#9ED03A 100%)}
-.hero .layer{position:absolute;left:0;bottom:0;width:100%;height:100%;will-change:transform}
-.hero .layer svg{position:absolute;bottom:0;width:100%;height:60%}
-.sun{position:absolute;right:14%;top:16%;width:min(240px,32vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#fff6c8,#e8f58a 55%,rgba(158,208,58,0) 72%);filter:blur(1px);opacity:.9}
-.hero .in{position:relative;z-index:2}
-.hero h1{font-size:clamp(2.2rem,6vw,4.4rem);line-height:1.08;margin:.4em 0;max-width:820px;font-weight:800}
-.hero p.sub{font-size:1.15rem;max-width:560px;opacity:.95}
-.fi{opacity:0;transform:translateY(26px);animation:fi 1s .3s forwards}.fi.d2{animation-delay:.6s}.fi.d3{animation-delay:.9s}.fi.d4{animation-delay:1.2s}
-@keyframes fi{to{opacity:1;transform:none}}
-.ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
-.search{position:absolute;z-index:3;left:50%;bottom:34px;transform:translateX(-50%);width:min(1100px,92%);background:var(--card);color:var(--tx);border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.25);padding:14px;display:grid;grid-template-columns:repeat(4,1fr) auto;gap:10px}
-.search label{display:block;padding:6px 12px;border-radius:12px;background:var(--bg2);font-size:.7rem;font-weight:600;color:var(--mut);text-transform:uppercase;letter-spacing:.08em}
-.search input,.search select{width:100%;border:0;background:transparent;color:var(--tx);font:500 .95rem Poppins;padding:2px 0;outline:0}
-@media(max-width:900px){.search{grid-template-columns:1fr 1fr;position:relative;left:auto;bottom:auto;transform:none;margin:40px auto 0}.hero{padding-bottom:50px}}
-.grid{display:grid;gap:26px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
-.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;transition:transform .25s ease-out,box-shadow .4s;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));display:flex;flex-direction:column}
-.card:hover{--ty:-8px;box-shadow:0 22px 44px rgba(20,40,30,.18)}
-.ph{position:relative;aspect-ratio:4/3;overflow:hidden}
-.ph svg{width:100%;height:100%;transition:transform .8s}.card:hover .ph svg,.gi:hover svg{transform:scale(1.08)}
-.tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);color:#2F3437;font-size:.72rem;font-weight:600;padding:4px 12px;border-radius:99px}
-.tag.gd{left:auto;right:12px;background:var(--gold);color:#fff}
-.cb{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
-.cb h3{margin:0;font-size:1.1rem}.meta{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--mut);font-size:.82rem}
-.stars{color:var(--gold);letter-spacing:2px;font-size:.9rem}
-.pr{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:10px}.pr b{font-size:1.25rem;color:var(--g)}.pr small{color:var(--mut)}
-.why{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.wc{background:var(--card);padding:30px;border-radius:var(--r);box-shadow:var(--sh);transition:.4s;border:1px solid transparent}
-.wc:hover{transform:translateY(-6px);border-color:var(--g2)}
-.wc .ic{width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,var(--g),var(--g2));display:grid;place-items:center;font-size:1.5rem;margin-bottom:14px;transition:.4s}.wc:hover .ic{transform:rotate(-8deg) scale(1.1)}
-.wc h3{margin:0 0 6px}.wc p{margin:0;color:var(--mut);font-size:.92rem}
-.sk{background:linear-gradient(90deg,var(--bg2) 25%,rgba(150,160,155,.25) 50%,var(--bg2) 75%);background-size:200% 100%;animation:sh 1.2s infinite;border-radius:var(--r);height:340px}
-@keyframes sh{to{background-position:-200% 0}}
-.empty{text-align:center;padding:50px 20px;background:var(--card);border-radius:var(--r);box-shadow:var(--sh)}
-.masonry{columns:3 240px;column-gap:16px}
-.gi{break-inside:avoid;margin-bottom:16px;border-radius:14px;overflow:hidden;cursor:zoom-in;position:relative;border:0;padding:0;display:block;width:100%;background:none}
-.gi svg{width:100%;height:100%}.gi span{position:absolute;left:12px;bottom:10px;color:#fff;font-weight:600;font-size:.85rem;text-shadow:0 1px 6px rgba(0,0,0,.5)}
-#lb{position:fixed;inset:0;background:rgba(10,14,12,.94);z-index:250;display:none;place-items:center;padding:30px}
-#lb.on{display:grid}#lb .big{width:min(980px,100%);aspect-ratio:16/10;border-radius:16px;overflow:hidden;animation:pg .4s}#lb .big svg{width:100%;height:100%}
-#lb button{position:absolute;background:rgba(255,255,255,.15);color:#fff;border:0;width:46px;height:46px;border-radius:50%;font-size:1.3rem;cursor:pointer}
-.tm{position:relative;overflow:hidden}.track{display:flex;transition:transform .7s cubic-bezier(.6,.05,.2,1)}
-.slide{min-width:100%;padding:0 4px}.tc{background:var(--card);border-radius:24px;box-shadow:var(--sh);padding:40px;max-width:760px;margin:0 auto;text-align:center}
-.av{width:68px;height:68px;border-radius:50%;margin:0 auto 14px;background:linear-gradient(135deg,var(--g),var(--lime));display:grid;place-items:center;color:#fff;font-weight:700;font-size:1.3rem;border:3px solid var(--gold)}
-.tc q{display:block;font-size:1.08rem;margin:12px 0;quotes:none}
-.dots{display:flex;gap:8px;justify-content:center;margin-top:22px}.dots button{width:10px;height:10px;border-radius:99px;border:0;background:var(--mut);opacity:.4;cursor:pointer;transition:.3s}.dots button.on{width:28px;background:var(--g2);opacity:1}
-.stats{background:linear-gradient(135deg,#1E7A46,#146034);color:#fff;padding:70px 0}
-.stats .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;text-align:center}
-.stats b{display:block;font-size:clamp(2.2rem,5vw,3.2rem);font-weight:800;color:#fff}.stats span{opacity:.85}
-.tm2 .ph{aspect-ratio:1}.soc{display:flex;gap:8px}.soc a{width:32px;height:32px;border-radius:50%;background:var(--bg2);display:grid;place-items:center;font-size:.75rem;font-weight:700;transition:.3s}.soc a:hover{background:var(--g2);color:#fff}
-.cta{position:relative;overflow:hidden;text-align:center;color:#fff;padding:120px 0;background:linear-gradient(180deg,#26543b,#1b3a2c)}
-.cta svg{position:absolute;inset:auto 0 0;width:100%;height:70%;opacity:.55}
-.cta .wrap{position:relative}
-footer{background:#23282a;color:#c9d1ce;padding:70px 0 0;font-size:.9rem}
-.fg{display:grid;gap:36px;grid-template-columns:2fr 1fr 1fr 1fr 1.6fr}
-@media(max-width:900px){.fg{grid-template-columns:1fr 1fr}}
-footer h4{color:#fff;margin:0 0 14px}footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}footer a:hover{color:var(--lime)}
-.nl{display:flex;gap:6px;margin-top:8px}.nl input{flex:1;min-width:0;padding:11px 14px;border-radius:99px;border:0;font:inherit}
-.copy{border-top:1px solid #3a4143;margin-top:46px;padding:20px 0;text-align:center;color:#8c9794;font-size:.82rem}
-#up{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:46px;height:46px;border-radius:50%;border:0;background:var(--g);color:#fff;font-size:1.2rem;cursor:pointer;box-shadow:var(--sh);opacity:0;visibility:hidden;transition:.3s;z-index:90}#up.on{opacity:1;visibility:visible}
-#toasts{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:400;display:grid;gap:10px}
-.toast{background:#23282a;color:#fff;padding:14px 22px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.35);border-left:4px solid var(--g2);animation:fi .4s forwards;font-size:.9rem}.toast.err{border-color:#e5534b}
-.rv{opacity:0;transform:translateY(34px);transition:opacity .9s,transform .9s}.rv.in{opacity:1;transform:none}
-body:not(.go){overflow:hidden}
-.fi{animation-play-state:paused}body.go .fi,body.go .w{animation-play-state:running}
-.w{display:inline-block;opacity:0;transform:translateY(46px) rotate(5deg);filter:blur(10px);animation:wi 1s cubic-bezier(.2,.8,.2,1) forwards;animation-play-state:paused}
-@keyframes wi{to{opacity:1;transform:none;filter:none}}
-.acc{color:var(--lime);text-shadow:0 0 30px rgba(158,208,58,.5)}
-.btn:not(.ghost)::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:shine 4s infinite}
-@keyframes shine{0%,60%{left:-60%}100%{left:130%}}
-.btn svg,.ib svg{width:18px;height:18px}
-.clouds{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.clouds i{position:absolute;left:-30%;width:220px;height:56px;border-radius:60px;background:rgba(255,255,255,.2);filter:blur(12px);animation:cl 70s linear infinite}
-.clouds i:nth-child(1){top:14%}.clouds i:nth-child(2){top:26%;width:300px;animation-duration:95s;animation-delay:-30s}.clouds i:nth-child(3){top:38%;animation-duration:80s;animation-delay:-55s}.clouds i:nth-child(4){top:20%;width:160px;animation-duration:60s;animation-delay:-12s}
-@keyframes cl{to{transform:translateX(190vw)}}
-.sun{animation:sunp 6s ease-in-out infinite}@keyframes sunp{50%{transform:scale(1.12);opacity:1}}
-.ff{position:absolute;z-index:1;border-radius:50%;background:#e9ff9a;box-shadow:0 0 12px 3px rgba(190,240,80,.8);opacity:0;pointer-events:none;animation:ff linear infinite}
-@keyframes ff{0%,100%{opacity:0;transform:translate(0,0)}50%{opacity:1;transform:translate(var(--x),var(--y))}}
-.sh{position:absolute;z-index:3;right:28px;bottom:150px;color:#fff;animation:bnc 1.8s ease-in-out infinite}.sh svg{width:30px;height:30px}
-@keyframes bnc{50%{transform:translateY(10px)}}
-.search label svg{width:13px;height:13px;vertical-align:-2px;margin-right:5px;color:var(--g2)}
-.mq{overflow:hidden;background:linear-gradient(90deg,var(--g),#146034);color:#fff;padding:16px 0;white-space:nowrap}
-.mq>div{display:inline-flex;animation:mq 32s linear infinite}.mq:hover>div{animation-play-state:paused}
-.mq span{display:inline-flex;align-items:center;gap:10px;padding-right:48px;font-weight:600;letter-spacing:.05em}.mq svg{width:18px;height:18px;color:var(--lime)}
-@keyframes mq{to{transform:translateX(-50%)}}
-.wc .ic svg{width:26px;height:26px;color:#fff}
-.meta span{display:inline-flex;align-items:center}.meta svg{width:14px;height:14px;margin-right:5px}
-.soc a svg{width:15px;height:15px}
-.lk{display:inline-flex;gap:6px;align-items:center;color:var(--g);font-weight:600}.lk svg{width:16px;height:16px;transition:.3s}.lk:hover svg{transform:translateX(6px)}
-.qi{width:34px;height:34px;color:var(--g2);opacity:.5;margin:0 auto 8px}
-.av{animation:bob 4s ease-in-out infinite}
-.stats svg{width:34px;height:34px;margin:0 auto 8px;color:var(--lime);animation:bob 3s ease-in-out infinite}
-.sn{animation:bob 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
-@keyframes bob{50%{transform:translateY(-8px)}}
-.head h2::after{content:"";display:block;height:4px;width:0;background:linear-gradient(90deg,var(--g2),var(--gold));border-radius:4px;margin-top:10px;transition:width 1s .4s}.head.in h2::after{width:80px}
-.head[style*="center"] h2::after{margin-left:auto;margin-right:auto}
-.pulse{animation:pls 2.2s infinite}@keyframes pls{0%{box-shadow:0 0 0 0 rgba(158,208,58,.7)}70%,100%{box-shadow:0 0 0 20px rgba(158,208,58,0)}}
-.wa{animation:plw 2.4s infinite}@keyframes plw{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%,100%{box-shadow:0 0 0 14px rgba(37,211,102,0)}}
-#up{display:grid;place-items:center}#up svg,#lb button svg{width:22px;height:22px}
-#lb button{display:grid;place-items:center}#lp,#ln{top:50%;margin-top:-23px}
-.cdots{display:none;justify-content:center;gap:6px;margin-top:4px}.cdots i{width:7px;height:7px;border-radius:9px;background:var(--mut);opacity:.35;transition:.3s}.cdots i.on{width:22px;background:var(--g2);opacity:1}
-@media(max-width:900px){.sh{display:none}}
-@media(max-width:700px){.cr{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding:8px 22px 22px;margin:0 -22px;scrollbar-width:none;overscroll-behavior-x:contain}.cr::-webkit-scrollbar{display:none}.cr>*{flex:0 0 80%;scroll-snap-align:center}.cr>.empty{flex-basis:100%}.cdots{display:flex}.masonry{columns:2 140px}section{padding:70px 0}}
-[hidden]{display:none!important}
-.slides{position:absolute;inset:0}
-.sl{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}.sl.on{opacity:1}
-.sl svg{width:100%;height:100%}.sl.on svg{animation:kb 9s ease-out forwards}
-@keyframes kb{from{transform:scale(1)}to{transform:scale(1.12)}}
-.slides::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,20,15,.6),rgba(10,20,15,.1) 70%),linear-gradient(0deg,rgba(10,20,15,.45),transparent 45%)}
-.hero h1{min-height:3.3em}.hero p.sub{min-height:3.4em}
-.hp{display:flex;align-items:center;gap:8px;margin-top:30px}
-.hp button{position:relative;width:46px;height:5px;border:0;border-radius:5px;background:rgba(255,255,255,.3);overflow:hidden;cursor:pointer;padding:0}
-.hp button i{position:absolute;inset:0;background:var(--lime);transform:scaleX(0);transform-origin:left}
-.hp button.on i{animation:pf 7s linear forwards}.hp button.dn i{transform:scaleX(1)}
-@keyframes pf{to{transform:scaleX(1)}}
-.hp b{margin-left:10px;font-weight:600;font-size:.85rem;opacity:.9}
-.btn.cx{background:transparent;color:inherit;border:1.5px solid currentColor;box-shadow:none}.btn.cx:hover{background:var(--g);border-color:var(--g);color:#fff}
-.btn.cx2{background:transparent;color:var(--g);border:1.5px solid var(--g);box-shadow:none}.btn.cx2:hover{background:var(--g);color:#fff}
-.btn.cx::after,.btn.cx2::after{display:none}
-.btn.ld{pointer-events:none;opacity:.85}.btn.ld::before{content:"";width:16px;height:16px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:sp .7s linear infinite}
-@keyframes sp{to{transform:rotate(360deg)}}
-.w100{width:100%;justify-content:center}
-.mo{display:none}
-@media(max-width:1020px){.mo{display:list-item}}
-.fld{display:grid;gap:6px;margin-bottom:16px}.fld>label{font-weight:600;font-size:.85rem}
-.fld input,.fld select,.fld textarea{width:100%;padding:13px 14px;border-radius:12px;border:1.5px solid rgba(120,130,125,.35);background:var(--bg2);color:var(--tx);font:500 .95rem Poppins,sans-serif;transition:.25s}
-.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--g2);box-shadow:0 0 0 4px rgba(72,185,108,.18);outline:0}
-.fld [aria-invalid="true"]{border-color:#e5534b;background:rgba(229,83,75,.06)}
-.er{color:#e5534b;font-size:.78rem}.er:empty{display:none}
-.ck{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;font-weight:500;cursor:pointer}.fld .ck input{width:18px;height:18px;padding:0;accent-color:var(--g);flex:none;margin-top:2px}
-.shake{animation:shk .4s}@keyframes shk{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}@media(max-width:600px){.two{grid-template-columns:1fr}}
-.modal{position:fixed;inset:0;z-index:350;display:grid;place-items:center;padding:20px;background:rgba(10,14,12,.6);backdrop-filter:blur(6px);animation:pg .3s}
-.mbox{position:relative;display:grid;grid-template-columns:1fr 1.1fr;width:min(860px,100%);max-height:94vh;overflow:auto;background:var(--card);border-radius:24px;box-shadow:0 30px 80px rgba(0,0,0,.4);animation:vin .5s cubic-bezier(.2,.8,.2,1)}
-.mside{position:relative;color:#fff;display:flex;align-items:flex-end;padding:26px;min-height:420px}.mside svg{position:absolute;inset:0;width:100%;height:100%}.mside::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.65),transparent 60%)}.mside div{position:relative;z-index:2}
-.mform{padding:38px 32px}.mform h3{margin:0 0 4px;font-size:1.4rem}
-.mx{position:absolute;top:14px;right:14px;z-index:3;width:38px;height:38px;border-radius:50%;border:0;background:var(--bg2);color:var(--tx);display:grid;place-items:center;cursor:pointer}.mx svg{width:18px;height:18px}
-.tabs{display:flex;background:var(--bg2);border-radius:99px;padding:4px;margin:18px 0 20px}.tabs button{flex:1;border:0;background:none;padding:10px;border-radius:99px;font:600 .9rem Poppins;color:var(--mut);cursor:pointer;transition:.3s}.tabs button.on{background:var(--card);color:var(--g);box-shadow:var(--sh)}
-.row{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;margin-bottom:18px;align-items:center;flex-wrap:wrap}.row a{color:var(--g);font-weight:600}
-.pw{position:relative}.pw input{padding-right:46px}.pw button{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--mut);cursor:pointer;display:grid}.pw svg{width:18px;height:18px}
-@media(max-width:700px){.mbox{grid-template-columns:1fr}.mside{display:none}}
-@keyframes vin{from{opacity:0;transform:translateY(24px)}}
-.view{animation:vin .6s both}
-.rhead{position:relative;overflow:hidden;color:#fff;padding:140px 0 70px;background:linear-gradient(180deg,#1b3a2c,#1E7A46)}
-.rhead svg{position:absolute;bottom:0;left:0;width:100%;height:60%;opacity:.45}
-.rhead .wrap{position:relative}.rhead h1{font-size:clamp(2rem,5vw,3.2rem);margin:.2em 0}.rhead p{opacity:.9;margin:0}.bc{font-size:.85rem;opacity:.85}.bc a:hover{text-decoration:underline}
-.rgrid{display:grid;grid-template-columns:1.5fr 1fr;gap:30px;padding-top:40px;padding-bottom:90px;align-items:start}
-.rbox{background:var(--card);border-radius:24px;box-shadow:var(--sh);padding:32px}
-.rsum{position:sticky;top:96px;background:var(--card);border-radius:24px;box-shadow:var(--sh);overflow:hidden}
-@media(max-width:900px){.rgrid{grid-template-columns:1fr}.rsum{position:static}.rbox{padding:22px}}
-.rsum .ph{aspect-ratio:16/9}.rsum .cb{padding:22px}.rsum ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:8px;font-size:.88rem}.rsum li{display:flex;justify-content:space-between;gap:10px}.rsum li.mut{color:var(--mut)}
-.tot{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed var(--mut);margin-top:14px;padding-top:14px}.tot b{font-size:1.6rem;color:var(--g)}
-.gar{display:grid;gap:8px;margin-top:16px;font-size:.82rem;color:var(--mut)}.gar span{display:flex;gap:8px;align-items:center}.gar svg{width:16px;height:16px;color:var(--g2)}
-.steps{display:flex;gap:8px;list-style:none;margin:0 0 26px;padding:0}.steps li{flex:1;display:flex;align-items:center;gap:10px;font-size:.82rem;font-weight:600;color:var(--mut);padding-bottom:12px;border-bottom:3px solid rgba(120,130,125,.25);transition:.4s}.steps li b{width:26px;height:26px;border-radius:50%;background:var(--bg2);display:grid;place-items:center;font-size:.78rem;transition:.4s}.steps li.on{color:var(--g);border-color:var(--g2)}.steps li.on b,.steps li.dn b{background:var(--g2);color:#fff}.steps li.dn{border-color:var(--g2)}
-@media(max-width:600px){.steps li span{display:none}}
-fieldset{border:0;margin:0;padding:0;min-width:0;animation:vin .5s both}fieldset legend{font-weight:700;font-size:1.2rem;margin-bottom:16px;padding:0}
-.stp{display:inline-flex;align-items:center;gap:14px;background:var(--bg2);border-radius:99px;padding:5px;width:max-content}.stp button{width:34px;height:34px;border-radius:50%;border:0;background:var(--card);color:var(--g);cursor:pointer;display:grid;place-items:center;box-shadow:var(--sh);transition:.2s}.stp button:hover{background:var(--g2);color:#fff}.stp output{min-width:22px;text-align:center;font-weight:700}.stp svg{width:16px;height:16px}
-.opts{display:grid;gap:10px}.chk{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1.5px solid rgba(120,130,125,.3);border-radius:12px;cursor:pointer;transition:.25s;font-size:.9rem}.chk:hover{border-color:var(--g2)}.chk input{width:18px;height:18px;accent-color:var(--g)}.chk svg{width:18px;height:18px;color:var(--g)}.chk em{margin-left:auto;font-style:normal;font-weight:600;color:var(--g)}
-.pay{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1.5px solid rgba(120,130,125,.3);border-radius:14px;cursor:pointer;margin-bottom:10px;transition:.25s}.pay:hover{border-color:var(--g2)}.pay:has(input:checked){border-color:var(--g2);background:rgba(72,185,108,.1);box-shadow:0 0 0 3px rgba(72,185,108,.15)}.pay svg{width:24px;height:24px;color:var(--g)}.pay small{display:block;color:var(--mut)}.pay input{margin-left:auto;accent-color:var(--g);width:18px;height:18px}
-.rnav{display:flex;justify-content:space-between;gap:12px;margin-top:26px}
-.rok{text-align:center;padding:30px 10px;position:relative;overflow:hidden}.okic{width:64px;height:64px;color:var(--g2);margin:0 auto 12px;animation:bob 3s ease-in-out infinite}
-.cf{position:absolute;top:-10px;width:8px;height:14px;border-radius:2px;animation:cf 2.6s ease-in forwards}@keyframes cf{to{transform:translateY(520px) rotate(var(--r));opacity:0}}
-.dd{position:relative}
-.ddb{background:none;border:0;color:inherit;font:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:4px;padding:6px 0}
-.ddb svg{width:14px;height:14px;transition:.3s}
-nav .dm{position:absolute;top:100%;left:-14px;min-width:190px;flex-direction:column;gap:2px;background:var(--card);color:var(--tx);border-radius:14px;padding:8px;box-shadow:0 18px 40px rgba(0,0,0,.18);opacity:0;visibility:hidden;transform:translateY(8px);transition:.25s}
-.dd:hover .dm,.dd:focus-within .dm,.dd.open .dm{opacity:1;visibility:visible;transform:none}
-.dd:hover .ddb svg,.dd.open .ddb svg{transform:rotate(180deg)}
-nav .dm a{display:block;padding:10px 14px;border-radius:10px}nav .dm a:hover{background:var(--bg2);color:var(--g)}nav .dm a::after{display:none}
-@media(max-width:1020px){nav .dm{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;background:none;min-width:0;padding:6px 0 0 14px;gap:10px;color:var(--mut)}nav .dm a{padding:0}nav .dm a:hover{background:none}.ddb{font-weight:600;padding:0}.ddb svg{display:none}}
-.fld input,.fld select,.fld textarea{min-width:0;max-width:100%;-webkit-appearance:none;appearance:none;min-height:48px}
-.fld select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23667074' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px;text-overflow:ellipsis}
-.fld input[type=date]{display:block}.fld textarea{min-height:90px}
-.rgrid>*{min-width:0}.pay span{flex:1;min-width:0}
-@keyframes sheet{from{transform:translateY(100%)}}
-@media(max-width:700px){
-.fld input,.fld select,.fld textarea,.mform input{font-size:16px}
-.rhead{padding:104px 0 46px}
-.rgrid{padding-top:24px;padding-bottom:60px;gap:20px}.rbox{padding:20px 16px;border-radius:20px}
-.rnav{flex-direction:column-reverse}.rnav .btn{width:100%;justify-content:center}
-.chk{font-size:.85rem;padding:12px}.pay{padding:12px;gap:12px}.rsum .cb{padding:18px}.tot b{font-size:1.4rem}
-.modal{padding:0;place-items:end stretch}
-.mbox{width:100%;max-height:92vh;max-height:92dvh;border-radius:24px 24px 0 0;animation:sheet .45s cubic-bezier(.2,.8,.2,1)}
-.mform{padding:28px 20px calc(28px + env(safe-area-inset-bottom,0px))}.mform h3{padding-right:44px;font-size:1.25rem}
-.fg>div:first-child,.fg>div:last-child{grid-column:1/-1}
-.bl{grid-template-columns:1fr;gap:14px}.bl .card{flex-direction:row}.bl .ph{width:122px;flex:none;aspect-ratio:auto;min-height:140px}.bl .tag{display:none}.bl .cb{padding:14px;gap:6px;min-width:0}.bl .cb h3{font-size:.98rem;line-height:1.3}
-}
-html,body{overflow-x:clip}
-@media(max-width:1020px){nav{z-index:110}#burger{position:relative;z-index:120}header.mopen #burger{background:var(--bg2);color:var(--tx)}}
-@media(max-width:700px){.modal{padding:18px;place-items:center;overflow:auto}.mbox{width:100%;max-width:420px;border-radius:24px;max-height:88vh;max-height:88dvh;animation:vin .5s cubic-bezier(.2,.8,.2,1)}.mform{padding:28px 20px}}
-@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Lutete Travel – Randonnées, excursions, safaris et voyages</title>
+    <meta name="description"
+        content="Lutete Travel organise randonnées, excursions, safaris et voyages avec des guides professionnels. Réservez votre prochaine aventure.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --g: #1E7A46;
+            --g2: #48B96C;
+            --lime: #9ED03A;
+            --bg: #fff;
+            --bg2: #F5F7F6;
+            --tx: #2F3437;
+            --mut: #667074;
+            --card: #fff;
+            --gold: #C9A24B;
+            --sh: 0 10px 30px rgba(20, 40, 30, .09);
+            --r: 16px;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        @media (prefers-color-scheme:dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #121618;
+                --bg2: #1a2023;
+                --tx: #e8eeec;
+                --mut: #9aa6a2;
+                --card: #212a2d;
+                --sh: 0 10px 30px rgba(0, 0, 0, .4)
+            }
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #121618;
+            --bg2: #1a2023;
+            --tx: #e8eeec;
+            --mut: #9aa6a2;
+            --card: #212a2d;
+            --sh: 0 10px 30px rgba(0, 0, 0, .4)
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px
+        }
+
+        body {
+            margin: 0;
+            font-family: Poppins, Inter, system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--tx);
+            line-height: 1.6;
+            animation: pg .8s ease both
+        }
+
+        @keyframes pg {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        img,
+        svg {
+            display: block
+        }
+
+        .wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 22px
+        }
+
+        section {
+            padding: 96px 0
+        }
+
+        .alt {
+            background: var(--bg2)
+        }
+
+        .eyebrow {
+            color: var(--g2);
+            font-weight: 600;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            font-size: .78rem
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+            line-height: 1.15;
+            margin: .3rem 0 .6rem
+        }
+
+        .lead {
+            color: var(--mut);
+            max-width: 620px
+        }
+
+        .head {
+            margin-bottom: 44px
+        }
+
+        .btn {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 0;
+            cursor: pointer;
+            font: 600 .95rem Poppins, sans-serif;
+            padding: 14px 26px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--g), var(--g2));
+            color: #fff;
+            transition: .3s;
+            box-shadow: 0 8px 20px rgba(30, 122, 70, .3)
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 28px rgba(30, 122, 70, .4)
+        }
+
+        .btn.ghost {
+            background: rgba(255, 255, 255, .12);
+            border: 1.5px solid #fff;
+            box-shadow: none;
+            backdrop-filter: blur(6px)
+        }
+
+        .btn.ghost:hover {
+            background: #fff;
+            color: var(--g)
+        }
+
+        .btn.sm {
+            padding: 10px 18px;
+            font-size: .85rem
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 3px
+        }
+
+        #bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0;
+            background: linear-gradient(90deg, var(--g2), var(--gold));
+            z-index: 200
+        }
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 50% 40%, #3a4144, #23282a);
+            z-index: 300;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            transition: transform .9s cubic-bezier(.77, 0, .18, 1), visibility 0s .9s
+        }
+
+        #loader.off {
+            transform: translateY(-100%);
+            visibility: hidden
+        }
+
+        .ldr {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #fff
+        }
+
+        .ldr svg {
+            overflow: visible
+        }
+
+        .trk {
+            fill: none;
+            stroke: rgba(255, 255, 255, .12);
+            stroke-width: 4
+        }
+
+        .arc {
+            fill: none;
+            stroke: #9ED03A;
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-dasharray: 339.3;
+            stroke-dashoffset: 339.3;
+            transform: rotate(-90deg);
+            transform-origin: 60px 60px;
+            filter: drop-shadow(0 0 6px #9ED03A)
+        }
+
+        .nd {
+            transform-origin: 60px 60px;
+            animation: swing 2s ease-in-out infinite
+        }
+
+        @keyframes swing {
+
+            0%,
+            100% {
+                transform: rotate(-55deg)
+            }
+
+            50% {
+                transform: rotate(45deg)
+            }
+        }
+
+        .lt {
+            font-weight: 800;
+            font-size: 1.7rem;
+            color: var(--lime);
+            margin: 14px 0 2px;
+            line-height: 1.1
+        }
+
+        .lt span {
+            display: block;
+            color: #fff;
+            font-weight: 500;
+            font-size: .7rem;
+            letter-spacing: .55em;
+            margin-top: 4px
+        }
+
+        #lpc {
+            color: #aab4b0;
+            font-size: .8rem;
+            letter-spacing: .2em
+        }
+
+        .lm {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 32%;
+            animation: rise 1.6s cubic-bezier(.2, .8, .2, 1) both
+        }
+
+        @keyframes rise {
+            from {
+                transform: translateY(100%)
+            }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding-top: env(safe-area-inset-top, 0px);
+            transition: .35s;
+            color: #fff
+        }
+
+        header.sc {
+            background: var(--bg);
+            color: var(--tx);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, .08)
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 74px;
+            gap: 14px
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.35rem;
+            color: var(--lime);
+            line-height: 1
+        }
+
+        .logo small {
+            display: block;
+            font-weight: 500;
+            font-size: .6rem;
+            letter-spacing: .45em;
+            color: #fff;
+            margin-top: 3px
+        }
+
+        header.sc .logo small {
+            color: var(--mut)
+        }
+
+        nav ul {
+            display: flex;
+            gap: 22px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: .88rem;
+            font-weight: 500
+        }
+
+        nav a {
+            position: relative;
+            padding: 6px 0
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 0;
+            background: var(--g2);
+            transition: .3s
+        }
+
+        nav a:hover::after {
+            width: 100%
+        }
+
+        .act {
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .ib {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 0;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            background: rgba(255, 255, 255, .15);
+            color: inherit;
+            transition: .3s
+        }
+
+        header.sc .ib {
+            background: var(--bg2)
+        }
+
+        .ib:hover {
+            transform: scale(1.1)
+        }
+
+        .wa {
+            background: #25D366 !important;
+            color: #fff !important
+        }
+
+        select.lang {
+            background: transparent;
+            color: inherit;
+            border: 1px solid currentColor;
+            border-radius: 8px;
+            padding: 6px 8px;
+            font: 500 .8rem Poppins
+        }
+
+        select.lang option {
+            color: #2F3437
+        }
+
+        #burger {
+            display: none
+        }
+
+        @media(max-width:1020px) {
+            #burger {
+                display: grid
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: min(300px, 80%);
+                height: 100%;
+                background: var(--bg);
+                color: var(--tx);
+                padding: 90px 28px;
+                transition: .4s;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, .2)
+            }
+
+            nav.open {
+                right: 0
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 18px;
+                font-size: 1rem
+            }
+
+            .act .btn,
+            .act select {
+                display: none
+            }
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: grid;
+            align-items: center;
+            overflow: hidden;
+            color: #fff;
+            padding: 120px 0 150px;
+            background: linear-gradient(180deg, #1b3a2c 0%, #2c6b45 45%, #9ED03A 100%)
+        }
+
+        .hero .layer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            will-change: transform
+        }
+
+        .hero .layer svg {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60%
+        }
+
+        .sun {
+            position: absolute;
+            right: 14%;
+            top: 16%;
+            width: min(240px, 32vw);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: radial-gradient(circle, #fff6c8, #e8f58a 55%, rgba(158, 208, 58, 0) 72%);
+            filter: blur(1px);
+            opacity: .9
+        }
+
+        .hero .in {
+            position: relative;
+            z-index: 2
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 4.4rem);
+            line-height: 1.08;
+            margin: .4em 0;
+            max-width: 820px;
+            font-weight: 800
+        }
+
+        .hero p.sub {
+            font-size: 1.15rem;
+            max-width: 560px;
+            opacity: .95
+        }
+
+        .fi {
+            opacity: 0;
+            transform: translateY(26px);
+            animation: fi 1s .3s forwards
+        }
+
+        .fi.d2 {
+            animation-delay: .6s
+        }
+
+        .fi.d3 {
+            animation-delay: .9s
+        }
+
+        .fi.d4 {
+            animation-delay: 1.2s
+        }
+
+        @keyframes fi {
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .ctas {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 28px
+        }
+
+        .search {
+            position: absolute;
+            z-index: 3;
+            left: 50%;
+            bottom: 34px;
+            transform: translateX(-50%);
+            width: min(1100px, 92%);
+            background: var(--card);
+            color: var(--tx);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .25);
+            padding: 14px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr) auto;
+            gap: 10px
+        }
+
+        .search label {
+            display: block;
+            padding: 6px 12px;
+            border-radius: 12px;
+            background: var(--bg2);
+            font-size: .7rem;
+            font-weight: 600;
+            color: var(--mut);
+            text-transform: uppercase;
+            letter-spacing: .08em
+        }
+
+        .search input,
+        .search select {
+            width: 100%;
+            border: 0;
+            background: transparent;
+            color: var(--tx);
+            font: 500 .95rem Poppins;
+            padding: 2px 0;
+            outline: 0
+        }
+
+        @media(max-width:900px) {
+            .search {
+                grid-template-columns: 1fr 1fr;
+                position: relative;
+                left: auto;
+                bottom: auto;
+                transform: none;
+                margin: 40px auto 0
+            }
+
+            .hero {
+                padding-bottom: 50px
+            }
+        }
+
+        .grid {
+            display: grid;
+            gap: 26px;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr))
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: var(--r);
+            box-shadow: var(--sh);
+            overflow: hidden;
+            transition: transform .25s ease-out, box-shadow .4s;
+            transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px));
+            display: flex;
+            flex-direction: column
+        }
+
+        .card:hover {
+            --ty: -8px;
+            box-shadow: 0 22px 44px rgba(20, 40, 30, .18)
+        }
+
+        .ph {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden
+        }
+
+        .ph svg {
+            width: 100%;
+            height: 100%;
+            transition: transform .8s
+        }
+
+        .card:hover .ph svg,
+        .gi:hover svg {
+            transform: scale(1.08)
+        }
+
+        .ph img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .8s;
+            display: block
+        }
+
+        .card:hover .ph img {
+            transform: scale(1.08)
+        }
+
+        .gi img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .8s
+        }
+
+        .gi:hover img {
+            transform: scale(1.08)
+        }
+
+        .tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(255, 255, 255, .92);
+            color: #2F3437;
+            font-size: .72rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 99px
+        }
+
+        .tag.gd {
+            left: auto;
+            right: 12px;
+            background: var(--gold);
+            color: #fff
+        }
+
+        .cb {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1
+        }
+
+        .cb h3 {
+            margin: 0;
+            font-size: 1.1rem
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+            color: var(--mut);
+            font-size: .82rem
+        }
+
+        .stars {
+            color: var(--gold);
+            letter-spacing: 2px;
+            font-size: .9rem
+        }
+
+        .pr {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 10px
+        }
+
+        .pr b {
+            font-size: 1.25rem;
+            color: var(--g)
+        }
+
+        .pr small {
+            color: var(--mut)
+        }
+
+        .why {
+            display: grid;
+            gap: 22px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))
+        }
+
+        .wc {
+            background: var(--card);
+            padding: 30px;
+            border-radius: var(--r);
+            box-shadow: var(--sh);
+            transition: .4s;
+            border: 1px solid transparent
+        }
+
+        .wc:hover {
+            transform: translateY(-6px);
+            border-color: var(--g2)
+        }
+
+        .wc .ic {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--g), var(--g2));
+            display: grid;
+            place-items: center;
+            font-size: 1.5rem;
+            margin-bottom: 14px;
+            transition: .4s
+        }
+
+        .wc:hover .ic {
+            transform: rotate(-8deg) scale(1.1)
+        }
+
+        .wc h3 {
+            margin: 0 0 6px
+        }
+
+        .wc p {
+            margin: 0;
+            color: var(--mut);
+            font-size: .92rem
+        }
+
+        .sk {
+            background: linear-gradient(90deg, var(--bg2) 25%, rgba(150, 160, 155, .25) 50%, var(--bg2) 75%);
+            background-size: 200% 100%;
+            animation: sh 1.2s infinite;
+            border-radius: var(--r);
+            height: 340px
+        }
+
+        @keyframes sh {
+            to {
+                background-position: -200% 0
+            }
+        }
+
+        .empty {
+            text-align: center;
+            padding: 50px 20px;
+            background: var(--card);
+            border-radius: var(--r);
+            box-shadow: var(--sh)
+        }
+
+        .masonry {
+            columns: 3 240px;
+            column-gap: 16px
+        }
+
+        .gi {
+            break-inside: avoid;
+            margin-bottom: 16px;
+            border-radius: 14px;
+            overflow: hidden;
+            cursor: zoom-in;
+            position: relative;
+            border: 0;
+            padding: 0;
+            display: block;
+            width: 100%;
+            background: none
+        }
+
+        .gi svg {
+            width: 100%;
+            height: 100%
+        }
+
+        .gi span {
+            position: absolute;
+            left: 12px;
+            bottom: 10px;
+            color: #fff;
+            font-weight: 600;
+            font-size: .85rem;
+            text-shadow: 0 1px 6px rgba(0, 0, 0, .5)
+        }
+
+        #lb {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 14, 12, .94);
+            z-index: 250;
+            display: none;
+            place-items: center;
+            padding: 30px
+        }
+
+        #lb.on {
+            display: grid
+        }
+
+        #lb .big {
+            width: min(980px, 100%);
+            aspect-ratio: 16/10;
+            border-radius: 16px;
+            overflow: hidden;
+            animation: pg .4s
+        }
+
+        #lb .big svg {
+            width: 100%;
+            height: 100%
+        }
+
+        #lb button {
+            position: absolute;
+            background: rgba(255, 255, 255, .15);
+            color: #fff;
+            border: 0;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer
+        }
+
+        .tm {
+            position: relative;
+            overflow: hidden
+        }
+
+        .track {
+            display: flex;
+            transition: transform .7s cubic-bezier(.6, .05, .2, 1)
+        }
+
+        .slide {
+            min-width: 100%;
+            padding: 0 4px
+        }
+
+        .tc {
+            background: var(--card);
+            border-radius: 24px;
+            box-shadow: var(--sh);
+            padding: 40px;
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .av {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            margin: 0 auto 14px;
+            background: linear-gradient(135deg, var(--g), var(--lime));
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.3rem;
+            border: 3px solid var(--gold)
+        }
+
+        .tc q {
+            display: block;
+            font-size: 1.08rem;
+            margin: 12px 0;
+            quotes: none
+        }
+
+        .dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 22px
+        }
+
+        .dots button {
+            width: 10px;
+            height: 10px;
+            border-radius: 99px;
+            border: 0;
+            background: var(--mut);
+            opacity: .4;
+            cursor: pointer;
+            transition: .3s
+        }
+
+        .dots button.on {
+            width: 28px;
+            background: var(--g2);
+            opacity: 1
+        }
+
+        .stats {
+            background: linear-gradient(135deg, #1E7A46, #146034);
+            color: #fff;
+            padding: 70px 0
+        }
+
+        .stats .wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center
+        }
+
+        .stats b {
+            display: block;
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            color: #fff
+        }
+
+        .stats span {
+            opacity: .85
+        }
+
+        .tm2 .ph {
+            aspect-ratio: 1
+        }
+
+        .soc {
+            display: flex;
+            gap: 8px
+        }
+
+        .soc a {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg2);
+            display: grid;
+            place-items: center;
+            font-size: .75rem;
+            font-weight: 700;
+            transition: .3s
+        }
+
+        .soc a:hover {
+            background: var(--g2);
+            color: #fff
+        }
+
+        .cta {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            color: #fff;
+            padding: 120px 0;
+            background: linear-gradient(180deg, #26543b, #1b3a2c)
+        }
+
+        .cta svg {
+            position: absolute;
+            inset: auto 0 0;
+            width: 100%;
+            height: 70%;
+            opacity: .55
+        }
+
+        .cta .wrap {
+            position: relative
+        }
+
+        footer {
+            background: #23282a;
+            color: #c9d1ce;
+            padding: 70px 0 0;
+            font-size: .9rem
+        }
+
+        .fg {
+            display: grid;
+            gap: 36px;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1.6fr
+        }
+
+        @media(max-width:900px) {
+            .fg {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        footer h4 {
+            color: #fff;
+            margin: 0 0 14px
+        }
+
+        footer ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 8px
+        }
+
+        footer a:hover {
+            color: var(--lime)
+        }
+
+        .nl {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px
+        }
+
+        .nl input {
+            flex: 1;
+            min-width: 0;
+            padding: 11px 14px;
+            border-radius: 99px;
+            border: 0;
+            font: inherit
+        }
+
+        .copy {
+            border-top: 1px solid #3a4143;
+            margin-top: 46px;
+            padding: 20px 0;
+            text-align: center;
+            color: #8c9794;
+            font-size: .82rem
+        }
+
+        #up {
+            position: fixed;
+            right: 18px;
+            bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 0;
+            background: var(--g);
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: var(--sh);
+            opacity: 0;
+            visibility: hidden;
+            transition: .3s;
+            z-index: 90
+        }
+
+        #up.on {
+            opacity: 1;
+            visibility: visible
+        }
+
+        #toasts {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+            z-index: 400;
+            display: grid;
+            gap: 10px
+        }
+
+        .toast {
+            background: #23282a;
+            color: #fff;
+            padding: 14px 22px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+            border-left: 4px solid var(--g2);
+            animation: fi .4s forwards;
+            font-size: .9rem
+        }
+
+        .toast.err {
+            border-color: #e5534b
+        }
+
+        .rv {
+            opacity: 0;
+            transform: translateY(34px);
+            transition: opacity .9s, transform .9s
+        }
+
+        .rv.in {
+            opacity: 1;
+            transform: none
+        }
+
+        body:not(.go) {
+            overflow: hidden
+        }
+
+        .fi {
+            animation-play-state: paused
+        }
+
+        body.go .fi,
+        body.go .w {
+            animation-play-state: running
+        }
+
+        .w {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(46px) rotate(5deg);
+            filter: blur(10px);
+            animation: wi 1s cubic-bezier(.2, .8, .2, 1) forwards;
+            animation-play-state: paused
+        }
+
+        @keyframes wi {
+            to {
+                opacity: 1;
+                transform: none;
+                filter: none
+            }
+        }
+
+        .acc {
+            color: var(--lime);
+            text-shadow: 0 0 30px rgba(158, 208, 58, .5)
+        }
+
+        .btn:not(.ghost)::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -60%;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45), transparent);
+            transform: skewX(-20deg);
+            animation: shine 4s infinite
+        }
+
+        @keyframes shine {
+
+            0%,
+            60% {
+                left: -60%
+            }
+
+            100% {
+                left: 130%
+            }
+        }
+
+        .btn svg,
+        .ib svg {
+            width: 18px;
+            height: 18px
+        }
+
+        .clouds {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none
+        }
+
+        .clouds i {
+            position: absolute;
+            left: -30%;
+            width: 220px;
+            height: 56px;
+            border-radius: 60px;
+            background: rgba(255, 255, 255, .2);
+            filter: blur(12px);
+            animation: cl 70s linear infinite
+        }
+
+        .clouds i:nth-child(1) {
+            top: 14%
+        }
+
+        .clouds i:nth-child(2) {
+            top: 26%;
+            width: 300px;
+            animation-duration: 95s;
+            animation-delay: -30s
+        }
+
+        .clouds i:nth-child(3) {
+            top: 38%;
+            animation-duration: 80s;
+            animation-delay: -55s
+        }
+
+        .clouds i:nth-child(4) {
+            top: 20%;
+            width: 160px;
+            animation-duration: 60s;
+            animation-delay: -12s
+        }
+
+        @keyframes cl {
+            to {
+                transform: translateX(190vw)
+            }
+        }
+
+        .sun {
+            animation: sunp 6s ease-in-out infinite
+        }
+
+        @keyframes sunp {
+            50% {
+                transform: scale(1.12);
+                opacity: 1
+            }
+        }
+
+        .ff {
+            position: absolute;
+            z-index: 1;
+            border-radius: 50%;
+            background: #e9ff9a;
+            box-shadow: 0 0 12px 3px rgba(190, 240, 80, .8);
+            opacity: 0;
+            pointer-events: none;
+            animation: ff linear infinite
+        }
+
+        @keyframes ff {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: translate(0, 0)
+            }
+
+            50% {
+                opacity: 1;
+                transform: translate(var(--x), var(--y))
+            }
+        }
+
+        .sh {
+            position: absolute;
+            z-index: 3;
+            right: 28px;
+            bottom: 150px;
+            color: #fff;
+            animation: bnc 1.8s ease-in-out infinite
+        }
+
+        .sh svg {
+            width: 30px;
+            height: 30px
+        }
+
+        @keyframes bnc {
+            50% {
+                transform: translateY(10px)
+            }
+        }
+
+        .search label svg {
+            width: 13px;
+            height: 13px;
+            vertical-align: -2px;
+            margin-right: 5px;
+            color: var(--g2)
+        }
+
+        .mq {
+            overflow: hidden;
+            background: linear-gradient(90deg, var(--g), #146034);
+            color: #fff;
+            padding: 16px 0;
+            white-space: nowrap
+        }
+
+        .mq>div {
+            display: inline-flex;
+            animation: mq 32s linear infinite
+        }
+
+        .mq:hover>div {
+            animation-play-state: paused
+        }
+
+        .mq span {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding-right: 48px;
+            font-weight: 600;
+            letter-spacing: .05em
+        }
+
+        .mq svg {
+            width: 18px;
+            height: 18px;
+            color: var(--lime)
+        }
+
+        @keyframes mq {
+            to {
+                transform: translateX(-50%)
+            }
+        }
+
+        .wc .ic svg {
+            width: 26px;
+            height: 26px;
+            color: #fff
+        }
+
+        .meta span {
+            display: inline-flex;
+            align-items: center
+        }
+
+        .meta svg {
+            width: 14px;
+            height: 14px;
+            margin-right: 5px
+        }
+
+        .soc a svg {
+            width: 15px;
+            height: 15px
+        }
+
+        .lk {
+            display: inline-flex;
+            gap: 6px;
+            align-items: center;
+            color: var(--g);
+            font-weight: 600
+        }
+
+        .lk svg {
+            width: 16px;
+            height: 16px;
+            transition: .3s
+        }
+
+        .lk:hover svg {
+            transform: translateX(6px)
+        }
+
+        .qi {
+            width: 34px;
+            height: 34px;
+            color: var(--g2);
+            opacity: .5;
+            margin: 0 auto 8px
+        }
+
+        .av {
+            animation: bob 4s ease-in-out infinite
+        }
+
+        .stats svg {
+            width: 34px;
+            height: 34px;
+            margin: 0 auto 8px;
+            color: var(--lime);
+            animation: bob 3s ease-in-out infinite
+        }
+
+        .sn {
+            animation: bob 6s ease-in-out infinite;
+            transform-box: fill-box;
+            transform-origin: center
+        }
+
+        @keyframes bob {
+            50% {
+                transform: translateY(-8px)
+            }
+        }
+
+        .head h2::after {
+            content: "";
+            display: block;
+            height: 4px;
+            width: 0;
+            background: linear-gradient(90deg, var(--g2), var(--gold));
+            border-radius: 4px;
+            margin-top: 10px;
+            transition: width 1s .4s
+        }
+
+        .head.in h2::after {
+            width: 80px
+        }
+
+        .head[style*="center"] h2::after {
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .pulse {
+            animation: pls 2.2s infinite
+        }
+
+        @keyframes pls {
+            0% {
+                box-shadow: 0 0 0 0 rgba(158, 208, 58, .7)
+            }
+
+            70%,
+            100% {
+                box-shadow: 0 0 0 20px rgba(158, 208, 58, 0)
+            }
+        }
+
+        .wa {
+            animation: plw 2.4s infinite
+        }
+
+        @keyframes plw {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, .6)
+            }
+
+            70%,
+            100% {
+                box-shadow: 0 0 0 14px rgba(37, 211, 102, 0)
+            }
+        }
+
+        #up {
+            display: grid;
+            place-items: center
+        }
+
+        #up svg,
+        #lb button svg {
+            width: 22px;
+            height: 22px
+        }
+
+        #lb button {
+            display: grid;
+            place-items: center
+        }
+
+        #lp,
+        #ln {
+            top: 50%;
+            margin-top: -23px
+        }
+
+        .cdots {
+            display: none;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 4px
+        }
+
+        .cdots i {
+            width: 7px;
+            height: 7px;
+            border-radius: 9px;
+            background: var(--mut);
+            opacity: .35;
+            transition: .3s
+        }
+
+        .cdots i.on {
+            width: 22px;
+            background: var(--g2);
+            opacity: 1
+        }
+
+        @media(max-width:900px) {
+            .sh {
+                display: none
+            }
+        }
+
+        @media(max-width:700px) {
+            .cr {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 16px;
+                padding: 8px 22px 22px;
+                margin: 0 -22px;
+                scrollbar-width: none;
+                overscroll-behavior-x: contain
+            }
+
+            .cr::-webkit-scrollbar {
+                display: none
+            }
+
+            .cr>* {
+                flex: 0 0 80%;
+                scroll-snap-align: center
+            }
+
+            .cr>.empty {
+                flex-basis: 100%
+            }
+
+            .cdots {
+                display: flex
+            }
+
+            .masonry {
+                columns: 2 140px
+            }
+
+            section {
+                padding: 70px 0
+            }
+        }
+
+        [hidden] {
+            display: none !important
+        }
+
+        .slides {
+            position: absolute;
+            inset: 0
+        }
+
+        .sl {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.4s ease
+        }
+
+        .sl.on {
+            opacity: 1
+        }
+
+        .sl svg,
+        .sl img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+
+        .sl.on svg,
+        .sl.on img {
+            animation: kb 9s ease-out forwards
+        }
+
+        @keyframes kb {
+            from {
+                transform: scale(1)
+            }
+
+            to {
+                transform: scale(1.12)
+            }
+        }
+
+        .slides::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(10, 20, 15, .6), rgba(10, 20, 15, .1) 70%), linear-gradient(0deg, rgba(10, 20, 15, .45), transparent 45%)
+        }
+
+        .hero h1 {
+            min-height: 3.3em
+        }
+
+        .hero p.sub {
+            min-height: 3.4em
+        }
+
+        .hp {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 30px
+        }
+
+        .hp button {
+            position: relative;
+            width: 46px;
+            height: 5px;
+            border: 0;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, .3);
+            overflow: hidden;
+            cursor: pointer;
+            padding: 0
+        }
+
+        .hp button i {
+            position: absolute;
+            inset: 0;
+            background: var(--lime);
+            transform: scaleX(0);
+            transform-origin: left
+        }
+
+        .hp button.on i {
+            animation: pf 7s linear forwards
+        }
+
+        .hp button.dn i {
+            transform: scaleX(1)
+        }
+
+        @keyframes pf {
+            to {
+                transform: scaleX(1)
+            }
+        }
+
+        .hp b {
+            margin-left: 10px;
+            font-weight: 600;
+            font-size: .85rem;
+            opacity: .9
+        }
+
+        .btn.cx {
+            background: transparent;
+            color: inherit;
+            border: 1.5px solid currentColor;
+            box-shadow: none
+        }
+
+        .btn.cx:hover {
+            background: var(--g);
+            border-color: var(--g);
+            color: #fff
+        }
+
+        .btn.cx2 {
+            background: transparent;
+            color: var(--g);
+            border: 1.5px solid var(--g);
+            box-shadow: none
+        }
+
+        .btn.cx2:hover {
+            background: var(--g);
+            color: #fff
+        }
+
+        .btn.cx::after,
+        .btn.cx2::after {
+            display: none
+        }
+
+        .btn.ld {
+            pointer-events: none;
+            opacity: .85
+        }
+
+        .btn.ld::before {
+            content: "";
+            width: 16px;
+            height: 16px;
+            border: 2px solid #fff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: sp .7s linear infinite
+        }
+
+        @keyframes sp {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .w100 {
+            width: 100%;
+            justify-content: center
+        }
+
+        .mo {
+            display: none
+        }
+
+        @media(max-width:1020px) {
+            .mo {
+                display: list-item
+            }
+        }
+
+        .fld {
+            display: grid;
+            gap: 6px;
+            margin-bottom: 16px
+        }
+
+        .fld>label {
+            font-weight: 600;
+            font-size: .85rem
+        }
+
+        .fld input,
+        .fld select,
+        .fld textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border-radius: 12px;
+            border: 1.5px solid rgba(120, 130, 125, .35);
+            background: var(--bg2);
+            color: var(--tx);
+            font: 500 .95rem Poppins, sans-serif;
+            transition: .25s
+        }
+
+        .fld input:focus,
+        .fld select:focus,
+        .fld textarea:focus {
+            border-color: var(--g2);
+            box-shadow: 0 0 0 4px rgba(72, 185, 108, .18);
+            outline: 0
+        }
+
+        .fld [aria-invalid="true"] {
+            border-color: #e5534b;
+            background: rgba(229, 83, 75, .06)
+        }
+
+        .er {
+            color: #e5534b;
+            font-size: .78rem
+        }
+
+        .er:empty {
+            display: none
+        }
+
+        .ck {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: .85rem;
+            font-weight: 500;
+            cursor: pointer
+        }
+
+        .fld .ck input {
+            width: 18px;
+            height: 18px;
+            padding: 0;
+            accent-color: var(--g);
+            flex: none;
+            margin-top: 2px
+        }
+
+        .shake {
+            animation: shk .4s
+        }
+
+        @keyframes shk {
+
+            20%,
+            60% {
+                transform: translateX(-6px)
+            }
+
+            40%,
+            80% {
+                transform: translateX(6px)
+            }
+        }
+
+        .two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 16px
+        }
+
+        @media(max-width:600px) {
+            .two {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 350;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+            background: rgba(10, 14, 12, .6);
+            backdrop-filter: blur(6px);
+            animation: pg .3s
+        }
+
+        .mbox {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            width: min(860px, 100%);
+            max-height: 94vh;
+            overflow: auto;
+            background: var(--card);
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .4);
+            animation: vin .5s cubic-bezier(.2, .8, .2, 1)
+        }
+
+        .mside {
+            position: relative;
+            color: #fff;
+            display: flex;
+            align-items: flex-end;
+            padding: 26px;
+            min-height: 420px
+        }
+
+        .mside svg,
+        .mside img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .mside::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(0, 0, 0, .65), transparent 60%)
+        }
+
+        .mside div {
+            position: relative;
+            z-index: 2
+        }
+
+        .mform {
+            padding: 38px 32px
+        }
+
+        .mform h3 {
+            margin: 0 0 4px;
+            font-size: 1.4rem
+        }
+
+        .mx {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            z-index: 3;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 0;
+            background: var(--bg2);
+            color: var(--tx);
+            display: grid;
+            place-items: center;
+            cursor: pointer
+        }
+
+        .mx svg {
+            width: 18px;
+            height: 18px
+        }
+
+        .tabs {
+            display: flex;
+            background: var(--bg2);
+            border-radius: 99px;
+            padding: 4px;
+            margin: 18px 0 20px
+        }
+
+        .tabs button {
+            flex: 1;
+            border: 0;
+            background: none;
+            padding: 10px;
+            border-radius: 99px;
+            font: 600 .9rem Poppins;
+            color: var(--mut);
+            cursor: pointer;
+            transition: .3s
+        }
+
+        .tabs button.on {
+            background: var(--card);
+            color: var(--g);
+            box-shadow: var(--sh)
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: .82rem;
+            margin-bottom: 18px;
+            align-items: center;
+            flex-wrap: wrap
+        }
+
+        .row a {
+            color: var(--g);
+            font-weight: 600
+        }
+
+        .pw {
+            position: relative
+        }
+
+        .pw input {
+            padding-right: 46px
+        }
+
+        .pw button {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 0;
+            background: none;
+            color: var(--mut);
+            cursor: pointer;
+            display: grid
+        }
+
+        .pw svg {
+            width: 18px;
+            height: 18px
+        }
+
+        @media(max-width:700px) {
+            .mbox {
+                grid-template-columns: 1fr
+            }
+
+            .mside {
+                display: none
+            }
+        }
+
+        @keyframes vin {
+            from {
+                opacity: 0;
+                transform: translateY(24px)
+            }
+        }
+
+        .view {
+            animation: vin .6s both
+        }
+
+        .rhead {
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            padding: 140px 0 70px;
+            background: linear-gradient(180deg, #1b3a2c, #1E7A46)
+        }
+
+        .rhead svg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            opacity: .45
+        }
+
+        .rhead .wrap {
+            position: relative
+        }
+
+        .rhead h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            margin: .2em 0
+        }
+
+        .rhead p {
+            opacity: .9;
+            margin: 0
+        }
+
+        .bc {
+            font-size: .85rem;
+            opacity: .85
+        }
+
+        .bc a:hover {
+            text-decoration: underline
+        }
+
+        .rgrid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+            padding-top: 40px;
+            padding-bottom: 90px;
+            align-items: start
+        }
+
+        .rbox {
+            background: var(--card);
+            border-radius: 24px;
+            box-shadow: var(--sh);
+            padding: 32px
+        }
+
+        .rsum {
+            position: sticky;
+            top: 96px;
+            background: var(--card);
+            border-radius: 24px;
+            box-shadow: var(--sh);
+            overflow: hidden
+        }
+
+        @media(max-width:900px) {
+            .rgrid {
+                grid-template-columns: 1fr
+            }
+
+            .rsum {
+                position: static
+            }
+
+            .rbox {
+                padding: 22px
+            }
+        }
+
+        .rsum .ph {
+            aspect-ratio: 16/9
+        }
+
+        .rsum .cb {
+            padding: 22px
+        }
+
+        .rsum ul {
+            list-style: none;
+            margin: 6px 0 0;
+            padding: 0;
+            display: grid;
+            gap: 8px;
+            font-size: .88rem
+        }
+
+        .rsum li {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px
+        }
+
+        .rsum li.mut {
+            color: var(--mut)
+        }
+
+        .tot {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-top: 1px dashed var(--mut);
+            margin-top: 14px;
+            padding-top: 14px
+        }
+
+        .tot b {
+            font-size: 1.6rem;
+            color: var(--g)
+        }
+
+        .gar {
+            display: grid;
+            gap: 8px;
+            margin-top: 16px;
+            font-size: .82rem;
+            color: var(--mut)
+        }
+
+        .gar span {
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        .gar svg {
+            width: 16px;
+            height: 16px;
+            color: var(--g2)
+        }
+
+        .steps {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            margin: 0 0 26px;
+            padding: 0
+        }
+
+        .steps li {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--mut);
+            padding-bottom: 12px;
+            border-bottom: 3px solid rgba(120, 130, 125, .25);
+            transition: .4s
+        }
+
+        .steps li b {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--bg2);
+            display: grid;
+            place-items: center;
+            font-size: .78rem;
+            transition: .4s
+        }
+
+        .steps li.on {
+            color: var(--g);
+            border-color: var(--g2)
+        }
+
+        .steps li.on b,
+        .steps li.dn b {
+            background: var(--g2);
+            color: #fff
+        }
+
+        .steps li.dn {
+            border-color: var(--g2)
+        }
+
+        @media(max-width:600px) {
+            .steps li span {
+                display: none
+            }
+        }
+
+        fieldset {
+            border: 0;
+            margin: 0;
+            padding: 0;
+            min-width: 0;
+            animation: vin .5s both
+        }
+
+        fieldset legend {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            padding: 0
+        }
+
+        .stp {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--bg2);
+            border-radius: 99px;
+            padding: 5px;
+            width: max-content
+        }
+
+        .stp button {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 0;
+            background: var(--card);
+            color: var(--g);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            box-shadow: var(--sh);
+            transition: .2s
+        }
+
+        .stp button:hover {
+            background: var(--g2);
+            color: #fff
+        }
+
+        .stp output {
+            min-width: 22px;
+            text-align: center;
+            font-weight: 700
+        }
+
+        .stp svg {
+            width: 16px;
+            height: 16px
+        }
+
+        .opts {
+            display: grid;
+            gap: 10px
+        }
+
+        .chk {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border: 1.5px solid rgba(120, 130, 125, .3);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: .25s;
+            font-size: .9rem
+        }
+
+        .chk:hover {
+            border-color: var(--g2)
+        }
+
+        .chk input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--g)
+        }
+
+        .chk svg {
+            width: 18px;
+            height: 18px;
+            color: var(--g)
+        }
+
+        .chk em {
+            margin-left: auto;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--g)
+        }
+
+        .pay {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            border: 1.5px solid rgba(120, 130, 125, .3);
+            border-radius: 14px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: .25s
+        }
+
+        .pay:hover {
+            border-color: var(--g2)
+        }
+
+        .pay:has(input:checked) {
+            border-color: var(--g2);
+            background: rgba(72, 185, 108, .1);
+            box-shadow: 0 0 0 3px rgba(72, 185, 108, .15)
+        }
+
+        .pay svg {
+            width: 24px;
+            height: 24px;
+            color: var(--g)
+        }
+
+        .pay small {
+            display: block;
+            color: var(--mut)
+        }
+
+        .pay input {
+            margin-left: auto;
+            accent-color: var(--g);
+            width: 18px;
+            height: 18px
+        }
+
+        .rnav {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 26px
+        }
+
+        .rok {
+            text-align: center;
+            padding: 30px 10px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .okic {
+            width: 64px;
+            height: 64px;
+            color: var(--g2);
+            margin: 0 auto 12px;
+            animation: bob 3s ease-in-out infinite
+        }
+
+        .cf {
+            position: absolute;
+            top: -10px;
+            width: 8px;
+            height: 14px;
+            border-radius: 2px;
+            animation: cf 2.6s ease-in forwards
+        }
+
+        @keyframes cf {
+            to {
+                transform: translateY(520px) rotate(var(--r));
+                opacity: 0
+            }
+        }
+
+        .dd {
+            position: relative
+        }
+
+        .ddb {
+            background: none;
+            border: 0;
+            color: inherit;
+            font: inherit;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 0
+        }
+
+        .ddb svg {
+            width: 14px;
+            height: 14px;
+            transition: .3s
+        }
+
+        nav .dm {
+            position: absolute;
+            top: 100%;
+            left: -14px;
+            min-width: 190px;
+            flex-direction: column;
+            gap: 2px;
+            background: var(--card);
+            color: var(--tx);
+            border-radius: 14px;
+            padding: 8px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, .18);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: .25s
+        }
+
+        .dd:hover .dm,
+        .dd:focus-within .dm,
+        .dd.open .dm {
+            opacity: 1;
+            visibility: visible;
+            transform: none
+        }
+
+        .dd:hover .ddb svg,
+        .dd.open .ddb svg {
+            transform: rotate(180deg)
+        }
+
+        nav .dm a {
+            display: block;
+            padding: 10px 14px;
+            border-radius: 10px
+        }
+
+        nav .dm a:hover {
+            background: var(--bg2);
+            color: var(--g)
+        }
+
+        nav .dm a::after {
+            display: none
+        }
+
+        @media(max-width:1020px) {
+            nav .dm {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: none;
+                min-width: 0;
+                padding: 6px 0 0 14px;
+                gap: 10px;
+                color: var(--mut)
+            }
+
+            nav .dm a {
+                padding: 0
+            }
+
+            nav .dm a:hover {
+                background: none
+            }
+
+            .ddb {
+                font-weight: 600;
+                padding: 0
+            }
+
+            .ddb svg {
+                display: none
+            }
+        }
+
+        .fld input,
+        .fld select,
+        .fld textarea {
+            min-width: 0;
+            max-width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            min-height: 48px
+        }
+
+        .fld select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23667074' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+            text-overflow: ellipsis
+        }
+
+        .fld input[type=date] {
+            display: block
+        }
+
+        .fld textarea {
+            min-height: 90px
+        }
+
+        .rgrid>* {
+            min-width: 0
+        }
+
+        .pay span {
+            flex: 1;
+            min-width: 0
+        }
+
+        @keyframes sheet {
+            from {
+                transform: translateY(100%)
+            }
+        }
+
+        @media(max-width:700px) {
+
+            .fld input,
+            .fld select,
+            .fld textarea,
+            .mform input {
+                font-size: 16px
+            }
+
+            .rhead {
+                padding: 104px 0 46px
+            }
+
+            .rgrid {
+                padding-top: 24px;
+                padding-bottom: 60px;
+                gap: 20px
+            }
+
+            .rbox {
+                padding: 20px 16px;
+                border-radius: 20px
+            }
+
+            .rnav {
+                flex-direction: column-reverse
+            }
+
+            .rnav .btn {
+                width: 100%;
+                justify-content: center
+            }
+
+            .chk {
+                font-size: .85rem;
+                padding: 12px
+            }
+
+            .pay {
+                padding: 12px;
+                gap: 12px
+            }
+
+            .rsum .cb {
+                padding: 18px
+            }
+
+            .tot b {
+                font-size: 1.4rem
+            }
+
+            .modal {
+                padding: 0;
+                place-items: end stretch
+            }
+
+            .mbox {
+                width: 100%;
+                max-height: 92vh;
+                max-height: 92dvh;
+                border-radius: 24px 24px 0 0;
+                animation: sheet .45s cubic-bezier(.2, .8, .2, 1)
+            }
+
+            .mform {
+                padding: 28px 20px calc(28px + env(safe-area-inset-bottom, 0px))
+            }
+
+            .mform h3 {
+                padding-right: 44px;
+                font-size: 1.25rem
+            }
+
+            .fg>div:first-child,
+            .fg>div:last-child {
+                grid-column: 1/-1
+            }
+
+            .bl {
+                grid-template-columns: 1fr;
+                gap: 14px
+            }
+
+            .bl .card {
+                flex-direction: row
+            }
+
+            .bl .ph {
+                width: 122px;
+                flex: none;
+                aspect-ratio: auto;
+                min-height: 140px
+            }
+
+            .bl .tag {
+                display: none
+            }
+
+            .bl .cb {
+                padding: 14px;
+                gap: 6px;
+                min-width: 0
+            }
+
+            .bl .cb h3 {
+                font-size: .98rem;
+                line-height: 1.3
+            }
+        }
+
+        html,
+        body {
+            overflow-x: clip
+        }
+
+        @media(max-width:1020px) {
+            nav {
+                z-index: 110
+            }
+
+            #burger {
+                position: relative;
+                z-index: 120
+            }
+
+            header.mopen #burger {
+                background: var(--bg2);
+                color: var(--tx)
+            }
+        }
+
+        @media(max-width:700px) {
+            .modal {
+                padding: 18px;
+                place-items: center;
+                overflow: auto
+            }
+
+            .mbox {
+                width: 100%;
+                max-width: 420px;
+                border-radius: 24px;
+                max-height: 88vh;
+                max-height: 88dvh;
+                animation: vin .5s cubic-bezier(.2, .8, .2, 1)
+            }
+
+            .mform {
+                padding: 28px 20px
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            * {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important
+            }
+
+            html {
+                scroll-behavior: auto
+            }
+        }
+    </style>
 </head>
+
 <body>
-<div id="bar"></div>
-<div id="loader" role="status" aria-label="Chargement"><svg class="lm" viewBox="0 0 1440 300" preserveAspectRatio="none"><path d="M0 300V170l160-80 150 70 210-110 220 120 190-80 230 90 280-60v190z" fill="#1E7A46" opacity=".5"/><path d="M0 300V230l240-70 200 60 260-90 260 100 220-60 260 70v90z" fill="#9ED03A" opacity=".35"/></svg>
-<div class="ldr"><svg width="150" height="150" viewBox="0 0 120 120"><circle class="trk" cx="60" cy="60" r="54"/><circle class="arc" cx="60" cy="60" r="54"/><g class="nd"><path d="M60 24l8 36-8 36-8-36z" fill="#9ED03A"/><path d="M60 96l-8-36 8-36z" fill="#fff"/></g><circle cx="60" cy="60" r="4" fill="#2F3437"/></svg>
-<p class="lt">Lutete <span>TRAVEL</span></p><small id="lpc">0%</small></div></div>
+    <div id="bar"></div>
+    <div id="loader" role="status" aria-label="Chargement"><svg class="lm" viewBox="0 0 1440 300"
+            preserveAspectRatio="none">
+            <path d="M0 300V170l160-80 150 70 210-110 220 120 190-80 230 90 280-60v190z" fill="#1E7A46" opacity=".5" />
+            <path d="M0 300V230l240-70 200 60 260-90 260 100 220-60 260 70v90z" fill="#9ED03A" opacity=".35" />
+        </svg>
+        <div class="ldr"><svg width="150" height="150" viewBox="0 0 120 120">
+                <circle class="trk" cx="60" cy="60" r="54" />
+                <circle class="arc" cx="60" cy="60" r="54" />
+                <g class="nd">
+                    <path d="M60 24l8 36-8 36-8-36z" fill="#9ED03A" />
+                    <path d="M60 96l-8-36 8-36z" fill="#fff" />
+                </g>
+                <circle cx="60" cy="60" r="4" fill="#2F3437" />
+            </svg>
+            <p class="lt">Lutete <span>TRAVEL</span></p><small id="lpc">0%</small>
+        </div>
+    </div>
 
-<header id="hd"><div class="wrap nav">
-<a href="#top" class="logo" aria-label="Lutete Travel, accueil"><svg width="42" height="42" viewBox="0 0 100 100"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3dba4a"/><stop offset="1" stop-color="#b4d836"/></linearGradient></defs><circle cx="50" cy="50" r="48" fill="url(#lg)"/><path d="M8 78L34 52l10 10 14-26 12 20 8-8 8 30z" fill="#2F3437"/><circle cx="56" cy="30" r="6" fill="#2F3437"/></svg><span>Lutete<small>TRAVEL</small></span></a>
-<nav id="menu" aria-label="Navigation principale"><ul>
-<li><a href="#top">Accueil</a></li>
-<li><a href="#destinations">Destinations</a></li>
-<li class="dd"><button type="button" class="ddb" aria-haspopup="true" aria-expanded="false">Voyages <i data-lucide="chevron-down"></i></button><ul class="dm"><li><a href="#circuits">Randonnées</a></li><li><a href="#circuits">Excursions</a></li><li><a href="#circuits">Circuits</a></li></ul></li>
-<li class="dd"><button type="button" class="ddb" aria-haspopup="true" aria-expanded="false">Découvrir <i data-lucide="chevron-down"></i></button><ul class="dm"><li><a href="#galerie">Galerie</a></li><li><a href="#equipe">À propos</a></li><li><a href="#blog">Blog</a></li></ul></li>
-<li><a href="#contact">Contact</a></li>
-<li class="mo"><a href="#reservation">Réserver</a></li><li class="mo"><a href="#connexion" data-login>Connexion</a></li></ul></nav>
-<div class="act"><a class="btn sm" href="#reservation">Réserver</a><button class="btn sm cx" id="lgb" type="button"><i data-lucide="log-in"></i><span>Connexion</span></button>
-<button class="ib" id="theme" aria-label="Basculer le mode sombre">☾</button>
-<a class="ib wa" href="https://wa.me/" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.300 1.700 2.100 1.100 1 2.100 1.300 2.400 1.400.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.900.9c.3.1.5.2.5.3.1.2.1.700-.1 1.300z"/></svg></a>
-<button class="ib" id="burger" aria-label="Menu"><i data-lucide="menu"></i></button></div>
-</div></header>
+    <header id="hd">
+        <div class="wrap nav">
+            <a href="#top" class="logo" aria-label="Lutete Travel, accueil"><img src="logo.jpeg" alt="Lutete Travel"
+                    width="52" height="52"
+                    style="border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 2px 10px rgba(0,0,0,.25)"><span>Lutete<small>TRAVEL</small></span></a>
+            <nav id="menu" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="#top">Accueil</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li class="dd"><button type="button" class="ddb" aria-haspopup="true" aria-expanded="false">Voyages
+                            <i data-lucide="chevron-down"></i></button>
+                        <ul class="dm">
+                            <li><a href="#circuits">Randonnées</a></li>
+                            <li><a href="#circuits">Excursions</a></li>
+                            <li><a href="#circuits">Circuits</a></li>
+                        </ul>
+                    </li>
+                    <li class="dd"><button type="button" class="ddb" aria-haspopup="true"
+                            aria-expanded="false">Découvrir <i data-lucide="chevron-down"></i></button>
+                        <ul class="dm">
+                            <li><a href="#galerie">Galerie</a></li>
+                            <li><a href="#equipe">À propos</a></li>
+                            <li><a href="#blog">Blog</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="mo"><a href="#reservation">Réserver</a></li>
+                    <li class="mo"><a href="#connexion" data-login>Connexion</a></li>
+                </ul>
+            </nav>
+            <div class="act"><a class="btn sm" href="#reservation">Réserver</a><button class="btn sm cx" id="lgb"
+                    type="button"><i data-lucide="log-in"></i><span>Connexion</span></button>
+                <button class="ib" id="theme" aria-label="Basculer le mode sombre">☾</button>
+                <a class="ib wa" href="https://wa.me/" target="_blank" rel="noopener" aria-label="WhatsApp"><svg
+                        width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.300 1.700 2.100 1.100 1 2.100 1.300 2.400 1.400.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.900.9c.3.1.5.2.5.3.1.2.1.700-.1 1.300z" />
+                    </svg></a>
+                <button class="ib" id="burger" aria-label="Menu"><i data-lucide="menu"></i></button>
+            </div>
+        </div>
+    </header>
 
-<main id="top">
-<div class="hero">
-<div class="slides" id="slides" aria-hidden="true"></div><div class="clouds"><i></i><i></i><i></i><i></i></div>
-<div class="layer" data-s=".5"><svg viewBox="0 0 1440 400" preserveAspectRatio="none"><path d="M0 400V320l220-90 180 60 240-120 210 130 250-70 340 90v80z" fill="#1b3a2c"/></svg></div>
-<div class="wrap in">
-<span id="hE" class="eyebrow fi" style="color:var(--lime)">Lutete Travel · Randonnées &amp; safaris</span>
-<h1 id="hT">Explorez les plus belles aventures au cœur de la nature.</h1>
-<p id="hS" class="sub fi d3">Randonnées, excursions, safaris et voyages organisés avec des guides professionnels.</p>
-<div class="ctas fi d4"><a class="btn pulse" href="#reservation">Réserver maintenant <i data-lucide="arrow-right"></i></a><a class="btn ghost" href="#circuits">Découvrir les circuits</a></div><div class="hp fi d4" id="hp" role="group" aria-label="Diapositives"></div>
-</div>
-<a href="#pourquoi" class="sh" aria-label="Défiler vers le bas"><i data-lucide="chevrons-down"></i></a>
-<form class="search" id="sf" role="search" aria-label="Rechercher un voyage">
-<label><i data-lucide="map-pin"></i>Destination<input id="q" list="dl" placeholder="Où partir ?"><datalist id="dl"></datalist></label>
-<label><i data-lucide="calendar"></i>Date<input type="date"></label>
-<label><i data-lucide="users"></i>Voyageurs<select><option>1 voyageur</option><option selected>2 voyageurs</option><option>3 à 5</option><option>Groupe 6+</option></select></label>
-<label><i data-lucide="clock"></i>Durée<select><option>1 jour</option><option>2 à 3 jours</option><option>4 à 7 jours</option><option>7+ jours</option></select></label>
-<button class="btn" type="submit"><i data-lucide="search"></i>Rechercher</button>
-</form>
-</div>
+    <main id="top">
+        <div class="hero">
+            <div class="slides" id="slides" aria-hidden="true"></div>
+            <div class="clouds"><i></i><i></i><i></i><i></i></div>
+            <div class="layer" data-s=".5"><svg viewBox="0 0 1440 400" preserveAspectRatio="none">
+                    <path d="M0 400V320l220-90 180 60 240-120 210 130 250-70 340 90v80z" fill="#1b3a2c" />
+                </svg></div>
+            <div class="wrap in">
+                <span id="hE" class="eyebrow fi" style="color:var(--lime)">Lutete Travel · Randonnées &amp;
+                    safaris</span>
+                <h1 id="hT">Explorez les plus belles aventures au cœur de la nature.</h1>
+                <p id="hS" class="sub fi d3">Randonnées, excursions, safaris et voyages organisés avec des guides
+                    professionnels.</p>
+                <div class="ctas fi d4"><a class="btn pulse" href="#reservation">Réserver maintenant <i
+                            data-lucide="arrow-right"></i></a><a class="btn ghost" href="#circuits">Découvrir les
+                        circuits</a></div>
+                <div class="hp fi d4" id="hp" role="group" aria-label="Diapositives"></div>
+            </div>
+            <a href="#pourquoi" class="sh" aria-label="Défiler vers le bas"><i data-lucide="chevrons-down"></i></a>
+            <form class="search" id="sf" role="search" aria-label="Rechercher un voyage">
+                <label><i data-lucide="map-pin"></i>Destination<input id="q" list="dl"
+                        placeholder="Où partir ?"><datalist id="dl"></datalist></label>
+                <label><i data-lucide="calendar"></i>Date<input type="date"></label>
+                <label><i data-lucide="users"></i>Voyageurs<select>
+                        <option>1 voyageur</option>
+                        <option selected>2 voyageurs</option>
+                        <option>3 à 5</option>
+                        <option>Groupe 6+</option>
+                    </select></label>
+                <label><i data-lucide="clock"></i>Durée<select>
+                        <option>1 jour</option>
+                        <option>2 à 3 jours</option>
+                        <option>4 à 7 jours</option>
+                        <option>7+ jours</option>
+                    </select></label>
+                <button class="btn" type="submit"><i data-lucide="search"></i>Rechercher</button>
+            </form>
+        </div>
 
-<div class="mq" aria-hidden="true"><div id="mq"></div></div>
-<section id="pourquoi"><div class="wrap"><div class="head rv"><span class="eyebrow">Pourquoi nous choisir</span><h2>Voyagez l’esprit léger</h2><p class="lead">Une agence à taille humaine, des standards internationaux.</p></div>
-<div class="why cr" id="why"></div></div></section>
+        <div class="mq" aria-hidden="true">
+            <div id="mq"></div>
+        </div>
+        <section id="pourquoi">
+            <div class="wrap">
+                <div class="head rv"><span class="eyebrow">Pourquoi nous choisir</span>
+                    <h2>Voyagez l’esprit léger</h2>
+                    <p class="lead">Une agence à taille humaine, des standards internationaux.</p>
+                </div>
+                <div class="why cr" id="why"></div>
+            </div>
+        </section>
 
-<section id="destinations" class="alt"><div class="wrap"><div class="head rv"><span class="eyebrow">Destinations populaires</span><h2>Les lieux qui font rêver</h2></div><div class="grid cr" id="dest"></div></div></section>
+        <section id="destinations" class="alt">
+            <div class="wrap">
+                <div class="head rv"><span class="eyebrow">Destinations populaires</span>
+                    <h2>Les lieux qui font rêver</h2>
+                </div>
+                <div class="grid cr" id="dest"></div>
+            </div>
+        </section>
 
-<section id="circuits"><div class="wrap"><div class="head rv"><span class="eyebrow">Nos circuits</span><h2>Des expériences conçues avec soin</h2><p class="lead">Randonnées, excursions et séjours encadrés par nos guides.</p></div><div class="grid cr" id="circ"></div></div></section>
+        <section id="circuits">
+            <div class="wrap">
+                <div class="head rv"><span class="eyebrow">Nos circuits</span>
+                    <h2>Des expériences conçues avec soin</h2>
+                    <p class="lead">Randonnées, excursions et séjours encadrés par nos guides.</p>
+                </div>
+                <div class="grid cr" id="circ"></div>
+            </div>
+        </section>
 
-<section id="galerie" class="alt"><div class="wrap"><div class="head rv"><span class="eyebrow">Galerie</span><h2>Instants d’aventure</h2></div><div class="masonry" id="gal"></div></div></section>
+        <section id="galerie" class="alt">
+            <div class="wrap">
+                <div class="head rv"><span class="eyebrow">Galerie</span>
+                    <h2>Instants d’aventure</h2>
+                </div>
+                <div class="masonry" id="gal"></div>
+            </div>
+        </section>
 
-<section id="avis"><div class="wrap"><div class="head rv" style="text-align:center"><span class="eyebrow">Témoignages</span><h2>Ils ont voyagé avec nous</h2></div>
-<div class="tm rv"><div class="track" id="track"></div><div class="dots" id="dots"></div></div></div></section>
+        <section id="avis">
+            <div class="wrap">
+                <div class="head rv" style="text-align:center"><span class="eyebrow">Témoignages</span>
+                    <h2>Ils ont voyagé avec nous</h2>
+                </div>
+                <div class="tm rv">
+                    <div class="track" id="track"></div>
+                    <div class="dots" id="dots"></div>
+                </div>
+            </div>
+        </section>
 
-<div class="stats"><div class="wrap">
-<div><i data-lucide="users"></i><b data-n="10000" data-p="+">0</b><span>voyageurs</span></div><div><i data-lucide="map"></i><b data-n="150">0</b><span>destinations</span></div><div><i data-lucide="smile"></i><b data-n="98" data-x="%">0</b><span>satisfaction</span></div><div><i data-lucide="award"></i><b data-n="20">0</b><span>guides professionnels</span></div></div></div>
+        <div class="stats">
+            <div class="wrap">
+                <div><i data-lucide="users"></i><b data-n="10000" data-p="+">0</b><span>voyageurs</span></div>
+                <div><i data-lucide="map"></i><b data-n="150">0</b><span>destinations</span></div>
+                <div><i data-lucide="smile"></i><b data-n="98" data-x="%">0</b><span>satisfaction</span></div>
+                <div><i data-lucide="award"></i><b data-n="20">0</b><span>guides professionnels</span></div>
+            </div>
+        </div>
 
-<section id="equipe"><div class="wrap"><div class="head rv"><span class="eyebrow">Notre équipe</span><h2>Des guides passionnés</h2></div><div class="grid tm2 cr" id="team"></div></div></section>
+        <section id="equipe">
+            <div class="wrap">
+                <div class="head rv"><span class="eyebrow">Notre équipe</span>
+                    <h2>Des guides passionnés</h2>
+                </div>
+                <div class="grid tm2 cr" id="team"></div>
+            </div>
+        </section>
 
-<section id="blog" class="alt"><div class="wrap"><div class="head rv"><span class="eyebrow">Blog</span><h2>Conseils &amp; inspirations</h2></div><div class="grid bl" id="blogg"></div></div></section>
+        <section id="blog" class="alt">
+            <div class="wrap">
+                <div class="head rv"><span class="eyebrow">Blog</span>
+                    <h2>Conseils &amp; inspirations</h2>
+                </div>
+                <div class="grid bl" id="blogg"></div>
+            </div>
+        </section>
 
-<div class="cta"><svg viewBox="0 0 1440 400" preserveAspectRatio="none"><path d="M0 400V220l200-120 160 110 240-170 220 190 200-110 200 130 220-90v340z" fill="#1E7A46"/><path d="M0 400V300l260-90 220 80 260-120 280 130 420-90v90z" fill="#9ED03A" opacity=".5"/></svg>
-<div class="wrap rv"><h2 style="font-size:clamp(2rem,5vw,3.4rem)">Prêt pour votre prochaine aventure ?</h2><p style="opacity:.9;margin-bottom:26px">Nos conseillers vous répondent en moins de 24 h.</p><a class="btn pulse" href="#reservation" style="font-size:1.05rem;padding:16px 34px" id="ctab">Réserver maintenant <i data-lucide="arrow-right"></i></a></div></div>
-</main>
-<section id="resv" class="view" hidden style="padding:0">
-<div class="rhead"><svg viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true"><path d="M0 300V160l200-100 160 90 240-130 220 150 200-90 200 110 220-70v240z" fill="#9ED03A"/></svg>
-<div class="wrap"><nav class="bc" aria-label="Fil d’Ariane"><a href="#top">Accueil</a> / Réservation</nav><h1>Réservez votre aventure</h1><p>Quelques clics suffisent. Un conseiller confirme votre voyage sous 24 h.</p></div></div>
-<div class="wrap rgrid">
-<div class="rbox" id="rform">
-<ol class="steps" id="steps"><li class="on"><b>1</b><span>Voyage</span></li><li><b>2</b><span>Coordonnées</span></li><li><b>3</b><span>Paiement</span></li></ol>
-<form id="rf" novalidate>
-<fieldset data-step="1"><legend>Votre voyage</legend>
-<div class="fld"><label for="rc">Circuit ou destination</label><select id="rc"><option value="">Choisir…</option></select><small class="er"></small></div>
-<div class="fld"><label for="rd">Date de départ</label><input id="rd" type="date"><small class="er"></small></div>
-<div class="two"><div class="fld"><label>Adultes</label><div class="stp"><button type="button" data-st="oa" data-d="-1" aria-label="Moins d’adultes"><i data-lucide="minus"></i></button><output id="oa">2</output><button type="button" data-st="oa" data-d="1" aria-label="Plus d’adultes"><i data-lucide="plus"></i></button></div></div>
-<div class="fld"><label>Enfants (−50 %)</label><div class="stp"><button type="button" data-st="oc" data-d="-1" aria-label="Moins d’enfants"><i data-lucide="minus"></i></button><output id="oc">0</output><button type="button" data-st="oc" data-d="1" aria-label="Plus d’enfants"><i data-lucide="plus"></i></button></div></div></div>
-<div class="fld"><label>Options</label><div class="opts">
-<label class="chk"><input type="checkbox" class="opt" data-l="Guide privé" data-f="50"><i data-lucide="compass"></i>Guide privé<em>+50 $</em></label>
-<label class="chk"><input type="checkbox" class="opt" data-l="Transport depuis l’hôtel" data-f="30"><i data-lucide="car"></i>Transport depuis l’hôtel<em>+30 $</em></label>
-<label class="chk"><input type="checkbox" class="opt" data-l="Équipement de randonnée" data-p="20"><i data-lucide="backpack"></i>Équipement de randonnée<em>+20 $/pers.</em></label>
-<label class="chk"><input type="checkbox" class="opt" data-l="Assurance voyage" data-p="15"><i data-lucide="shield-check"></i>Assurance voyage<em>+15 $/pers.</em></label></div></div>
-</fieldset>
-<fieldset data-step="2" hidden><legend>Vos coordonnées</legend>
-<div class="two"><div class="fld"><label for="rn">Nom complet</label><input id="rn" autocomplete="name" placeholder="Ex. Marie Kabongo"><small class="er"></small></div>
-<div class="fld"><label for="re">E-mail</label><input id="re" type="email" autocomplete="email" placeholder="vous@exemple.com"><small class="er"></small></div></div>
-<div class="two"><div class="fld"><label for="rt">Téléphone / WhatsApp</label><input id="rt" type="tel" autocomplete="tel" placeholder="+243 …"><small class="er"></small></div>
-<div class="fld"><label for="rp">Pays</label><input id="rp" autocomplete="country-name" value="RD Congo"></div></div>
-<div class="fld"><label for="rm">Demandes particulières</label><textarea id="rm" rows="3" placeholder="Régime alimentaire, niveau de forme, anniversaire…"></textarea></div>
-</fieldset>
-<fieldset data-step="3" hidden><legend>Mode de paiement</legend>
-<label class="pay"><i data-lucide="smartphone"></i><span>Mobile Money<small>M-Pesa, Airtel Money, Orange Money</small></span><input type="radio" name="pm" checked></label>
-<label class="pay"><i data-lucide="credit-card"></i><span>Carte bancaire<small>Visa, Mastercard</small></span><input type="radio" name="pm"></label>
-<label class="pay"><i data-lucide="wallet"></i><span>Payer à l’agence<small>Acompte de 30 % à la confirmation</small></span><input type="radio" name="pm"></label>
-<div class="fld"><label class="ck"><input id="rk" type="checkbox"><span>J’accepte les conditions de réservation et la politique d’annulation.</span></label><small class="er"></small></div>
-<p style="color:var(--mut);font-size:.82rem;margin:0">Aucun paiement n’est débité maintenant : un conseiller vous contacte pour confirmer.</p>
-</fieldset>
-<div class="rnav"><button type="button" class="btn sm cx2" id="rprev" style="visibility:hidden"><i data-lucide="chevron-left"></i>Retour</button><button type="submit" class="btn" id="rnext"><span id="rnl">Continuer</span><i data-lucide="arrow-right"></i></button></div>
-</form>
-<div class="rok" id="rok" hidden><i data-lucide="party-popper" class="okic"></i><h2>Merci <span id="rwho"></span> !</h2><p class="lead" style="margin:0 auto 20px">Votre demande est enregistrée. Code de réservation : <b id="rcode"></b>. Un conseiller vous contacte sous 24 h pour confirmer les détails.</p><div class="ctas" style="justify-content:center;margin-top:0"><a class="btn" href="#top">Retour à l’accueil</a><button class="btn cx2" id="rnew" type="button">Nouvelle réservation</button></div></div>
-</div>
-<aside class="rsum" aria-label="Récapitulatif"><div class="ph" id="sp"></div><div class="cb"><h3 id="sn" style="margin:0">Votre aventure</h3><div class="meta"><span id="sm">Choisissez un circuit</span></div><ul id="sr"></ul><div class="tot"><span>Total estimé</span><b id="st">0 $</b></div><div class="gar"><span><i data-lucide="shield-check"></i>Annulation gratuite jusqu’à 7 jours avant</span><span><i data-lucide="headset"></i>Assistance 24h/24</span><span><i data-lucide="badge-check"></i>Aucun frais caché</span></div></div></aside>
-</div></section>
+        <div class="cta"><svg viewBox="0 0 1440 400" preserveAspectRatio="none">
+                <path d="M0 400V220l200-120 160 110 240-170 220 190 200-110 200 130 220-90v340z" fill="#1E7A46" />
+                <path d="M0 400V300l260-90 220 80 260-120 280 130 420-90v90z" fill="#9ED03A" opacity=".5" />
+            </svg>
+            <div class="wrap rv">
+                <h2 style="font-size:clamp(2rem,5vw,3.4rem)">Prêt pour votre prochaine aventure ?</h2>
+                <p style="opacity:.9;margin-bottom:26px">Nos conseillers vous répondent en moins de 24 h.</p><a
+                    class="btn pulse" href="#reservation" style="font-size:1.05rem;padding:16px 34px" id="ctab">Réserver
+                    maintenant <i data-lucide="arrow-right"></i></a>
+            </div>
+        </div>
+    </main>
+    <section id="resv" class="view" hidden style="padding:0">
+        <div class="rhead"><svg viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M0 300V160l200-100 160 90 240-130 220 150 200-90 200 110 220-70v240z" fill="#9ED03A" />
+            </svg>
+            <div class="wrap">
+                <nav class="bc" aria-label="Fil d’Ariane"><a href="#top">Accueil</a> / Réservation</nav>
+                <h1>Réservez votre aventure</h1>
+                <p>Quelques clics suffisent. Un conseiller confirme votre voyage sous 24 h.</p>
+            </div>
+        </div>
+        <div class="wrap rgrid">
+            <div class="rbox" id="rform">
+                <ol class="steps" id="steps">
+                    <li class="on"><b>1</b><span>Voyage</span></li>
+                    <li><b>2</b><span>Coordonnées</span></li>
+                    <li><b>3</b><span>Paiement</span></li>
+                </ol>
+                <form id="rf" novalidate>
+                    <fieldset data-step="1">
+                        <legend>Votre voyage</legend>
+                        <div class="fld"><label for="rc">Circuit ou destination</label><select id="rc">
+                                <option value="">Choisir…</option>
+                            </select><small class="er"></small></div>
+                        <div class="fld"><label for="rd">Date de départ</label><input id="rd" type="date"><small
+                                class="er"></small></div>
+                        <div class="two">
+                            <div class="fld"><label>Adultes</label>
+                                <div class="stp"><button type="button" data-st="oa" data-d="-1"
+                                        aria-label="Moins d’adultes"><i data-lucide="minus"></i></button><output
+                                        id="oa">2</output><button type="button" data-st="oa" data-d="1"
+                                        aria-label="Plus d’adultes"><i data-lucide="plus"></i></button></div>
+                            </div>
+                            <div class="fld"><label>Enfants (−50 %)</label>
+                                <div class="stp"><button type="button" data-st="oc" data-d="-1"
+                                        aria-label="Moins d’enfants"><i data-lucide="minus"></i></button><output
+                                        id="oc">0</output><button type="button" data-st="oc" data-d="1"
+                                        aria-label="Plus d’enfants"><i data-lucide="plus"></i></button></div>
+                            </div>
+                        </div>
+                        <div class="fld"><label>Options</label>
+                            <div class="opts">
+                                <label class="chk"><input type="checkbox" class="opt" data-l="Guide privé"
+                                        data-f="50"><i data-lucide="compass"></i>Guide privé<em>+50 $</em></label>
+                                <label class="chk"><input type="checkbox" class="opt" data-l="Transport depuis l’hôtel"
+                                        data-f="30"><i data-lucide="car"></i>Transport depuis l’hôtel<em>+30
+                                        $</em></label>
+                                <label class="chk"><input type="checkbox" class="opt" data-l="Équipement de randonnée"
+                                        data-p="20"><i data-lucide="backpack"></i>Équipement de randonnée<em>+20
+                                        $/pers.</em></label>
+                                <label class="chk"><input type="checkbox" class="opt" data-l="Assurance voyage"
+                                        data-p="15"><i data-lucide="shield-check"></i>Assurance voyage<em>+15
+                                        $/pers.</em></label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset data-step="2" hidden>
+                        <legend>Vos coordonnées</legend>
+                        <div class="two">
+                            <div class="fld"><label for="rn">Nom complet</label><input id="rn" autocomplete="name"
+                                    placeholder="Ex. Marie Kabongo"><small class="er"></small></div>
+                            <div class="fld"><label for="re">E-mail</label><input id="re" type="email"
+                                    autocomplete="email" placeholder="vous@exemple.com"><small class="er"></small></div>
+                        </div>
+                        <div class="two">
+                            <div class="fld"><label for="rt">Téléphone / WhatsApp</label><input id="rt" type="tel"
+                                    autocomplete="tel" placeholder="+243 …"><small class="er"></small></div>
+                            <div class="fld"><label for="rp">Pays</label><input id="rp" autocomplete="country-name"
+                                    value="RD Congo"></div>
+                        </div>
+                        <div class="fld"><label for="rm">Demandes particulières</label><textarea id="rm" rows="3"
+                                placeholder="Régime alimentaire, niveau de forme, anniversaire…"></textarea></div>
+                    </fieldset>
+                    <fieldset data-step="3" hidden>
+                        <legend>Mode de paiement</legend>
+                        <label class="pay"><i data-lucide="smartphone"></i><span>Mobile Money<small>M-Pesa, Airtel
+                                    Money, Orange Money</small></span><input type="radio" name="pm" checked></label>
+                        <label class="pay"><i data-lucide="credit-card"></i><span>Carte bancaire<small>Visa,
+                                    Mastercard</small></span><input type="radio" name="pm"></label>
+                        <label class="pay"><i data-lucide="wallet"></i><span>Payer à l’agence<small>Acompte de 30 % à la
+                                    confirmation</small></span><input type="radio" name="pm"></label>
+                        <div class="fld"><label class="ck"><input id="rk" type="checkbox"><span>J’accepte les conditions
+                                    de réservation et la politique d’annulation.</span></label><small
+                                class="er"></small></div>
+                        <p style="color:var(--mut);font-size:.82rem;margin:0">Aucun paiement n’est débité maintenant :
+                            un conseiller vous contacte pour confirmer.</p>
+                    </fieldset>
+                    <div class="rnav"><button type="button" class="btn sm cx2" id="rprev" style="visibility:hidden"><i
+                                data-lucide="chevron-left"></i>Retour</button><button type="submit" class="btn"
+                            id="rnext"><span id="rnl">Continuer</span><i data-lucide="arrow-right"></i></button></div>
+                </form>
+                <div class="rok" id="rok" hidden><i data-lucide="party-popper" class="okic"></i>
+                    <h2>Merci <span id="rwho"></span> !</h2>
+                    <p class="lead" style="margin:0 auto 20px">Votre demande est enregistrée. Code de réservation : <b
+                            id="rcode"></b>. Un conseiller vous contacte sous 24 h pour confirmer les détails.</p>
+                    <div class="ctas" style="justify-content:center;margin-top:0"><a class="btn" href="#top">Retour à
+                            l’accueil</a><button class="btn cx2" id="rnew" type="button">Nouvelle réservation</button>
+                    </div>
+                </div>
+            </div>
+            <aside class="rsum" aria-label="Récapitulatif">
+                <div class="ph" id="sp"></div>
+                <div class="cb">
+                    <h3 id="sn" style="margin:0">Votre aventure</h3>
+                    <div class="meta"><span id="sm">Choisissez un circuit</span></div>
+                    <ul id="sr"></ul>
+                    <div class="tot"><span>Total estimé</span><b id="st">0 $</b></div>
+                    <div class="gar"><span><i data-lucide="shield-check"></i>Annulation gratuite jusqu’à 7 jours
+                            avant</span><span><i data-lucide="headset"></i>Assistance 24h/24</span><span><i
+                                data-lucide="badge-check"></i>Aucun frais caché</span></div>
+                </div>
+            </aside>
+        </div>
+    </section>
 
 
-<footer id="contact"><div class="wrap"><div class="fg">
-<div><a class="logo" href="#top"><span>Lutete<small>TRAVEL</small></span></a><p>Randonnées, excursions, safaris et voyages avec des guides professionnels.</p><div class="soc"><a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a><a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a><a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a><a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a></div></div>
-<div><h4>À propos</h4><ul><li><a href="#equipe">Notre équipe</a></li><li><a href="#avis">Avis clients</a></li><li><a href="#">FAQ</a></li></ul></div>
-<div><h4>Services</h4><ul><li><a href="#circuits">Randonnées</a></li><li><a href="#circuits">Excursions</a></li><li><a href="#circuits">Safaris</a></li></ul></div>
-<div><h4>Explorer</h4><ul><li><a href="#destinations">Destinations</a></li><li><a href="#blog">Blog</a></li><li><a href="#galerie">Galerie</a></li></ul></div>
-<div><h4>Newsletter</h4><form class="nl" id="nl"><input type="email" required placeholder="Votre e-mail" aria-label="E-mail"><button class="btn sm" type="submit">OK</button></form></div>
-</div><div class="copy">© 2026 Lutete Travel. Tous droits réservés.</div></div></footer>
+    <footer id="contact">
+        <div class="wrap">
+            <div class="fg">
+                <div><a class="logo" href="#top"><img src="logo.png" alt="Lutete Travel" width="44" height="44"
+                            style="border-radius:50%;object-fit:cover;flex-shrink:0"><span>Lutete<small>TRAVEL</small></span></a>
+                    <p>Randonnées, excursions, safaris et voyages avec des guides professionnels.</p>
+                    <div class="soc"><a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a><a href="#"
+                            aria-label="Instagram"><i data-lucide="instagram"></i></a><a href="#"
+                            aria-label="YouTube"><i data-lucide="youtube"></i></a><a href="#" aria-label="LinkedIn"><i
+                                data-lucide="linkedin"></i></a></div>
+                </div>
+                <div>
+                    <h4>À propos</h4>
+                    <ul>
+                        <li><a href="#equipe">Notre équipe</a></li>
+                        <li><a href="#avis">Avis clients</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#circuits">Randonnées</a></li>
+                        <li><a href="#circuits">Excursions</a></li>
+                        <li><a href="#circuits">Safaris</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Explorer</h4>
+                    <ul>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#galerie">Galerie</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Newsletter</h4>
+                    <form class="nl" id="nl"><input type="email" required placeholder="Votre e-mail"
+                            aria-label="E-mail"><button class="btn sm" type="submit">OK</button></form>
+                </div>
+            </div>
+            <div class="copy">© 2026 Lutete Travel. Tous droits réservés.</div>
+        </div>
+    </footer>
 
-<div id="mdl" class="modal" role="dialog" aria-modal="true" aria-labelledby="mt" hidden><div class="mbox"><button class="mx" id="mx" aria-label="Fermer"><i data-lucide="x"></i></button><div class="mside" id="ms"></div>
-<div class="mform"><h3 id="mt">Bon retour parmi nous</h3><p style="color:var(--mut);margin:0;font-size:.9rem">Gérez vos réservations et gagnez du temps.</p>
-<div class="tabs" role="tablist"><button type="button" class="on" data-t="in">Connexion</button><button type="button" data-t="up">Inscription</button></div>
-<form id="mf" novalidate>
-<div class="fld up-only" hidden><label for="mn">Nom complet</label><input id="mn" autocomplete="name"><small class="er"></small></div>
-<div class="fld"><label for="me">E-mail</label><input id="me" type="email" autocomplete="email" placeholder="vous@exemple.com"><small class="er"></small></div>
-<div class="fld"><label for="mp">Mot de passe</label><div class="pw"><input id="mp" type="password" autocomplete="current-password"><button type="button" id="eye" aria-label="Afficher le mot de passe"><i data-lucide="eye"></i></button></div><small class="er"></small></div>
-<div class="row"><label class="ck"><input type="checkbox" style="width:auto"> Se souvenir de moi</label><a href="#" data-toast="Lien de réinitialisation envoyé (démo)">Mot de passe oublié ?</a></div>
-<button class="btn w100" id="msb" type="submit"><span>Se connecter</span><i data-lucide="arrow-right"></i></button>
-</form></div></div></div>
-<div id="lb" role="dialog" aria-modal="true" aria-label="Image agrandie"><button id="lx" style="top:20px;right:20px" aria-label="Fermer"><i data-lucide="x"></i></button><button id="lp" style="left:20px" aria-label="Précédent"><i data-lucide="chevron-left"></i></button><div class="big" id="big"></div><button id="ln" style="right:20px" aria-label="Suivant"><i data-lucide="chevron-right"></i></button></div>
-<button id="up" aria-label="Retour en haut"><i data-lucide="arrow-up"></i></button>
-<div id="toasts" aria-live="polite"></div>
+    <div id="mdl" class="modal" role="dialog" aria-modal="true" aria-labelledby="mt" hidden>
+        <div class="mbox"><button class="mx" id="mx" aria-label="Fermer"><i data-lucide="x"></i></button>
+            <div class="mside" id="ms"></div>
+            <div class="mform">
+                <h3 id="mt">Bon retour parmi nous</h3>
+                <p style="color:var(--mut);margin:0;font-size:.9rem">Gérez vos réservations et gagnez du temps.</p>
+                <div class="tabs" role="tablist"><button type="button" class="on" data-t="in">Connexion</button><button
+                        type="button" data-t="up">Inscription</button></div>
+                <form id="mf" novalidate>
+                    <div class="fld up-only" hidden><label for="mn">Nom complet</label><input id="mn"
+                            autocomplete="name"><small class="er"></small></div>
+                    <div class="fld"><label for="me">E-mail</label><input id="me" type="email" autocomplete="email"
+                            placeholder="vous@exemple.com"><small class="er"></small></div>
+                    <div class="fld"><label for="mp">Mot de passe</label>
+                        <div class="pw"><input id="mp" type="password" autocomplete="current-password"><button
+                                type="button" id="eye" aria-label="Afficher le mot de passe"><i
+                                    data-lucide="eye"></i></button></div><small class="er"></small>
+                    </div>
+                    <div class="row"><label class="ck"><input type="checkbox" style="width:auto"> Se souvenir de
+                            moi</label><a href="#" data-toast="Lien de réinitialisation envoyé (démo)">Mot de passe
+                            oublié ?</a></div>
+                    <button class="btn w100" id="msb" type="submit"><span>Se connecter</span><i
+                            data-lucide="arrow-right"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="lb" role="dialog" aria-modal="true" aria-label="Image agrandie"><button id="lx" style="top:20px;right:20px"
+            aria-label="Fermer"><i data-lucide="x"></i></button><button id="lp" style="left:20px"
+            aria-label="Précédent"><i data-lucide="chevron-left"></i></button>
+        <div class="big" id="big"></div><button id="ln" style="right:20px" aria-label="Suivant"><i
+                data-lucide="chevron-right"></i></button>
+    </div>
+    <button id="up" aria-label="Retour en haut"><i data-lucide="arrow-up"></i></button>
+    <div id="toasts" aria-live="polite"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"></script>
-<script>
-const $=s=>document.querySelector(s);const ic=()=>window.lucide&&lucide.createIcons();let solid=false;
-const PAL=[["#1b3a2c","#2c6b45","#9ED03A"],["#0f2f4a","#2e7da6","#bfe6ee"],["#4a2a12","#c8742a","#ffd98a"],["#1d2f2a","#3f8f6a","#d7f27a"],["#2b1f4a","#8a4fa0","#ffb98a"],["#16332e","#1E7A46","#f4e3a1"]];
-function scene(i,w=400,h=300,u=""){const p=PAL[i%PAL.length],o=(i*37)%90;
-return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="s${u}${i}${w}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p[0]}"/><stop offset=".6" stop-color="${p[1]}"/><stop offset="1" stop-color="${p[2]}"/></linearGradient></defs><rect width="${w}" height="${h}" fill="url(#s${u}${i}${w})"/><circle class="sn" cx="${w*.7-o}" cy="${h*.3}" r="${h*.1}" fill="#fff" opacity=".75"/><path d="M0 ${h}V${h*.62}l${w*.18} -${h*.18} ${w*.15} ${h*.12} ${w*.2} -${h*.26} ${w*.18} ${h*.2} ${w*.14} -${h*.1} ${w*.15} ${h*.2}V${h}z" fill="${p[0]}" opacity=".55"/><path d="M0 ${h}V${h*.8}l${w*.22} -${h*.14} ${w*.2} ${h*.1} ${w*.25} -${h*.16} ${w*.33} ${h*.2}V${h}z" fill="${p[0]}"/></svg>`}
-let AC;function snd(e){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state=="suspended")AC.resume();const n=AC.currentTime;(e?[330,247]:[660,880]).forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain(),t=n+i*.12;o.type="sine";o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.12,t+.02);g.gain.exponentialRampToValueAtTime(.001,t+.3);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.32)})}catch(_){}}
-function toast(m,e){snd(e);const t=document.createElement("div");t.className="toast"+(e?" err":"");t.textContent=m;$("#toasts").append(t);setTimeout(()=>{t.style.opacity=0;setTimeout(()=>t.remove(),400)},3200)}
-const stars=n=>"★".repeat(n)+"☆".repeat(5-n);
-const D=[["Parc des Virunga","RDC",4,"Difficile",650,5],["Mont Nyiragongo","RDC",2,"Difficile",320,5],["Chutes de Zongo","RDC",1,"Facile",60,4],["Lola ya Bonobo","RDC",1,"Facile",45,5],["Masai Mara","Kenya",5,"Modérée",1450,5],["Kilimandjaro","Tanzanie",7,"Difficile",1900,5]];
-const C=[["Ascension du volcan","Difficile","2 jours","18 km",320,6,"Patrick M."],["Safari Savane Dorée","Modérée","5 jours","240 km",1450,4,"Grace K."],["Cascades & forêt","Facile","1 jour","8 km",60,12,"Joël T."]];
-const B=["Les 10 essentiels pour une première randonnée","Safari responsable : nos conseils","Quand partir ? Le guide des saisons"];
-const T=[["Sophie L.","France","Une organisation parfaite et des guides passionnants. Le lever de soleil au sommet restera gravé à jamais."],["Daniel O.","Kenya","Sécurité, confort et paysages à couper le souffle. Je recommande les yeux fermés."],["Amina B.","Maroc","Des prix clairs, une équipe réactive et une vraie authenticité. Merci Lutete !"]];
-const G=["Montagnes","Cascades","Randonnée","Faune","Camping","Coucher de soleil","Forêt","Sommet"];
-const W=[["🧭","Guides certifiés","Des experts locaux formés et expérimentés."],["🛡️","Sécurité garantie","Matériel contrôlé et protocoles stricts."],["💎","Prix transparents","Aucun frais caché, tout est annoncé."],["🌿","Expériences authentiques","Rencontres et lieux hors des sentiers battus."],["🕑","Assistance 24h/24","Une équipe joignable avant, pendant, après."],["⚡","Réservation rapide","Confirmez votre aventure en quelques clics."]];
-const WI=["compass","shield-check","gem","leaf","headset","zap"];$("#why").innerHTML=W.map((w,i)=>`<div class="wc rv"><div class="ic"><i data-lucide="${WI[i]}"></i></div><h3>${w[1]}</h3><p>${w[2]}</p></div>`).join("");
-$("#dl").innerHTML=D.map(d=>`<option value="${d[0]}">`).join("");
-const card=(d,i)=>`<article class="card rv"><div class="ph">${scene(i)}<span class="tag">${d[3]}</span></div><div class="cb"><h3>${d[0]}</h3><div class="meta"><span><i data-lucide="map-pin"></i>${d[1]}</span><span><i data-lucide="calendar-days"></i>${d[2]} j</span></div><div class="stars" aria-label="${d[5]} sur 5">${stars(d[5])}</div><div class="pr"><span><small>dès</small> <b>${d[4]} $</b></span><button class="btn sm" data-toast="Fiche ${d[0]} bientôt disponible">Découvrir</button></div></div></article>`;
-function showDest(q){const g=$("#dest");g.innerHTML=Array(3).fill('<div class="sk"></div>').join("");
-setTimeout(()=>{const l=D.map((d,i)=>[d,i]).filter(([d])=>!q||(d[0]+d[1]).toLowerCase().includes(q.toLowerCase()));
-g.innerHTML=l.length?l.map(([d,i])=>card(d,i)).join(""):`<div class="empty" style="grid-column:1/-1"><h3>Aucune destination trouvée</h3><p>Essayez un autre nom ou réinitialisez la recherche.</p><button class="btn sm" id="rs">Tout afficher</button></div>`;
-const r=$("#rs");if(r)r.onclick=()=>{$("#q").value="";showDest("")};observe();mkCar(g);ic()},q?500:900)}
-$("#circ").innerHTML=C.map((c,i)=>`<article class="card rv"><div class="ph" style="aspect-ratio:3/2">${scene(i+2,600,400)}<span class="tag">${c[1]}</span><span class="tag gd">${c[5]} places</span></div><div class="cb"><h3>${c[0]}</h3><div class="meta"><span><i data-lucide="clock"></i>${c[2]}</span><span><i data-lucide="route"></i>${c[3]}</span><span><i data-lucide="user-round"></i>${c[6]}</span></div><div class="pr"><b>${c[4]} $</b><button class="btn sm" data-res="${c[0]}">Réserver</button></div></div></article>`).join("");
-$("#gal").innerHTML=Array.from({length:8},(_,i)=>{const h=[260,360,300,420,280,340,380,300][i];return `<button class="gi rv" data-i="${i}" aria-label="Agrandir : ${G[i]}" style="height:${h}px">${scene(i,400,h)}<span>${G[i]}</span></button>`}).join("");
-$("#team").innerHTML=[["Patrick M.","Volcans & trek","12 ans"],["Grace K.","Safaris & faune","9 ans"],["Joël T.","Cascades & forêt","7 ans"],["Esther N.","Culture & randonnée","10 ans"]].map((m,i)=>`<article class="card rv"><div class="ph">${scene(i+3)}</div><div class="cb"><h3>${m[0]}</h3><div class="meta"><span>${m[1]}</span><span>${m[2]} d’expérience</span></div><div class="soc"><a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a><a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a><a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a></div></div></article>`).join("");
-$("#blogg").innerHTML=B.map((b,i)=>`<article class="card rv"><div class="ph">${scene(i+1)}<span class="tag">Conseils</span></div><div class="cb"><h3>${b}</h3><div class="meta"><span><i data-lucide="clock"></i>5 min de lecture</span></div><a href="#" class="lk" data-toast="Article bientôt disponible">Lire <i data-lucide="arrow-right"></i></a></div></article>`).join("");
-$("#track").innerHTML=T.map(t=>`<div class="slide"><div class="tc"><div class="av">${t[0][0]}</div><i data-lucide="quote" class="qi"></i><div class="stars">★★★★★</div><q>« ${t[2]} »</q><b>${t[0]}</b><div class="meta" style="justify-content:center">${t[1]}</div></div></div>`).join("");
-let ci=0;const dots=$("#dots");dots.innerHTML=T.map((_,i)=>`<button aria-label="Avis ${i+1}"></button>`).join("");
-function go(i){ci=(i+T.length)%T.length;$("#track").style.transform=`translateX(-${ci*100}%)`;[...dots.children].forEach((d,k)=>d.classList.toggle("on",k==ci))}
-[...dots.children].forEach((d,i)=>d.onclick=()=>go(i));go(0);setInterval(()=>go(ci+1),6000);
-let io;function observe(){io=io||new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target;el.classList.add("in");io.unobserve(el);if(el.matches(".card,.wc"))setTimeout(()=>{el.style.transitionDelay="";el.classList.remove("rv","in")},1500)}}),{threshold:.12});document.querySelectorAll(".rv:not(.in)").forEach(el=>{if(el.dataset.o)return;el.dataset.o=1;el.style.transitionDelay=Math.min([...el.parentNode.children].indexOf(el),6)*90+"ms";io.observe(el)})}
-function mkCar(el){let d=el.nextElementSibling;if(!d||!d.classList.contains("cdots")){d=document.createElement("div");d.className="cdots";el.after(d);el.addEventListener("scroll",()=>upd(el,d),{passive:true})}d.innerHTML=[...el.children].map(()=>"<i></i>").join("");upd(el,d)}
-function upd(el,d){const c=el.children;if(!c.length)return;const k=Math.round(el.scrollLeft/(c[0].offsetWidth+16));[...d.children].forEach((x,i)=>x.classList.toggle("on",i==k))}
-const co=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,n=+el.dataset.n,s=performance.now();(function f(t){const p=Math.min((t-s)/1800,1);el.textContent=(el.dataset.p||"")+Math.round(n*(1-Math.pow(1-p,3))).toLocaleString("fr-FR")+(el.dataset.x||"");if(p<1)requestAnimationFrame(f)})(s);co.unobserve(el)}),{threshold:.5});
-document.querySelectorAll("[data-n]").forEach(el=>co.observe(el));
-let li=0;function lb(i){li=(i+G.length)%G.length;$("#big").innerHTML=scene(li,1000,625);$("#lb").classList.add("on")}
-$("#gal").onclick=e=>{const b=e.target.closest(".gi");if(b)lb(+b.dataset.i)};
-$("#lx").onclick=()=>$("#lb").classList.remove("on");$("#lp").onclick=()=>lb(li-1);$("#ln").onclick=()=>lb(li+1);
-document.addEventListener("keydown",e=>{if(!$("#lb").classList.contains("on"))return;if(e.key=="Escape")$("#lx").click();if(e.key=="ArrowLeft")lb(li-1);if(e.key=="ArrowRight")lb(li+1)});
-document.addEventListener("click",e=>{const t=e.target.closest("[data-toast]");if(t){e.preventDefault();toast(t.dataset.toast)}});
-$("#sf").onsubmit=e=>{e.preventDefault();const q=$("#q").value.trim();showDest(q);$("#destinations").scrollIntoView();toast(q?"Recherche : "+q:"Toutes les destinations")};
-$("#nl").onsubmit=e=>{e.preventDefault();toast("Merci ! Vous êtes inscrit(e) à la newsletter.");e.target.reset()};
-document.querySelectorAll(".ddb").forEach(b=>b.onclick=e=>{e.stopPropagation();const d=b.parentNode,o=!d.classList.contains("open");document.querySelectorAll(".dd.open").forEach(x=>x.classList.remove("open"));d.classList.toggle("open",o);b.setAttribute("aria-expanded",o)});
-document.addEventListener("click",()=>document.querySelectorAll(".dd.open").forEach(x=>x.classList.remove("open")));
-function setMenu(o){$("#menu").classList.toggle("open",o);$("#hd").classList.toggle("mopen",o);$("#burger").innerHTML=`<i data-lucide="${o?"x":"menu"}"></i>`;ic()}
-$("#burger").onclick=()=>setMenu(!$("#menu").classList.contains("open"));$("#menu").onclick=e=>{if(e.target.closest("a"))setMenu(false)};
-addEventListener("hashchange",()=>setMenu(false));
-$("#up").onclick=()=>scrollTo({top:0});
-const root=document.documentElement;let dk=matchMedia("(prefers-color-scheme:dark)").matches;
-function th(){root.dataset.theme=dk?"dark":"light";$("#theme").innerHTML=`<i data-lucide="${dk?"sun":"moon"}"></i>`;ic()}th();
-$("#theme").onclick=()=>{dk=!dk;th()};
-const lay=document.querySelectorAll(".hero .layer");
-function onS(){const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;$("#hd").classList.toggle("sc",y>40||solid);$("#up").classList.toggle("on",y>600);$("#bar").style.width=(h>0?y/h*100:0)+"%";if(y<innerHeight*1.2)lay.forEach(l=>l.style.transform=`translateY(${y*l.dataset.s}px)`);const cs=$(".cta svg"),r=cs.parentNode.getBoundingClientRect();cs.style.transform=`translateY(${Math.max(0,Math.min(70,r.top*.1))}px)`}
-addEventListener("scroll",onS,{passive:true});onS();
-$("#mq").innerHTML=(t=>t+t)(D.map(d=>`<span><i data-lucide="map-pin"></i>${d[0]}</span>`).join(""));
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+    <script>
+        const $ = s => document.querySelector(s); const ic = () => window.lucide && lucide.createIcons(); let solid = false;
+        const PAL = [["#1b3a2c", "#2c6b45", "#9ED03A"], ["#0f2f4a", "#2e7da6", "#bfe6ee"], ["#4a2a12", "#c8742a", "#ffd98a"], ["#1d2f2a", "#3f8f6a", "#d7f27a"], ["#2b1f4a", "#8a4fa0", "#ffb98a"], ["#16332e", "#1E7A46", "#f4e3a1"]];
+        function scene(i, w = 400, h = 300, u = "") {
+            const p = PAL[i % PAL.length], o = (i * 37) % 90;
+            return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="s${u}${i}${w}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p[0]}"/><stop offset=".6" stop-color="${p[1]}"/><stop offset="1" stop-color="${p[2]}"/></linearGradient></defs><rect width="${w}" height="${h}" fill="url(#s${u}${i}${w})"/><circle class="sn" cx="${w * .7 - o}" cy="${h * .3}" r="${h * .1}" fill="#fff" opacity=".75"/><path d="M0 ${h}V${h * .62}l${w * .18} -${h * .18} ${w * .15} ${h * .12} ${w * .2} -${h * .26} ${w * .18} ${h * .2} ${w * .14} -${h * .1} ${w * .15} ${h * .2}V${h}z" fill="${p[0]}" opacity=".55"/><path d="M0 ${h}V${h * .8}l${w * .22} -${h * .14} ${w * .2} ${h * .1} ${w * .25} -${h * .16} ${w * .33} ${h * .2}V${h}z" fill="${p[0]}"/></svg>`
+        }
+        const DEST_IMGS = ['https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80', 'https://images.unsplash.com/photo-1604537466608-109fa2f16c3b?w=600&q=80', 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=600&q=80', 'https://images.unsplash.com/photo-1516526495688-8c4d10a4ac3e?w=600&q=80', 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80', 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80']; const CIRC_IMGS = ['https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80', 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80', 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=600&q=80']; const GAL_IMGS = ['https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80', 'https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=800&q=80', 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80', 'https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=800&q=80', 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80', 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80', 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=800&q=80']; const TEAM_IMGS = ['https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80', 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80']; const BLOG_IMGS = ['https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80', 'https://images.unsplash.com/photo-1468868572750-a0b5e5c7b2ad?w=600&q=80', 'https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?w=600&q=80']; const HERO_IMGS = ['https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=85', 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=1600&q=85', 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1600&q=85', 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=1600&q=85', 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=1600&q=85']; const ALL_IMGS = [...DEST_IMGS, ...CIRC_IMGS]; let AC; function snd(e) { try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); if (AC.state == "suspended") AC.resume(); const n = AC.currentTime; (e ? [330, 247] : [660, 880]).forEach((f, i) => { const o = AC.createOscillator(), g = AC.createGain(), t = n + i * .12; o.type = "sine"; o.frequency.value = f; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.12, t + .02); g.gain.exponentialRampToValueAtTime(.001, t + .3); o.connect(g); g.connect(AC.destination); o.start(t); o.stop(t + .32) }) } catch (_) { } }
+        function toast(m, e) { snd(e); const t = document.createElement("div"); t.className = "toast" + (e ? " err" : ""); t.textContent = m; $("#toasts").append(t); setTimeout(() => { t.style.opacity = 0; setTimeout(() => t.remove(), 400) }, 3200) }
+        const stars = n => "★".repeat(n) + "☆".repeat(5 - n);
+        const D = [["Parc des Virunga", "RDC", 4, "Difficile", 650, 5], ["Mont Nyiragongo", "RDC", 2, "Difficile", 320, 5], ["Chutes de Zongo", "RDC", 1, "Facile", 60, 4], ["Lola ya Bonobo", "RDC", 1, "Facile", 45, 5], ["Masai Mara", "Kenya", 5, "Modérée", 1450, 5], ["Kilimandjaro", "Tanzanie", 7, "Difficile", 1900, 5]];
+        const C = [["Ascension du volcan", "Difficile", "2 jours", "18 km", 320, 6, "Patrick M."], ["Safari Savane Dorée", "Modérée", "5 jours", "240 km", 1450, 4, "Grace K."], ["Cascades & forêt", "Facile", "1 jour", "8 km", 60, 12, "Joël T."]];
+        const B = ["Les 10 essentiels pour une première randonnée", "Safari responsable : nos conseils", "Quand partir ? Le guide des saisons"];
+        const T = [["Sophie L.", "France", "Une organisation parfaite et des guides passionnants. Le lever de soleil au sommet restera gravé à jamais."], ["Daniel O.", "Kenya", "Sécurité, confort et paysages à couper le souffle. Je recommande les yeux fermés."], ["Amina B.", "Maroc", "Des prix clairs, une équipe réactive et une vraie authenticité. Merci Lutete !"]];
+        const G = ["Montagnes", "Cascades", "Randonnée", "Faune", "Camping", "Coucher de soleil", "Forêt", "Sommet"];
+        const W = [["🧭", "Guides certifiés", "Des experts locaux formés et expérimentés."], ["🛡️", "Sécurité garantie", "Matériel contrôlé et protocoles stricts."], ["💎", "Prix transparents", "Aucun frais caché, tout est annoncé."], ["🌿", "Expériences authentiques", "Rencontres et lieux hors des sentiers battus."], ["🕑", "Assistance 24h/24", "Une équipe joignable avant, pendant, après."], ["⚡", "Réservation rapide", "Confirmez votre aventure en quelques clics."]];
+        const WI = ["compass", "shield-check", "gem", "leaf", "headset", "zap"]; $("#why").innerHTML = W.map((w, i) => `<div class="wc rv"><div class="ic"><i data-lucide="${WI[i]}"></i></div><h3>${w[1]}</h3><p>${w[2]}</p></div>`).join("");
+        $("#dl").innerHTML = D.map(d => `<option value="${d[0]}">`).join("");
+        const card = (d, i) => `<article class="card rv"><div class="ph"><img src="${DEST_IMGS[i % DEST_IMGS.length]}" alt="${d[0]}" loading="lazy"><span class="tag">${d[3]}</span></div><div class="cb"><h3>${d[0]}</h3><div class="meta"><span><i data-lucide="map-pin"></i>${d[1]}</span><span><i data-lucide="calendar-days"></i>${d[2]} j</span></div><div class="stars" aria-label="${d[5]} sur 5">${stars(d[5])}</div><div class="pr"><span><small>dès</small> <b>${d[4]} $</b></span><button class="btn sm" data-toast="Fiche ${d[0]} bientôt disponible">Découvrir</button></div></div></article>`;
+        function showDest(q) {
+            const g = $("#dest"); g.innerHTML = Array(3).fill('<div class="sk"></div>').join("");
+            setTimeout(() => {
+                const l = D.map((d, i) => [d, i]).filter(([d]) => !q || (d[0] + d[1]).toLowerCase().includes(q.toLowerCase()));
+                g.innerHTML = l.length ? l.map(([d, i]) => card(d, i)).join("") : `<div class="empty" style="grid-column:1/-1"><h3>Aucune destination trouvée</h3><p>Essayez un autre nom ou réinitialisez la recherche.</p><button class="btn sm" id="rs">Tout afficher</button></div>`;
+                const r = $("#rs"); if (r) r.onclick = () => { $("#q").value = ""; showDest("") }; observe(); mkCar(g); ic()
+            }, q ? 500 : 900)
+        }
+        $("#circ").innerHTML = C.map((c, i) => `<article class="card rv"><div class="ph" style="aspect-ratio:3/2"><img src="${CIRC_IMGS[i % CIRC_IMGS.length]}" alt="${c[0]}" loading="lazy"><span class="tag">${c[1]}</span><span class="tag gd">${c[5]} places</span></div><div class="cb"><h3>${c[0]}</h3><div class="meta"><span><i data-lucide="clock"></i>${c[2]}</span><span><i data-lucide="route"></i>${c[3]}</span><span><i data-lucide="user-round"></i>${c[6]}</span></div><div class="pr"><b>${c[4]} $</b><button class="btn sm" data-res="${c[0]}">Réserver</button></div></div></article>`).join("");
+        $("#gal").innerHTML = Array.from({ length: 8 }, (_, i) => { const h = [260, 360, 300, 420, 280, 340, 380, 300][i]; return `<button class="gi rv" data-i="${i}" aria-label="Agrandir : ${G[i]}" style="height:${h}px"><img src="${GAL_IMGS[i]}" alt="${G[i]}" loading="lazy"><span>${G[i]}</span></button>` }).join("");
+        $("#team").innerHTML = [["Patrick M.", "Volcans & trek", "12 ans"], ["Grace K.", "Safaris & faune", "9 ans"], ["Joël T.", "Cascades & forêt", "7 ans"], ["Esther N.", "Culture & randonnée", "10 ans"]].map((m, i) => `<article class="card rv"><div class="ph"><img src="${TEAM_IMGS[i]}" alt="${m[0]}" loading="lazy"></div><div class="cb"><h3>${m[0]}</h3><div class="meta"><span>${m[1]}</span><span>${m[2]} d’expérience</span></div><div class="soc"><a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a><a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a><a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a></div></div></article>`).join("");
+        $("#blogg").innerHTML = B.map((b, i) => `<article class="card rv"><div class="ph"><img src="${BLOG_IMGS[i % BLOG_IMGS.length]}" alt="${b}" loading="lazy"><span class="tag">Conseils</span></div><div class="cb"><h3>${b}</h3><div class="meta"><span><i data-lucide="clock"></i>5 min de lecture</span></div><a href="#" class="lk" data-toast="Article bientôt disponible">Lire <i data-lucide="arrow-right"></i></a></div></article>`).join("");
+        $("#track").innerHTML = T.map(t => `<div class="slide"><div class="tc"><div class="av">${t[0][0]}</div><i data-lucide="quote" class="qi"></i><div class="stars">★★★★★</div><q>« ${t[2]} »</q><b>${t[0]}</b><div class="meta" style="justify-content:center">${t[1]}</div></div></div>`).join("");
+        let ci = 0; const dots = $("#dots"); dots.innerHTML = T.map((_, i) => `<button aria-label="Avis ${i + 1}"></button>`).join("");
+        function go(i) { ci = (i + T.length) % T.length; $("#track").style.transform = `translateX(-${ci * 100}%)`;[...dots.children].forEach((d, k) => d.classList.toggle("on", k == ci)) }
+        [...dots.children].forEach((d, i) => d.onclick = () => go(i)); go(0); setInterval(() => go(ci + 1), 6000);
+        let io; function observe() { io = io || new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const el = e.target; el.classList.add("in"); io.unobserve(el); if (el.matches(".card,.wc")) setTimeout(() => { el.style.transitionDelay = ""; el.classList.remove("rv", "in") }, 1500) } }), { threshold: .12 }); document.querySelectorAll(".rv:not(.in)").forEach(el => { if (el.dataset.o) return; el.dataset.o = 1; el.style.transitionDelay = Math.min([...el.parentNode.children].indexOf(el), 6) * 90 + "ms"; io.observe(el) }) }
+        function mkCar(el) { let d = el.nextElementSibling; if (!d || !d.classList.contains("cdots")) { d = document.createElement("div"); d.className = "cdots"; el.after(d); el.addEventListener("scroll", () => upd(el, d), { passive: true }) } d.innerHTML = [...el.children].map(() => "<i></i>").join(""); upd(el, d) }
+        function upd(el, d) { const c = el.children; if (!c.length) return; const k = Math.round(el.scrollLeft / (c[0].offsetWidth + 16));[...d.children].forEach((x, i) => x.classList.toggle("on", i == k)) }
+        const co = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; const el = e.target, n = +el.dataset.n, s = performance.now(); (function f(t) { const p = Math.min((t - s) / 1800, 1); el.textContent = (el.dataset.p || "") + Math.round(n * (1 - Math.pow(1 - p, 3))).toLocaleString("fr-FR") + (el.dataset.x || ""); if (p < 1) requestAnimationFrame(f) })(s); co.unobserve(el) }), { threshold: .5 });
+        document.querySelectorAll("[data-n]").forEach(el => co.observe(el));
+        let li = 0; function lb(i) { li = (i + G.length) % G.length; $("#big").innerHTML = `<img src="${GAL_IMGS[li]}" alt="${G[li]}" style="width:100%;height:100%;object-fit:cover;display:block">`; $("#lb").classList.add("on") }
+        $("#gal").onclick = e => { const b = e.target.closest(".gi"); if (b) lb(+b.dataset.i) };
+        $("#lx").onclick = () => $("#lb").classList.remove("on"); $("#lp").onclick = () => lb(li - 1); $("#ln").onclick = () => lb(li + 1);
+        document.addEventListener("keydown", e => { if (!$("#lb").classList.contains("on")) return; if (e.key == "Escape") $("#lx").click(); if (e.key == "ArrowLeft") lb(li - 1); if (e.key == "ArrowRight") lb(li + 1) });
+        document.addEventListener("click", e => { const t = e.target.closest("[data-toast]"); if (t) { e.preventDefault(); toast(t.dataset.toast) } });
+        $("#sf").onsubmit = e => { e.preventDefault(); const q = $("#q").value.trim(); showDest(q); $("#destinations").scrollIntoView(); toast(q ? "Recherche : " + q : "Toutes les destinations") };
+        $("#nl").onsubmit = e => { e.preventDefault(); toast("Merci ! Vous êtes inscrit(e) à la newsletter."); e.target.reset() };
+        document.querySelectorAll(".ddb").forEach(b => b.onclick = e => { e.stopPropagation(); const d = b.parentNode, o = !d.classList.contains("open"); document.querySelectorAll(".dd.open").forEach(x => x.classList.remove("open")); d.classList.toggle("open", o); b.setAttribute("aria-expanded", o) });
+        document.addEventListener("click", () => document.querySelectorAll(".dd.open").forEach(x => x.classList.remove("open")));
+        function setMenu(o) { $("#menu").classList.toggle("open", o); $("#hd").classList.toggle("mopen", o); $("#burger").innerHTML = `<i data-lucide="${o ? "x" : "menu"}"></i>`; ic() }
+        $("#burger").onclick = () => setMenu(!$("#menu").classList.contains("open")); $("#menu").onclick = e => { if (e.target.closest("a")) setMenu(false) };
+        addEventListener("hashchange", () => setMenu(false));
+        $("#up").onclick = () => scrollTo({ top: 0 });
+        const root = document.documentElement; let dk = matchMedia("(prefers-color-scheme:dark)").matches;
+        function th() { root.dataset.theme = dk ? "dark" : "light"; $("#theme").innerHTML = `<i data-lucide="${dk ? "sun" : "moon"}"></i>`; ic() } th();
+        $("#theme").onclick = () => { dk = !dk; th() };
+        const lay = document.querySelectorAll(".hero .layer");
+        function onS() { const y = scrollY, h = document.documentElement.scrollHeight - innerHeight; $("#hd").classList.toggle("sc", y > 40 || solid); $("#up").classList.toggle("on", y > 600); $("#bar").style.width = (h > 0 ? y / h * 100 : 0) + "%"; if (y < innerHeight * 1.2) lay.forEach(l => l.style.transform = `translateY(${y * l.dataset.s}px)`); const cs = $(".cta svg"), r = cs.parentNode.getBoundingClientRect(); cs.style.transform = `translateY(${Math.max(0, Math.min(70, r.top * .1))}px)` }
+        addEventListener("scroll", onS, { passive: true }); onS();
+        $("#mq").innerHTML = (t => t + t)(D.map(d => `<span><i data-lucide="map-pin"></i>${d[0]}</span>`).join(""));
 
-const hero=$(".hero");for(let i=0;i<26;i++){const b=document.createElement("b");b.className="ff";b.style.cssText=`left:${Math.random()*100}%;top:${30+Math.random()*60}%;--x:${(Math.random()-.5)*120}px;--y:${-Math.random()*140}px;animation-duration:${4+Math.random()*6}s;animation-delay:${Math.random()*5}s;width:${3+Math.random()*4}px;height:${3+Math.random()*4}px`;hero.append(b)}
-if(matchMedia("(pointer:fine)").matches)document.addEventListener("pointermove",e=>{const c=e.target.closest&&e.target.closest(".card");document.querySelectorAll(".card.tl").forEach(x=>{if(x!==c){x.classList.remove("tl");x.style.removeProperty("--rx");x.style.removeProperty("--ry")}});if(!c||c.classList.contains("rv"))return;const r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;c.classList.add("tl");c.style.setProperty("--ry",px*8+"deg");c.style.setProperty("--rx",-py*8+"deg")});
-["#why","#circ","#team","#dest"].forEach(q=>mkCar($(q)));
+        const hero = $(".hero"); for (let i = 0; i < 26; i++) { const b = document.createElement("b"); b.className = "ff"; b.style.cssText = `left:${Math.random() * 100}%;top:${30 + Math.random() * 60}%;--x:${(Math.random() - .5) * 120}px;--y:${-Math.random() * 140}px;animation-duration:${4 + Math.random() * 6}s;animation-delay:${Math.random() * 5}s;width:${3 + Math.random() * 4}px;height:${3 + Math.random() * 4}px`; hero.append(b) }
+        if (matchMedia("(pointer:fine)").matches) document.addEventListener("pointermove", e => { const c = e.target.closest && e.target.closest(".card"); document.querySelectorAll(".card.tl").forEach(x => { if (x !== c) { x.classList.remove("tl"); x.style.removeProperty("--rx"); x.style.removeProperty("--ry") } }); if (!c || c.classList.contains("rv")) return; const r = c.getBoundingClientRect(), px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5; c.classList.add("tl"); c.style.setProperty("--ry", px * 8 + "deg"); c.style.setProperty("--rx", -py * 8 + "deg") });
+        ["#why", "#circ", "#team", "#dest"].forEach(q => mkCar($(q)));
 
-const S=[["Lutete Travel · Randonnées & safaris","Explorez les plus belles aventures au cœur de la nature.","Randonnées, excursions, safaris et voyages organisés avec des guides professionnels."],["Randonnées · Volcans & sommets","Gravissez les volcans et touchez le ciel.","Des treks encadrés pour tous les niveaux, du lever de soleil jusqu’au sommet."],["Safaris · Faune sauvage","Partez à la rencontre de la faune sauvage.","Des safaris authentiques et responsables au cœur des plus beaux parcs."],["Excursions · Cascades & forêts","Offrez-vous une escapade au pied des cascades.","Des excursions d’une journée pour respirer, explorer et se ressourcer."],["Voyages · Sur mesure","Des voyages qui vous ressemblent vraiment.","Circuits sur mesure, assistance 24h/24 et prix toujours transparents."]];
-const SK=[0,2,3,1,4];let si=0,tm;
-$("#slides").innerHTML=SK.map(k=>`<div class="sl">${scene(k,1600,900)}</div>`).join("");
-$("#hp").innerHTML=S.map((_,i)=>`<button type="button" aria-label="Diapositive ${i+1}"><i></i></button>`).join("")+`<b id="hc">01 / 05</b>`;
-[...$("#hp").querySelectorAll("button")].forEach((b,i)=>b.onclick=()=>setSlide(i));
-function setSlide(i){si=(i+S.length)%S.length;const s=S[si],E=$("#hE"),P=$("#hS");
-document.querySelectorAll("#slides .sl").forEach((el,k)=>el.classList.toggle("on",k==si));
-E.textContent=s[0];P.textContent=s[2];[E,P].forEach(el=>{el.style.animation="none";void el.offsetWidth;el.style.animation=""});
-const ws=s[1].split(" ");$("#hT").innerHTML=ws.map((w,j)=>`<span class="w${j>=ws.length-3?" acc":""}" style="animation-delay:${j*.07}s">${w}</span>`).join(" ");
-$("#hp").querySelectorAll("button").forEach((b,k)=>{b.classList.remove("on","dn");void b.offsetWidth;if(k<si)b.classList.add("dn");if(k==si)b.classList.add("on")});
-$("#hc").textContent=String(si+1).padStart(2,"0")+" / "+String(S.length).padStart(2,"0");
-clearTimeout(tm);tm=setTimeout(()=>setSlide(si+1),7000)}
-const fe=(id,m)=>{const el=$("#"+id),w=el.closest(".fld");w.querySelector(".er").textContent=m||"";el.setAttribute("aria-invalid",m?"true":"false");if(m){w.classList.remove("shake");void w.offsetWidth;w.classList.add("shake")}return m?0:1};
-const em=v=>/^\S+@\S+\.\S+$/.test(v);
-let user=null,mode="in";
-$("#ms").innerHTML=scene(0,500,700,"m")+'<div><b style="font-size:1.4rem">Lutete Travel</b><p style="margin:4px 0 0;opacity:.9;font-size:.9rem">Votre prochaine aventure commence ici.</p></div>';
-function openM(){$("#mdl").hidden=false;document.body.style.overflow="hidden";setTimeout(()=>$("#me").focus(),60)}
-function closeM(){$("#mdl").hidden=true;document.body.style.overflow=""}
-function setMode(m){mode=m;document.querySelectorAll("#mdl .tabs button").forEach(b=>b.classList.toggle("on",b.dataset.t==m));$(".up-only").hidden=m!="up";$("#mt").textContent=m=="up"?"Créer votre compte":"Bon retour parmi nous";$("#msb span").textContent=m=="up"?"Créer mon compte":"Se connecter";["mn","me","mp"].forEach(i=>{const e=$("#"+i);e.removeAttribute("aria-invalid");e.closest(".fld").querySelector(".er").textContent=""})}
-document.querySelectorAll("#mdl .tabs button").forEach(b=>b.onclick=()=>setMode(b.dataset.t));
-$("#mx").onclick=closeM;$("#mdl").addEventListener("click",e=>{if(e.target.id=="mdl")closeM()});
-document.addEventListener("keydown",e=>{if(e.key=="Escape"&&!$("#mdl").hidden)closeM()});
-$("#eye").onclick=()=>{const p=$("#mp"),h=p.type=="password";p.type=h?"text":"password";$("#eye").innerHTML=`<i data-lucide="${h?"eye-off":"eye"}"></i>`;ic()};
-function upUser(){const b=$("#lgb");b.innerHTML=`<i data-lucide="${user?"log-out":"log-in"}"></i><span></span>`;b.querySelector("span").textContent=user?user.n.split(" ")[0]:"Connexion";b.setAttribute("aria-label",user?"Se déconnecter":"Connexion");if(user){if(!$("#rn").value)$("#rn").value=user.n;if(!$("#re").value)$("#re").value=user.e}ic()}
-$("#lgb").onclick=()=>{if(user){user=null;upUser();toast("Vous êtes déconnecté.")}else openM()};
-document.addEventListener("click",e=>{if(e.target.closest("[data-login]")){e.preventDefault();setMenu(false);$("#lgb").click()}});
-$("#mf").onsubmit=e=>{e.preventDefault();let ok=1;if(mode=="up")ok&=fe("mn",$("#mn").value.trim().length>=3?"":"Indiquez votre nom.");ok&=fe("me",em($("#me").value)?"":"Adresse e-mail invalide.");ok&=fe("mp",$("#mp").value.length>=6?"":"6 caractères minimum.");if(!ok)return;
-const b=$("#msb");b.classList.add("ld");setTimeout(()=>{b.classList.remove("ld");const v=$("#me").value,n=mode=="up"?$("#mn").value.trim():v.split("@")[0];user={n,e:v};closeM();upUser();$("#mf").reset();toast("Bienvenue, "+n.split(" ")[0]+" !")},1200)};
-const O=[...D.map((d,i)=>({n:d[0],p:d[4],t:d[2]+" j",i})),...C.map((c,i)=>({n:c[0],p:c[4],t:c[2],i:i+2}))];
-$("#rc").innerHTML='<option value="">Choisir…</option>'+O.map((o,k)=>`<option value="${k}">${o.n} · ${o.p} $/pers.</option>`).join("");
-$("#rd").min=new Date().toISOString().slice(0,10);
-const fm=n=>Math.round(n*100)/100;
-function sum(){const o=O[$("#rc").value],a=+$("#oa").textContent,c=+$("#oc").textContent,pp=a+c,rows=[];let tot=0;
-if(o){tot+=o.p*a;rows.push([`${o.n} × ${a} adulte${a>1?"s":""}`,o.p*a]);if(c){tot+=o.p*.5*c;rows.push([`Enfants × ${c} (−50 %)`,o.p*.5*c])}}
-document.querySelectorAll(".opt:checked").forEach(x=>{const f=x.dataset.f?+x.dataset.f:+x.dataset.p*pp;tot+=f;rows.push([x.dataset.l,f])});
-$("#sr").innerHTML=rows.length?rows.map(r=>`<li><span>${r[0]}</span><b>${fm(r[1])} $</b></li>`).join(""):'<li class="mut">Sélectionnez un circuit pour voir le détail.</li>';
-$("#st").textContent=fm(tot)+" $";$("#sn").textContent=o?o.n:"Votre aventure";
-$("#sm").textContent=o?`${o.t} · ${$("#rd").value||"date à choisir"}`:"Choisissez un circuit";$("#sp").innerHTML=scene(o?o.i:0,600,400,"r")}
-let rs=1;
-function showStep(n){rs=n;document.querySelectorAll("#rf fieldset").forEach(f=>f.hidden=+f.dataset.step!==n);document.querySelectorAll("#steps li").forEach((li,k)=>{li.classList.toggle("on",k+1===n);li.classList.toggle("dn",k+1<n)});$("#rprev").style.visibility=n>1?"visible":"hidden";$("#rnl").textContent=n<3?"Continuer":"Confirmer la réservation"}
-function valid(n){let ok=1;if(n==1){ok&=fe("rc",$("#rc").value?"":"Choisissez un circuit.");const d=$("#rd").value;ok&=fe("rd",!d?"Choisissez une date de départ.":d<$("#rd").min?"La date doit être à venir.":"")}
-if(n==2){ok&=fe("rn",$("#rn").value.trim().length>=3?"":"Indiquez votre nom complet.");ok&=fe("re",em($("#re").value)?"":"Adresse e-mail invalide.");ok&=fe("rt",$("#rt").value.replace(/\D/g,"").length>=8?"":"Numéro invalide (8 chiffres minimum).")}
-if(n==3)ok&=fe("rk",$("#rk").checked?"":"Veuillez accepter les conditions.");return !!ok}
-const top2=()=>$("#rform").scrollIntoView({behavior:"smooth",block:"start"});
-$("#rf").addEventListener("click",e=>{const b=e.target.closest("[data-st]");if(!b)return;const o=$("#"+b.dataset.st),a=b.dataset.st=="oa";o.textContent=Math.min(a?12:8,Math.max(a?1:0,+o.textContent+ +b.dataset.d));sum()});
-$("#rf").addEventListener("input",sum);
-$("#rprev").onclick=()=>{showStep(rs-1);top2()};
-function confetti(){const w=$("#rok");for(let i=0;i<40;i++){const c=document.createElement("i");c.className="cf";c.style.cssText=`left:${Math.random()*100}%;background:${["#48B96C","#9ED03A","#C9A24B","#1E7A46"][i%4]};animation-delay:${Math.random()*.6}s;--r:${Math.random()*720}deg`;w.append(c);setTimeout(()=>c.remove(),3500)}}
-$("#rf").onsubmit=e=>{e.preventDefault();if(!valid(rs)){toast("Veuillez corriger les champs en rouge.",1);return}
-if(rs<3){showStep(rs+1);top2();return}
-const b=$("#rnext");b.classList.add("ld");$("#rnl").textContent="Traitement…";
-setTimeout(()=>{b.classList.remove("ld");$("#rf").hidden=true;$("#steps").hidden=true;$("#rok").hidden=false;$("#rcode").textContent="LT-"+Math.random().toString(36).slice(2,7).toUpperCase();$("#rwho").textContent=$("#rn").value.trim().split(" ")[0];toast("Réservation enregistrée !");confetti();ic();top2()},1600)};
-$("#rnew").onclick=()=>{$("#rf").reset();$("#rp").value="RD Congo";$("#oa").textContent=2;$("#oc").textContent=0;$("#rf").hidden=false;$("#steps").hidden=false;$("#rok").hidden=true;showStep(1);sum();if(user)upUser();top2()};
-document.addEventListener("click",e=>{const b=e.target.closest("[data-res]");if(!b)return;e.preventDefault();const k=O.findIndex(o=>o.n===b.dataset.res);if(k>-1)$("#rc").value=k;location.hash="reservation";sum()});
-function route(){const r=location.hash=="#reservation",was=$("#top").hidden;$("#top").hidden=r;$("#resv").hidden=!r;solid=r;
-document.title=r?"Réservation – Lutete Travel":"Lutete Travel – Randonnées, excursions, safaris et voyages";
-if(r){scrollTo(0,0);sum();ic()}else if(was){const t=document.getElementById(location.hash.slice(1));setTimeout(()=>t?t.scrollIntoView():scrollTo(0,0),30)}onS()}
-addEventListener("hashchange",route);
-showDest("");observe();ic();route();
-(function(){const t0=performance.now();let ready=false;const a=$(".arc"),c=$("#lpc");addEventListener("load",()=>ready=true);setTimeout(()=>ready=true,2500);
-(function f(t){const p=Math.min((t-t0)/18,ready?100:90);a.style.strokeDashoffset=339.3*(1-p/100);c.textContent=Math.round(p)+"%";if(p<100)return requestAnimationFrame(f);setTimeout(()=>{$("#loader").classList.add("off");document.body.classList.add("go");setSlide(0)},300)})(t0)})();
-</script>
+        const S = [["Lutete Travel · Randonnées & safaris", "Explorez les plus belles aventures au cœur de la nature.", "Randonnées, excursions, safaris et voyages organisés avec des guides professionnels."], ["Randonnées · Volcans & sommets", "Gravissez les volcans et touchez le ciel.", "Des treks encadrés pour tous les niveaux, du lever de soleil jusqu’au sommet."], ["Safaris · Faune sauvage", "Partez à la rencontre de la faune sauvage.", "Des safaris authentiques et responsables au cœur des plus beaux parcs."], ["Excursions · Cascades & forêts", "Offrez-vous une escapade au pied des cascades.", "Des excursions d’une journée pour respirer, explorer et se ressourcer."], ["Voyages · Sur mesure", "Des voyages qui vous ressemblent vraiment.", "Circuits sur mesure, assistance 24h/24 et prix toujours transparents."]];
+        const SK = [0, 2, 3, 1, 4]; let si = 0, tm;
+        $("#slides").innerHTML = HERO_IMGS.map(u => `<div class="sl"><img src="${u}" alt=""></div>`).join("");
+        $("#hp").innerHTML = S.map((_, i) => `<button type="button" aria-label="Diapositive ${i + 1}"><i></i></button>`).join("") + `<b id="hc">01 / 05</b>`;
+        [...$("#hp").querySelectorAll("button")].forEach((b, i) => b.onclick = () => setSlide(i));
+        function setSlide(i) {
+            si = (i + S.length) % S.length; const s = S[si], E = $("#hE"), P = $("#hS");
+            document.querySelectorAll("#slides .sl").forEach((el, k) => el.classList.toggle("on", k == si));
+            E.textContent = s[0]; P.textContent = s[2];[E, P].forEach(el => { el.style.animation = "none"; void el.offsetWidth; el.style.animation = "" });
+            const ws = s[1].split(" "); $("#hT").innerHTML = ws.map((w, j) => `<span class="w${j >= ws.length - 3 ? " acc" : ""}" style="animation-delay:${j * .07}s">${w}</span>`).join(" ");
+            $("#hp").querySelectorAll("button").forEach((b, k) => { b.classList.remove("on", "dn"); void b.offsetWidth; if (k < si) b.classList.add("dn"); if (k == si) b.classList.add("on") });
+            $("#hc").textContent = String(si + 1).padStart(2, "0") + " / " + String(S.length).padStart(2, "0");
+            clearTimeout(tm); tm = setTimeout(() => setSlide(si + 1), 7000)
+        }
+        const fe = (id, m) => { const el = $("#" + id), w = el.closest(".fld"); w.querySelector(".er").textContent = m || ""; el.setAttribute("aria-invalid", m ? "true" : "false"); if (m) { w.classList.remove("shake"); void w.offsetWidth; w.classList.add("shake") } return m ? 0 : 1 };
+        const em = v => /^\S+@\S+\.\S+$/.test(v);
+        let user = null, mode = "in";
+        $("#ms").innerHTML = `<img src="${HERO_IMGS[2]}" alt="Aventure Lutete Travel">` + '<div style="position:relative;z-index:2"><div><b style="font-size:1.4rem">Lutete Travel</b><p style="margin:4px 0 0;opacity:.9;font-size:.9rem">Votre prochaine aventure commence ici.</p></div>';
+        function openM() { $("#mdl").hidden = false; document.body.style.overflow = "hidden"; setTimeout(() => $("#me").focus(), 60) }
+        function closeM() { $("#mdl").hidden = true; document.body.style.overflow = "" }
+        function setMode(m) { mode = m; document.querySelectorAll("#mdl .tabs button").forEach(b => b.classList.toggle("on", b.dataset.t == m)); $(".up-only").hidden = m != "up"; $("#mt").textContent = m == "up" ? "Créer votre compte" : "Bon retour parmi nous"; $("#msb span").textContent = m == "up" ? "Créer mon compte" : "Se connecter";["mn", "me", "mp"].forEach(i => { const e = $("#" + i); e.removeAttribute("aria-invalid"); e.closest(".fld").querySelector(".er").textContent = "" }) }
+        document.querySelectorAll("#mdl .tabs button").forEach(b => b.onclick = () => setMode(b.dataset.t));
+        $("#mx").onclick = closeM; $("#mdl").addEventListener("click", e => { if (e.target.id == "mdl") closeM() });
+        document.addEventListener("keydown", e => { if (e.key == "Escape" && !$("#mdl").hidden) closeM() });
+        $("#eye").onclick = () => { const p = $("#mp"), h = p.type == "password"; p.type = h ? "text" : "password"; $("#eye").innerHTML = `<i data-lucide="${h ? "eye-off" : "eye"}"></i>`; ic() };
+        function upUser() { const b = $("#lgb"); b.innerHTML = `<i data-lucide="${user ? "log-out" : "log-in"}"></i><span></span>`; b.querySelector("span").textContent = user ? user.n.split(" ")[0] : "Connexion"; b.setAttribute("aria-label", user ? "Se déconnecter" : "Connexion"); if (user) { if (!$("#rn").value) $("#rn").value = user.n; if (!$("#re").value) $("#re").value = user.e } ic() }
+        $("#lgb").onclick = () => { if (user) { user = null; upUser(); toast("Vous êtes déconnecté.") } else openM() };
+        document.addEventListener("click", e => { if (e.target.closest("[data-login]")) { e.preventDefault(); setMenu(false); $("#lgb").click() } });
+        $("#mf").onsubmit = e => {
+            e.preventDefault(); let ok = 1; if (mode == "up") ok &= fe("mn", $("#mn").value.trim().length >= 3 ? "" : "Indiquez votre nom."); ok &= fe("me", em($("#me").value) ? "" : "Adresse e-mail invalide."); ok &= fe("mp", $("#mp").value.length >= 6 ? "" : "6 caractères minimum."); if (!ok) return;
+            const b = $("#msb"); b.classList.add("ld"); setTimeout(() => { b.classList.remove("ld"); const v = $("#me").value, n = mode == "up" ? $("#mn").value.trim() : v.split("@")[0]; user = { n, e: v }; closeM(); upUser(); $("#mf").reset(); toast("Bienvenue, " + n.split(" ")[0] + " !") }, 1200)
+        };
+        const O = [...D.map((d, i) => ({ n: d[0], p: d[4], t: d[2] + " j", i })), ...C.map((c, i) => ({ n: c[0], p: c[4], t: c[2], i: i + 2 }))];
+        $("#rc").innerHTML = '<option value="">Choisir…</option>' + O.map((o, k) => `<option value="${k}">${o.n} · ${o.p} $/pers.</option>`).join("");
+        $("#rd").min = new Date().toISOString().slice(0, 10);
+        const fm = n => Math.round(n * 100) / 100;
+        function sum() {
+            const o = O[$("#rc").value], a = +$("#oa").textContent, c = +$("#oc").textContent, pp = a + c, rows = []; let tot = 0;
+            if (o) { tot += o.p * a; rows.push([`${o.n} × ${a} adulte${a > 1 ? "s" : ""}`, o.p * a]); if (c) { tot += o.p * .5 * c; rows.push([`Enfants × ${c} (−50 %)`, o.p * .5 * c]) } }
+            document.querySelectorAll(".opt:checked").forEach(x => { const f = x.dataset.f ? +x.dataset.f : +x.dataset.p * pp; tot += f; rows.push([x.dataset.l, f]) });
+            $("#sr").innerHTML = rows.length ? rows.map(r => `<li><span>${r[0]}</span><b>${fm(r[1])} $</b></li>`).join("") : '<li class="mut">Sélectionnez un circuit pour voir le détail.</li>';
+            $("#st").textContent = fm(tot) + " $"; $("#sn").textContent = o ? o.n : "Votre aventure";
+            $("#sm").textContent = o ? `${o.t} · ${$("#rd").value || "date à choisir"}` : "Choisissez un circuit"; $("#sp").innerHTML = `<img src="${ALL_IMGS[(o ? o.i : 0) % ALL_IMGS.length]}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">`
+        }
+        let rs = 1;
+        function showStep(n) { rs = n; document.querySelectorAll("#rf fieldset").forEach(f => f.hidden = +f.dataset.step !== n); document.querySelectorAll("#steps li").forEach((li, k) => { li.classList.toggle("on", k + 1 === n); li.classList.toggle("dn", k + 1 < n) }); $("#rprev").style.visibility = n > 1 ? "visible" : "hidden"; $("#rnl").textContent = n < 3 ? "Continuer" : "Confirmer la réservation" }
+        function valid(n) {
+            let ok = 1; if (n == 1) { ok &= fe("rc", $("#rc").value ? "" : "Choisissez un circuit."); const d = $("#rd").value; ok &= fe("rd", !d ? "Choisissez une date de départ." : d < $("#rd").min ? "La date doit être à venir." : "") }
+            if (n == 2) { ok &= fe("rn", $("#rn").value.trim().length >= 3 ? "" : "Indiquez votre nom complet."); ok &= fe("re", em($("#re").value) ? "" : "Adresse e-mail invalide."); ok &= fe("rt", $("#rt").value.replace(/\D/g, "").length >= 8 ? "" : "Numéro invalide (8 chiffres minimum).") }
+            if (n == 3) ok &= fe("rk", $("#rk").checked ? "" : "Veuillez accepter les conditions."); return !!ok
+        }
+        const top2 = () => $("#rform").scrollIntoView({ behavior: "smooth", block: "start" });
+        $("#rf").addEventListener("click", e => { const b = e.target.closest("[data-st]"); if (!b) return; const o = $("#" + b.dataset.st), a = b.dataset.st == "oa"; o.textContent = Math.min(a ? 12 : 8, Math.max(a ? 1 : 0, +o.textContent + +b.dataset.d)); sum() });
+        $("#rf").addEventListener("input", sum);
+        $("#rprev").onclick = () => { showStep(rs - 1); top2() };
+        function confetti() { const w = $("#rok"); for (let i = 0; i < 40; i++) { const c = document.createElement("i"); c.className = "cf"; c.style.cssText = `left:${Math.random() * 100}%;background:${["#48B96C", "#9ED03A", "#C9A24B", "#1E7A46"][i % 4]};animation-delay:${Math.random() * .6}s;--r:${Math.random() * 720}deg`; w.append(c); setTimeout(() => c.remove(), 3500) } }
+        $("#rf").onsubmit = e => {
+            e.preventDefault(); if (!valid(rs)) { toast("Veuillez corriger les champs en rouge.", 1); return }
+            if (rs < 3) { showStep(rs + 1); top2(); return }
+            const b = $("#rnext"); b.classList.add("ld"); $("#rnl").textContent = "Traitement…";
+            setTimeout(() => { b.classList.remove("ld"); $("#rf").hidden = true; $("#steps").hidden = true; $("#rok").hidden = false; $("#rcode").textContent = "LT-" + Math.random().toString(36).slice(2, 7).toUpperCase(); $("#rwho").textContent = $("#rn").value.trim().split(" ")[0]; toast("Réservation enregistrée !"); confetti(); ic(); top2() }, 1600)
+        };
+        $("#rnew").onclick = () => { $("#rf").reset(); $("#rp").value = "RD Congo"; $("#oa").textContent = 2; $("#oc").textContent = 0; $("#rf").hidden = false; $("#steps").hidden = false; $("#rok").hidden = true; showStep(1); sum(); if (user) upUser(); top2() };
+        document.addEventListener("click", e => { const b = e.target.closest("[data-res]"); if (!b) return; e.preventDefault(); const k = O.findIndex(o => o.n === b.dataset.res); if (k > -1) $("#rc").value = k; location.hash = "reservation"; sum() });
+        function route() {
+            const r = location.hash == "#reservation", was = $("#top").hidden; $("#top").hidden = r; $("#resv").hidden = !r; solid = r;
+            document.title = r ? "Réservation – Lutete Travel" : "Lutete Travel – Randonnées, excursions, safaris et voyages";
+            if (r) { scrollTo(0, 0); sum(); ic() } else if (was) { const t = document.getElementById(location.hash.slice(1)); setTimeout(() => t ? t.scrollIntoView() : scrollTo(0, 0), 30) } onS()
+        }
+        addEventListener("hashchange", route);
+        showDest(""); observe(); ic(); route();
+        (function () {
+            const t0 = performance.now(); let ready = false; const a = $(".arc"), c = $("#lpc"); addEventListener("load", () => ready = true); setTimeout(() => ready = true, 2500);
+            (function f(t) { const p = Math.min((t - t0) / 18, ready ? 100 : 90); a.style.strokeDashoffset = 339.3 * (1 - p / 100); c.textContent = Math.round(p) + "%"; if (p < 100) return requestAnimationFrame(f); setTimeout(() => { $("#loader").classList.add("off"); document.body.classList.add("go"); setSlide(0) }, 300) })(t0)
+        })();
+    </script>
 </body>
+
 </html>
