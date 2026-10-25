@@ -757,6 +757,306 @@
             font-size: .92rem
         }
 
+        /* ---------------- Carte interactive des provinces ---------------- */
+        .mapsec {
+            background: linear-gradient(180deg, var(--bg2), var(--bg))
+        }
+
+        .mapwrap {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr);
+            gap: 40px;
+            align-items: start
+        }
+
+        .mapbox {
+            background: var(--card);
+            border-radius: var(--r);
+            box-shadow: var(--sh);
+            padding: 22px;
+            position: relative
+        }
+
+        #carte-rdc {
+            width: 100%;
+            height: auto;
+            display: block;
+            overflow: visible
+        }
+
+        #carte-rdc path {
+            fill: var(--g2);
+            stroke: var(--card);
+            stroke-width: 1.6;
+            stroke-linejoin: round;
+            cursor: pointer;
+            transition: fill .3s ease, filter .3s ease, opacity .3s ease
+        }
+
+        #carte-rdc path:hover,
+        #carte-rdc path:focus-visible {
+            fill: var(--lime);
+            filter: drop-shadow(0 4px 12px rgba(30, 122, 70, .35));
+            outline: none
+        }
+
+        #carte-rdc path.on {
+            fill: var(--gold)
+        }
+
+        .maplbl {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--bg2);
+            font-size: .84rem;
+            color: var(--mut)
+        }
+
+        .maplbl .hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px
+        }
+
+        .maplbl .hint svg {
+            width: 16px;
+            height: 16px;
+            color: var(--g2)
+        }
+
+        .mapsrc {
+            margin: 12px 0 0;
+            font-size: .72rem;
+            color: var(--mut);
+            opacity: .8;
+            line-height: 1.4
+        }
+
+        .mapinfo {
+            position: sticky;
+            top: 96px
+        }
+
+        .mapcard {
+            background: var(--card);
+            border-radius: var(--r);
+            box-shadow: var(--sh);
+            overflow: hidden;
+            border: 1px solid transparent
+        }
+
+        .mapcard .mph {
+            position: relative;
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, var(--g), var(--g2))
+        }
+
+        .mapcard .mph img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+
+        .mapcard .mph .badge {
+            position: absolute;
+            left: 14px;
+            top: 14px;
+            background: rgba(255, 255, 255, .94);
+            color: var(--g);
+            font-weight: 700;
+            font-size: .74rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 99px
+        }
+
+        .mapcard .mcb {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        .mapcard h3 {
+            margin: 0;
+            font-size: 1.5rem
+        }
+
+        .mapcard .tagline {
+            margin: 0;
+            color: var(--g2);
+            font-weight: 600;
+            font-size: .93rem
+        }
+
+        .mapcard .mstats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 14px 0;
+            border-top: 1px solid var(--bg2);
+            border-bottom: 1px solid var(--bg2)
+        }
+
+        .mapcard .mstats div {
+            display: flex;
+            flex-direction: column;
+            gap: 2px
+        }
+
+        .mapcard .mstats b {
+            font-size: 1.02rem
+        }
+
+        .mapcard .mstats span {
+            font-size: .72rem;
+            color: var(--mut);
+            text-transform: uppercase;
+            letter-spacing: .07em
+        }
+
+        .mapcard .mdesc {
+            margin: 0;
+            color: var(--mut);
+            font-size: .92rem
+        }
+
+        .mapcard .mcta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 4px
+        }
+
+        .mapcard .btn.ghost2 {
+            background: transparent;
+            border: 1.5px solid var(--g2);
+            color: var(--g);
+            box-shadow: none
+        }
+
+        .mapcard .btn.ghost2:hover {
+            background: var(--g2);
+            color: #fff
+        }
+
+        .msites {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+
+        .msites li {
+            font-size: .88rem;
+            line-height: 1.45;
+            padding-left: 20px;
+            position: relative
+        }
+
+        .msites li::before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: .55em;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--g2)
+        }
+
+        .msites b {
+            font-weight: 600
+        }
+
+        .msites span {
+            color: var(--mut)
+        }
+
+        .maplist {
+            margin-top: 26px
+        }
+
+        .maplist h3 {
+            font-size: 1.05rem;
+            margin: 0 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .maplist h3 svg {
+            width: 18px;
+            height: 18px;
+            color: var(--g2)
+        }
+
+        .mchips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .mchip {
+            border: 1px solid var(--bg2);
+            background: var(--card);
+            color: var(--tx);
+            font: 500 .84rem Poppins, sans-serif;
+            padding: 8px 15px;
+            border-radius: 99px;
+            cursor: pointer;
+            transition: .25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .mchip:hover {
+            border-color: var(--g2);
+            color: var(--g);
+            transform: translateY(-2px)
+        }
+
+        .mchip.on {
+            background: var(--g);
+            border-color: var(--g);
+            color: #fff
+        }
+
+        @media(max-width:900px) {
+            .mapwrap {
+                grid-template-columns: 1fr;
+                gap: 26px
+            }
+
+            .mapinfo {
+                position: static
+            }
+
+            .mapcard .mstats {
+                grid-template-columns: repeat(3, 1fr)
+            }
+        }
+
+        @media(max-width:600px) {
+            .mapbox {
+                padding: 14px
+            }
+
+            .mapcard .mstats {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
         .sk {
             background: linear-gradient(90deg, var(--bg2) 25%, rgba(150, 160, 155, .25) 50%, var(--bg2) 75%);
             background-size: 200% 100%;
@@ -2688,7 +2988,7 @@
                             aria-expanded="false">Découvrir <i data-lucide="chevron-down"></i></button>
                         <ul class="dm">
                             <li><a href="#galerie">Galerie</a></li>
-                            <li><a href="#equipe">À propos</a></li>
+                            <li><a href="#provinces">Les provinces</a></li>
                             <li><a href="#blog">Blog</a></li>
                         </ul>
                     </li>
@@ -2811,12 +3111,37 @@
             </div>
         </div>
 
-        <section id="equipe">
+        <section id="provinces" class="mapsec">
             <div class="wrap">
-                <div class="head rv"><span class="eyebrow">Notre équipe</span>
-                    <h2>Des guides passionnés</h2>
+                <div class="head rv"><span class="eyebrow">Explorer la RDC</span>
+                    <h2>Les 26 provinces de la République démocratique du Congo</h2>
+                    <p class="lead">Cliquez sur une province de la carte pour découvrir ses sites, ses
+                        paysages et nos circuits dans la région.</p>
                 </div>
-                <div class="grid tm2 cr" id="team"></div>
+
+                <div class="mapwrap">
+                    <div class="mapbox rv">
+                        <div id="map-holder" aria-live="polite">
+                            <p class="mdesc">Chargement de la carte…</p>
+                        </div>
+                        <div class="maplbl">
+                            <span class="hint"><i data-lucide="mouse-pointer-click"></i>Cliquez sur une province
+                                ou choisissez-la dans la liste</span>
+                            <span class="hint"><i data-lucide="map"></i>26 provinces · RDC</span>
+                        </div>
+                        <p class="mapsrc">Limites administratives : geoBoundaries ADM1 (Open Data Commons Open
+                            Database License 1.0) — Wikipédia · Annuaire statistique 2015 (INS).</p>
+                    </div>
+
+                    <aside class="mapinfo rv" aria-label="Fiche de la province sélectionnée">
+                        <div class="mapcard" id="map-card"></div>
+                    </aside>
+                </div>
+
+                <div class="maplist rv">
+                    <h3><i data-lucide="list"></i>Toutes les provinces</h3>
+                    <div class="mchips" id="map-chips"></div>
+                </div>
             </div>
         </section>
 
@@ -2959,7 +3284,7 @@
     <footer id="contact">
         <div class="wrap">
             <div class="fg">
-                <div><a class="logo" href="#top"><img src="logo.png" alt="Lutete Travel" width="44" height="44"
+                <div><a class="logo" href="#top"><img src="logo.jpeg" alt="Lutete Travel" width="44" height="44"
                             style="border-radius:50%;object-fit:cover;flex-shrink:0"><span>Lutete<small>TRAVEL</small></span></a>
                     <p>Randonnées, excursions, safaris et voyages avec des guides professionnels.</p>
                     <div class="soc"><a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a><a href="#"
@@ -2970,7 +3295,7 @@
                 <div>
                     <h4>À propos</h4>
                     <ul>
-                        <li><a href="#equipe">Notre équipe</a></li>
+                        <li><a href="#provinces">Provinces</a></li>
                         <li><a href="#avis">Avis clients</a></li>
                         <li><a href="#">FAQ</a></li>
                     </ul>
@@ -3037,6 +3362,9 @@
     <button id="up" aria-label="Retour en haut"><i data-lucide="arrow-up"></i></button>
     <div id="toasts" aria-live="polite"></div>
 
+    <script src="assets/rdc-map.js"></script>
+    <script src="assets/provinces.js"></script>
+    <script src="assets/carte.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"></script>
     <script>
         const $ = s => document.querySelector(s); const ic = () => window.lucide && lucide.createIcons(); let solid = false;
@@ -3045,7 +3373,7 @@
             const p = PAL[i % PAL.length], o = (i * 37) % 90;
             return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="s${u}${i}${w}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p[0]}"/><stop offset=".6" stop-color="${p[1]}"/><stop offset="1" stop-color="${p[2]}"/></linearGradient></defs><rect width="${w}" height="${h}" fill="url(#s${u}${i}${w})"/><circle class="sn" cx="${w * .7 - o}" cy="${h * .3}" r="${h * .1}" fill="#fff" opacity=".75"/><path d="M0 ${h}V${h * .62}l${w * .18} -${h * .18} ${w * .15} ${h * .12} ${w * .2} -${h * .26} ${w * .18} ${h * .2} ${w * .14} -${h * .1} ${w * .15} ${h * .2}V${h}z" fill="${p[0]}" opacity=".55"/><path d="M0 ${h}V${h * .8}l${w * .22} -${h * .14} ${w * .2} ${h * .1} ${w * .25} -${h * .16} ${w * .33} ${h * .2}V${h}z" fill="${p[0]}"/></svg>`
         }
-        const DEST_IMGS = ['https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80', 'https://images.unsplash.com/photo-1604537466608-109fa2f16c3b?w=600&q=80', 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=600&q=80', 'https://images.unsplash.com/photo-1516526495688-8c4d10a4ac3e?w=600&q=80', 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80', 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80']; const CIRC_IMGS = ['https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80', 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80', 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=600&q=80']; const GAL_IMGS = ['https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80', 'https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=800&q=80', 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80', 'https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=800&q=80', 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80', 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80', 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=800&q=80']; const TEAM_IMGS = ['https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80', 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80']; const BLOG_IMGS = ['https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80', 'https://images.unsplash.com/photo-1468868572750-a0b5e5c7b2ad?w=600&q=80', 'https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?w=600&q=80']; const HERO_IMGS = ['https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=85', 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=1600&q=85', 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1600&q=85', 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=1600&q=85', 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=1600&q=85']; const ALL_IMGS = [...DEST_IMGS, ...CIRC_IMGS]; let AC; function snd(e) { try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); if (AC.state == "suspended") AC.resume(); const n = AC.currentTime; (e ? [330, 247] : [660, 880]).forEach((f, i) => { const o = AC.createOscillator(), g = AC.createGain(), t = n + i * .12; o.type = "sine"; o.frequency.value = f; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.12, t + .02); g.gain.exponentialRampToValueAtTime(.001, t + .3); o.connect(g); g.connect(AC.destination); o.start(t); o.stop(t + .32) }) } catch (_) { } }
+        const DEST_IMGS = ['https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80', 'https://images.unsplash.com/photo-1604537466608-109fa2f16c3b?w=600&q=80', 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=600&q=80', 'https://images.unsplash.com/photo-1516526495688-8c4d10a4ac3e?w=600&q=80', 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80', 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80']; const CIRC_IMGS = ['https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80', 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80', 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=600&q=80']; const GAL_IMGS = ['https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80', 'https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=800&q=80', 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80', 'https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=800&q=80', 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80', 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80', 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=800&q=80']; const BLOG_IMGS = ['https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80', 'https://images.unsplash.com/photo-1468868572750-a0b5e5c7b2ad?w=600&q=80', 'https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?w=600&q=80']; const HERO_IMGS = ['https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=85', 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=1600&q=85', 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1600&q=85', 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=1600&q=85', 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=1600&q=85']; const ALL_IMGS = [...DEST_IMGS, ...CIRC_IMGS]; let AC; function snd(e) { try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); if (AC.state == "suspended") AC.resume(); const n = AC.currentTime; (e ? [330, 247] : [660, 880]).forEach((f, i) => { const o = AC.createOscillator(), g = AC.createGain(), t = n + i * .12; o.type = "sine"; o.frequency.value = f; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.12, t + .02); g.gain.exponentialRampToValueAtTime(.001, t + .3); o.connect(g); g.connect(AC.destination); o.start(t); o.stop(t + .32) }) } catch (_) { } }
         function toast(m, e) { snd(e); const t = document.createElement("div"); t.className = "toast" + (e ? " err" : ""); t.textContent = m; $("#toasts").append(t); setTimeout(() => { t.style.opacity = 0; setTimeout(() => t.remove(), 400) }, 3200) }
         const stars = n => "★".repeat(n) + "☆".repeat(5 - n);
         const D = [["Parc des Virunga", "RDC", 4, "Difficile", 650, 5], ["Mont Nyiragongo", "RDC", 2, "Difficile", 320, 5], ["Chutes de Zongo", "RDC", 1, "Facile", 60, 4], ["Lola ya Bonobo", "RDC", 1, "Facile", 45, 5], ["Masai Mara", "Kenya", 5, "Modérée", 1450, 5], ["Kilimandjaro", "Tanzanie", 7, "Difficile", 1900, 5]];
@@ -3067,7 +3395,6 @@
         }
         $("#circ").innerHTML = C.map((c, i) => `<article class="card rv"><div class="ph" style="aspect-ratio:3/2"><img src="${CIRC_IMGS[i % CIRC_IMGS.length]}" alt="${c[0]}" loading="lazy"><span class="tag">${c[1]}</span><span class="tag gd">${c[5]} places</span></div><div class="cb"><h3>${c[0]}</h3><div class="meta"><span><i data-lucide="clock"></i>${c[2]}</span><span><i data-lucide="route"></i>${c[3]}</span><span><i data-lucide="user-round"></i>${c[6]}</span></div><div class="pr"><b>${c[4]} $</b><button class="btn sm" data-res="${c[0]}">Réserver</button></div></div></article>`).join("");
         $("#gal").innerHTML = Array.from({ length: 8 }, (_, i) => { const h = [260, 360, 300, 420, 280, 340, 380, 300][i]; return `<button class="gi rv" data-i="${i}" aria-label="Agrandir : ${G[i]}" style="height:${h}px"><img src="${GAL_IMGS[i]}" alt="${G[i]}" loading="lazy"><span>${G[i]}</span></button>` }).join("");
-        $("#team").innerHTML = [["Patrick M.", "Volcans & trek", "12 ans"], ["Grace K.", "Safaris & faune", "9 ans"], ["Joël T.", "Cascades & forêt", "7 ans"], ["Esther N.", "Culture & randonnée", "10 ans"]].map((m, i) => `<article class="card rv"><div class="ph"><img src="${TEAM_IMGS[i]}" alt="${m[0]}" loading="lazy"></div><div class="cb"><h3>${m[0]}</h3><div class="meta"><span>${m[1]}</span><span>${m[2]} d’expérience</span></div><div class="soc"><a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a><a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a><a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a></div></div></article>`).join("");
         $("#blogg").innerHTML = B.map((b, i) => `<article class="card rv"><div class="ph"><img src="${BLOG_IMGS[i % BLOG_IMGS.length]}" alt="${b}" loading="lazy"><span class="tag">Conseils</span></div><div class="cb"><h3>${b}</h3><div class="meta"><span><i data-lucide="clock"></i>5 min de lecture</span></div><a href="#" class="lk" data-toast="Article bientôt disponible">Lire <i data-lucide="arrow-right"></i></a></div></article>`).join("");
         $("#track").innerHTML = T.map(t => `<div class="slide"><div class="tc"><div class="av">${t[0][0]}</div><i data-lucide="quote" class="qi"></i><div class="stars">★★★★★</div><q>« ${t[2]} »</q><b>${t[0]}</b><div class="meta" style="justify-content:center">${t[1]}</div></div></div>`).join("");
         let ci = 0; const dots = $("#dots"); dots.innerHTML = T.map((_, i) => `<button aria-label="Avis ${i + 1}"></button>`).join("");
@@ -3101,7 +3428,7 @@
 
         const hero = $(".hero"); for (let i = 0; i < 26; i++) { const b = document.createElement("b"); b.className = "ff"; b.style.cssText = `left:${Math.random() * 100}%;top:${30 + Math.random() * 60}%;--x:${(Math.random() - .5) * 120}px;--y:${-Math.random() * 140}px;animation-duration:${4 + Math.random() * 6}s;animation-delay:${Math.random() * 5}s;width:${3 + Math.random() * 4}px;height:${3 + Math.random() * 4}px`; hero.append(b) }
         if (matchMedia("(pointer:fine)").matches) document.addEventListener("pointermove", e => { const c = e.target.closest && e.target.closest(".card"); document.querySelectorAll(".card.tl").forEach(x => { if (x !== c) { x.classList.remove("tl"); x.style.removeProperty("--rx"); x.style.removeProperty("--ry") } }); if (!c || c.classList.contains("rv")) return; const r = c.getBoundingClientRect(), px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5; c.classList.add("tl"); c.style.setProperty("--ry", px * 8 + "deg"); c.style.setProperty("--rx", -py * 8 + "deg") });
-        ["#why", "#circ", "#team", "#dest"].forEach(q => mkCar($(q)));
+        ["#why", "#circ", "#dest"].forEach(q => mkCar($(q)));
 
         const S = [["Lutete Travel · Randonnées & safaris", "Explorez les plus belles aventures au cœur de la nature.", "Randonnées, excursions, safaris et voyages organisés avec des guides professionnels."], ["Randonnées · Volcans & sommets", "Gravissez les volcans et touchez le ciel.", "Des treks encadrés pour tous les niveaux, du lever de soleil jusqu’au sommet."], ["Safaris · Faune sauvage", "Partez à la rencontre de la faune sauvage.", "Des safaris authentiques et responsables au cœur des plus beaux parcs."], ["Excursions · Cascades & forêts", "Offrez-vous une escapade au pied des cascades.", "Des excursions d’une journée pour respirer, explorer et se ressourcer."], ["Voyages · Sur mesure", "Des voyages qui vous ressemblent vraiment.", "Circuits sur mesure, assistance 24h/24 et prix toujours transparents."]];
         const SK = [0, 2, 3, 1, 4]; let si = 0, tm;
@@ -3174,6 +3501,7 @@
         }
         addEventListener("hashchange", route);
         showDest(""); observe(); ic(); route();
+        if (window.initRDCMap) window.initRDCMap();
         (function () {
             const t0 = performance.now(); let ready = false; const a = $(".arc"), c = $("#lpc"); addEventListener("load", () => ready = true); setTimeout(() => ready = true, 2500);
             (function f(t) { const p = Math.min((t - t0) / 18, ready ? 100 : 90); a.style.strokeDashoffset = 339.3 * (1 - p / 100); c.textContent = Math.round(p) + "%"; if (p < 100) return requestAnimationFrame(f); setTimeout(() => { $("#loader").classList.add("off"); document.body.classList.add("go"); setSlide(0) }, 300) })(t0)
