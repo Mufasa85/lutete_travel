@@ -1,0 +1,1086 @@
+# -*- coding: utf-8 -*-
+"""Genere la section "Que souhaitez-vous explorer" + les pages de categorie.
+
+Pages produites :
+  activite.html?cat=<categorie>  -> page de liste avec filtres (categorie,
+                                    province, recherche) et carte de localisation
+  activite.html?cat=<cat>&id=<slug> -> fiche detaillee d'un etablissement/site
+"""
+import io, json, os, sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
+
+ACT_JS = os.path.join(ROOT, 'assets', 'activites.js')
+_raw = io.open(ACT_JS, encoding='utf-8').read()
+ACT = json.loads(_raw[_raw.index('{'):_raw.rindex('}') + 1])
+raw = io.open(os.path.join(ROOT, 'assets', 'provinces.js'), encoding='utf-8').read()
+PROV = json.loads(raw[raw.index('['):raw.rindex(']') + 1])
+
+CSS = """
+        :root {
+            --g: #1E7A46;
+            --g2: #48B96C;
+            --lime: #9ED03A;
+            --bg: #fff;
+            --bg2: #F5F7F6;
+            --tx: #2F3437;
+            --mut: #667074;
+            --card: #fff;
+            --gold: #C9A24B;
+            --sh: 0 10px 30px rgba(20, 40, 30, .09);
+            --r: 16px;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        @media (prefers-color-scheme:dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #121618;
+                --bg2: #1a2023;
+                --tx: #e8eeec;
+                --mut: #9aa6a2;
+                --card: #212a2d;
+                --sh: 0 10px 30px rgba(0, 0, 0, .4)
+            }
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #121618;
+            --bg2: #1a2023;
+            --tx: #e8eeec;
+            --mut: #9aa6a2;
+            --card: #212a2d;
+            --sh: 0 10px 30px rgba(0, 0, 0, .4)
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Poppins, Inter, system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--tx);
+            line-height: 1.6
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        img, svg {
+            display: block
+        }
+
+        .wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 22px
+        }
+
+        .eyebrow {
+            color: var(--g2);
+            font-weight: 600;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            font-size: .78rem
+        }
+
+        h1 {
+            font-size: clamp(1.9rem, 4.4vw, 3rem);
+            line-height: 1.14;
+            margin: .2em 0
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 3vw, 2.1rem);
+            line-height: 1.2;
+            margin: .3rem 0 .5rem
+        }
+
+        .lead {
+            color: var(--mut);
+            max-width: 640px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 0;
+            cursor: pointer;
+            font: 600 .95rem Poppins, sans-serif;
+            padding: 13px 24px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--g), var(--g2));
+            color: #fff;
+            transition: .3s;
+            box-shadow: 0 8px 20px rgba(30, 122, 70, .3)
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 28px rgba(30, 122, 70, .4)
+        }
+
+        .btn.sm {
+            padding: 9px 16px;
+            font-size: .84rem
+        }
+
+        .btn.ghost {
+            background: transparent;
+            border: 1.5px solid var(--g2);
+            color: var(--g);
+            box-shadow: none
+        }
+
+        .btn.ghost:hover {
+            background: var(--g2);
+            color: #fff
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 3px
+        }
+
+        /* ------------------------------------------------------------ header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            background: color-mix(in srgb, var(--bg) 88%, transparent);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--bg2)
+        }
+
+        header .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 14px 22px
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            line-height: 1
+        }
+
+        .logo span {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.05
+        }
+
+        .logo small {
+            font-size: .58rem;
+            letter-spacing: .3em;
+            color: var(--mut);
+            font-weight: 600
+        }
+
+        header nav {
+            display: flex;
+            gap: 22px;
+            font-size: .92rem;
+            font-weight: 500
+        }
+
+        header nav a:hover {
+            color: var(--g)
+        }
+
+        @media(max-width:760px) {
+            header nav {
+                display: none
+            }
+        }
+
+        /* -------------------------------------------------------------- hero */
+        .rhead {
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            padding: 120px 0 60px;
+            background: linear-gradient(180deg, #1b3a2c, #1E7A46)
+        }
+
+        .rhead svg.bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            opacity: .45
+        }
+
+        .rhead .wrap {
+            position: relative
+        }
+
+        .rhead .eyebrow {
+            color: var(--lime)
+        }
+
+        .rhead .lead {
+            color: rgba(255, 255, 255, .92)
+        }
+
+        .bc {
+            font-size: .85rem;
+            opacity: .85;
+            margin-bottom: 8px
+        }
+
+        .bc a:hover {
+            text-decoration: underline
+        }
+
+        /* ------------------------------------------------------------ layout */
+        /* l'attribut hidden doit l'emporter sur les display: grid/flex */
+        [hidden] {
+            display: none !important
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 330px;
+            gap: 34px;
+            align-items: start;
+            padding: 44px 0 80px
+        }
+
+        @media(max-width:980px) {
+            .layout {
+                grid-template-columns: 1fr;
+                gap: 26px;
+                padding: 30px 0 60px
+            }
+        }
+
+        /* ------------------------------------------------------------ filtres */
+        .filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 22px
+        }
+
+        .fld {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .fld label {
+            font-size: .74rem;
+            font-weight: 600;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--mut)
+        }
+
+        .fld input,
+        .fld select {
+            font: 500 .92rem Poppins, sans-serif;
+            padding: 11px 14px;
+            border-radius: 12px;
+            border: 1.5px solid var(--bg2);
+            background: var(--card);
+            color: var(--tx);
+            width: 100%
+        }
+
+        .fld input:focus,
+        .fld select:focus {
+            border-color: var(--g2);
+            outline: none
+        }
+
+        .count {
+            color: var(--mut);
+            font-size: .88rem;
+            margin: 0 0 16px
+        }
+
+        .count b {
+            color: var(--tx)
+        }
+
+        .attrib {
+            margin: 18px 0 0;
+            font-size: .72rem;
+            color: var(--mut);
+            opacity: .8;
+            line-height: 1.45
+        }
+
+        /* -------------------------------------------------------------- liste */
+        .alist {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 18px
+        }
+
+        .acard {
+            background: var(--card);
+            border-radius: var(--r);
+            box-shadow: var(--sh);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform .25s, box-shadow .3s;
+            border: 1px solid transparent
+        }
+
+        .acard:hover {
+            transform: translateY(-5px);
+            border-color: var(--g2)
+        }
+
+        .acard .ah {
+            position: relative;
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, var(--g), var(--g2));
+            display: grid;
+            place-items: center;
+            color: rgba(255, 255, 255, .9)
+        }
+
+        .acard .ah svg {
+            width: 42px;
+            height: 42px;
+            opacity: .85
+        }
+
+        .acard .ah .badge {
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            background: rgba(255, 255, 255, .94);
+            color: var(--g);
+            font-weight: 700;
+            font-size: .7rem;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            padding: 4px 11px;
+            border-radius: 99px
+        }
+
+        .acard .ab {
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            flex: 1
+        }
+
+        .acard h3 {
+            margin: 0;
+            font-size: 1.02rem
+        }
+
+        .acard .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 12px;
+            color: var(--mut);
+            font-size: .8rem
+        }
+
+        .acard .meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px
+        }
+
+        .acard .meta svg {
+            width: 14px;
+            height: 14px
+        }
+
+        .acard .adesc {
+            margin: 0;
+            color: var(--mut);
+            font-size: .86rem;
+            flex: 1
+        }
+
+        .empty {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--mut)
+        }
+
+        /* ------------------------------------------------------------- aside */
+        .aside {
+            position: sticky;
+            top: 88px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px
+        }
+
+        @media(max-width:980px) {
+            .aside {
+                position: static
+            }
+        }
+
+        .panel {
+            background: var(--card);
+            border-radius: var(--r);
+            box-shadow: var(--sh);
+            padding: 20px
+        }
+
+        .panel h3 {
+            margin: 0 0 12px;
+            font-size: 1rem
+        }
+
+        .panel p {
+            margin: 0 0 12px;
+            color: var(--mut);
+            font-size: .85rem
+        }
+
+        #mini-map {
+            width: 100%;
+            height: auto;
+            background: var(--bg2);
+            border-radius: 12px
+        }
+
+        #mini-map circle {
+            cursor: pointer;
+            transition: r .2s, fill .2s
+        }
+
+        #mini-map circle:hover {
+            fill: var(--gold)
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 14px;
+            margin-top: 12px;
+            font-size: .8rem;
+            color: var(--mut)
+        }
+
+        .legend i {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px
+        }
+
+        /* ------------------------------------------------------------ fiche */
+        .fiche {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+            gap: 34px;
+            align-items: start;
+            padding: 44px 0 80px
+        }
+
+        @media(max-width:900px) {
+            .fiche {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 30px 0 60px
+            }
+        }
+
+        .fbox {
+            background: var(--card);
+            border-radius: var(--r);
+            box-shadow: var(--sh);
+            overflow: hidden
+        }
+
+        .fbox .fh {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, var(--g), var(--g2));
+            display: grid;
+            place-items: center;
+            color: rgba(255, 255, 255, .9)
+        }
+
+        .fbox .fh svg {
+            width: 64px;
+            height: 64px;
+            opacity: .85
+        }
+
+        .fbox .fh .badge {
+            position: absolute;
+            left: 16px;
+            top: 16px;
+            background: rgba(255, 255, 255, .94);
+            color: var(--g);
+            font-weight: 700;
+            font-size: .74rem;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            padding: 5px 13px;
+            border-radius: 99px
+        }
+
+        .fbox .fb {
+            padding: 28px
+        }
+
+        .fbox h2 {
+            margin: 0 0 6px
+        }
+
+        .fstats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin: 22px 0;
+            padding: 18px 0;
+            border-top: 1px solid var(--bg2);
+            border-bottom: 1px solid var(--bg2)
+        }
+
+        .fstats div {
+            display: flex;
+            flex-direction: column;
+            gap: 3px
+        }
+
+        .fstats b {
+            font-size: .98rem
+        }
+
+        .fstats span {
+            font-size: .72rem;
+            color: var(--mut);
+            text-transform: uppercase;
+            letter-spacing: .07em
+        }
+
+        .fctas {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 22px
+        }
+
+        .loc {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 14px;
+            background: var(--bg2);
+            border-radius: 12px;
+            margin-top: 18px;
+            font-size: .9rem
+        }
+
+        .loc svg {
+            width: 18px;
+            height: 18px;
+            color: var(--g2);
+            flex-shrink: 0;
+            margin-top: 3px
+        }
+
+        .loc a {
+            color: var(--g);
+            font-weight: 600
+        }
+
+        .loc a:hover {
+            text-decoration: underline
+        }
+
+        .oth {
+            margin-top: 24px
+        }
+
+        .oth h3 {
+            margin: 0 0 12px;
+            font-size: 1rem
+        }
+
+        .oth ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+
+        .oth li a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg2);
+            border-radius: 12px;
+            padding: 10px 14px;
+            font-size: .9rem;
+            transition: .2s
+        }
+
+        .oth li a:hover {
+            background: var(--g2);
+            color: #fff
+        }
+
+        .oth li a svg {
+            width: 16px;
+            height: 16px;
+            opacity: .7
+        }
+
+        footer {
+            background: #10251c;
+            color: #cfe0d6;
+            padding: 40px 0;
+            font-size: .88rem
+        }
+
+        footer .copy {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            padding-top: 18px;
+            margin-top: 18px
+        }
+
+        footer a:hover {
+            color: #fff
+        }
+"""
+
+JS = """
+        var $ = function (s) { return document.querySelector(s); };
+        var ACT = window.ACTIVITES || { categories: [], items: [] };
+        var PROV = window.RDC_PROVINCES || [];
+        var provBySlug = {};
+        PROV.forEach(function (p) { provBySlug[p.slug] = p; });
+
+        function qs(name) {
+            return new URLSearchParams(location.search).get(name);
+        }
+
+        function esc(s) {
+            return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+                return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+            });
+        }
+
+        var ICONS = {
+            hotel: 'bed-double', guest_house: 'home', hostel: 'bunk-bed', motel: 'tent-tree',
+            apartment: 'building-2', house: 'house', camp_site: 'tent',
+            restaurant: 'utensils', cafe: 'coffee', bar: 'wine', pub: 'martini',
+            fast_food: 'sandwich', ice_cream: 'ice-cream-bowl', beverages: 'cup-soda',
+            nightclub: 'disc-3', internet_cafe: 'wifi',
+            attraction: 'landmark', museum: 'landmark', artwork: 'image',
+            viewpoint: 'binoculars', park: 'trees', experience: 'compass'
+        };
+
+        function iconFor(cat) { return ICONS[cat] || 'map-pin'; }
+
+        function provName(slug) {
+            return provBySlug[slug] ? provBySlug[slug].name : "";
+        }
+
+        /* ------------------------------------------------------------- liste */
+        function currentCat() {
+            var c = qs("cat");
+            if (!c) {
+                for (var i = 0; i < ACT.categories.length; i++) {
+                    if (ACT.categories[i].types.indexOf("experience") !== -1) {
+                        return ACT.categories[i].slug;
+                    }
+                }
+                return ACT.categories.length ? ACT.categories[0].slug : "";
+            }
+            return c;
+        }
+
+        function catDef(slug) {
+            for (var i = 0; i < ACT.categories.length; i++) {
+                if (ACT.categories[i].slug === slug) return ACT.categories[i];
+            }
+            return null;
+        }
+
+        function baseItems(cat) {
+            var def = catDef(cat);
+            if (!def) return [];
+            return ACT.items.filter(function (it) { return def.types.indexOf(it.cat) !== -1; });
+        }
+
+        function renderList() {
+            var cat = currentCat();
+            var def = catDef(cat);
+            var q = ($("#fq") ? $("#fq").value : "").trim().toLowerCase();
+            var pv = $("#fp") ? $("#fp").value : "";
+            var pt = $("#ft") ? $("#ft").value : "";
+
+            var items = baseItems(cat);
+            if (pv) items = items.filter(function (it) { return it.province === pv; });
+            if (pt) items = items.filter(function (it) { return it.cat === pt; });
+            if (q) {
+                items = items.filter(function (it) {
+                    return (it.name + " " + it.place + " " + it.desc + " " + it.provinceName)
+                        .toLowerCase().indexOf(q) !== -1;
+                });
+            }
+
+            $("#fcount").innerHTML = "<b>" + items.length + "</b> " +
+                (items.length > 1 ? "résultats" : "résultat") +
+                (def ? " · " + esc(def.label) : "");
+
+            if (!items.length) {
+                $("#alist").innerHTML = '<div class="empty"><h2>Aucun résultat</h2>' +
+                    "<p>Essayez un autre mot-clé ou retirez un filtre.</p></div>";
+                drawMap(items);
+                return;
+            }
+
+            $("#alist").innerHTML = items.map(function (it) {
+                var href = "activite.html?cat=" + encodeURIComponent(cat) + "&id=" + encodeURIComponent(it.slug);
+                var loc = it.hasCoords
+                    ? '<span><i data-lucide="map-pin"></i>' + esc(it.place) + "</span>"
+                    : '<span><i data-lucide="map-pin"></i>' + esc(it.place) + " (sur demande)</span>";
+                return '<a class="acard" href="' + href + '">' +
+                    '<div class="ah"><i data-lucide="' + iconFor(it.cat) + '"></i>' +
+                    '<span class="badge">' + esc(it.catLabel) + "</span></div>" +
+                    '<div class="ab"><h3>' + esc(it.name) + "</h3>" +
+                    '<div class="meta">' + loc +
+                    (it.provinceName ? '<span><i data-lucide="map"></i>' + esc(it.provinceName) + "</span>" : "") +
+                    "</div>" +
+                    '<p class="adesc">' + esc(it.desc) + "</p></div></a>";
+            }).join("");
+
+            if (window.lucide) window.lucide.createIcons();
+            drawMap(items);
+        }
+
+        /* ------------------------------------------------- carte de situation */
+        function drawMap(items) {
+            var holder = $("#map-holder");
+            if (!holder) return;
+            var withCoords = items.filter(function (it) { return it.hasCoords; });
+            if (!withCoords.length) {
+                holder.innerHTML = '<p style="color:var(--mut);font-size:.86rem;margin:0">' +
+                    "Aucune localisation vérifiée pour cette sélection.</p>";
+                return;
+            }
+            var lats = withCoords.map(function (i) { return i.lat; });
+            var lons = withCoords.map(function (i) { return i.lon; });
+            var minLat = Math.min.apply(null, lats), maxLat = Math.max.apply(null, lats);
+            var minLon = Math.min.apply(null, lons), maxLon = Math.max.apply(null, lons);
+            var padLat = Math.max((maxLat - minLat) * 0.12, 0.4);
+            var padLon = Math.max((maxLon - minLon) * 0.12, 0.4);
+            minLat -= padLat; maxLat += padLat; minLon -= padLon; maxLon += padLon;
+
+            var W = 300, H = 260;
+            var dots = withCoords.map(function (it) {
+                var x = (it.lon - minLon) / (maxLon - minLon) * (W - 40) + 20;
+                var y = H - ((it.lat - minLat) / (maxLat - minLat) * (H - 40) + 20);
+                return '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) +
+                    '" r="5" fill="var(--g2)" data-name="' + esc(it.name) + '">' +
+                    "<title>" + esc(it.name) + " — " + esc(it.place) + "</title></circle>";
+            }).join("");
+
+            holder.innerHTML = '<svg id="mini-map" viewBox="0 0 ' + W + " " + H +
+                '" role="img" aria-label="Localisation des résultats">' + dots + "</svg>" +
+                '<div class="legend"><span><i style="background:var(--g2)"></i>' +
+                withCoords.length + " localisation(s) vérifiée(s)</span></div>";
+        }
+
+        /* -------------------------------------------------------------- init */
+        function initList() {
+            var cat = currentCat();
+            var def = catDef(cat);
+            if (def) {
+                document.title = def.label + " — Lutete Travel";
+                $("#etitle").textContent = def.label;
+                $("#edesc").textContent = def.desc;
+                $("#ebc").innerHTML = '<a href="index.html">Accueil</a> / <span>' +
+                    esc(def.label) + "</span>";
+            }
+
+            // filtre province
+            var provs = baseItems(cat).filter(function (it) { return it.province; });
+            var seen = {}, opts = [];
+            provs.forEach(function (it) {
+                if (!seen[it.province]) { seen[it.province] = 1; opts.push(it.province); }
+            });
+            opts.sort(function (a, b) { return provName(a).localeCompare(provName(b)); });
+            $("#fp").innerHTML = '<option value="">Toutes les provinces</option>' +
+                opts.map(function (s) {
+                    return '<option value="' + s + '">' + esc(provName(s)) + "</option>";
+                }).join("");
+
+            // filtre type
+            var types = [];
+            baseItems(cat).forEach(function (it) {
+                if (types.indexOf(it.cat) === -1) types.push(it.cat);
+            });
+            $("#ft").innerHTML = '<option value="">Tous les types</option>' +
+                types.map(function (t) {
+                    var lab = "";
+                    ACT.items.forEach(function (i) { if (i.cat === t) lab = i.catLabel; });
+                    return '<option value="' + t + '">' + esc(lab || t) + "</option>";
+                }).join("");
+
+            $("#fq").addEventListener("input", renderList);
+            $("#fp").addEventListener("change", renderList);
+            $("#ft").addEventListener("change", renderList);
+            $("#freset").addEventListener("click", function () {
+                $("#fq").value = ""; $("#fp").value = ""; $("#ft").value = "";
+                renderList();
+            });
+
+            renderList();
+            if (window.lucide) window.lucide.createIcons();
+        }
+
+        /* ------------------------------------------------------------- fiche */
+        function initFiche() {
+            var slug = qs("id");
+            var cat = qs("cat") || currentCat();
+            var items = baseItems(cat).concat(ACT.items.filter(function (it) {
+                return catDef(cat) && catDef(cat).types.indexOf(it.cat) === -1;
+            }));
+            var it = null;
+            for (var i = 0; i < items.length; i++) {
+                if (items[i].slug === slug) { it = items[i]; break; }
+            }
+            if (!it) {
+                $("#fbox").hidden = false;
+                $("#fbox").innerHTML = '<div class="fb"><h2>Fiche introuvable</h2>' +
+                    '<p class="lead">Cette fiche n\\'existe pas ou n\\'est plus disponible.</p>' +
+                    '<div class="fctas"><a class="btn" href="activite.html?cat=' +
+                    encodeURIComponent(cat) + '">Retour à la liste</a></div></div>';
+                return;
+            }
+
+            // mode fiche : on masque la liste et les filtres
+            $("#filters").hidden = true;
+            $("#fcount").hidden = true;
+            $("#alist").hidden = true;
+            $("#fbox").hidden = false;
+            $("#faside").hidden = false;
+            $("#fother").innerHTML = "";
+
+            document.title = it.name + " — Lutete Travel";
+            $("#etitle").textContent = it.name;
+            $("#ebc").innerHTML = '<a href="index.html">Accueil</a> / ' +
+                '<a href="activite.html?cat=' + encodeURIComponent(cat) + '">' +
+                esc(catDef(cat) ? catDef(cat).label : "Explorer") + "</a> / <span>" +
+                esc(it.name) + "</span>";
+
+            var def = catDef(cat);
+            $("#fbox").innerHTML =
+                '<div class="fh"><i data-lucide="' + iconFor(it.cat) + '"></i>' +
+                '<span class="badge">' + esc(it.catLabel) + "</span></div>" +
+                '<div class="fb">' +
+                "<h2>" + esc(it.name) + "</h2>" +
+                '<p class="lead">' + esc(it.desc) + "</p>" +
+                '<div class="fstats">' +
+                "<div><b>" + esc(it.place) + "</b><span>Localisation</span></div>" +
+                "<div><b>" + esc(it.provinceName || "—") + "</b><span>Province</span></div>" +
+                "<div><b>" + esc(it.catLabel) + "</b><span>Type</span></div>" +
+                "</div>" +
+                (it.hasCoords
+                    ? '<div class="loc"><i data-lucide="navigation"></i><div>' +
+                      "Position GPS : " + it.lat.toFixed(4) + ", " + it.lon.toFixed(4) +
+                      ' — <a href="https://www.openstreetmap.org/?mlat=' + it.lat +
+                      "&mlon=" + it.lon + '#map=15/' + it.lat + "/" + it.lon +
+                      '" target="_blank" rel="noopener">Voir sur la carte</a>' +
+                      (it.osm ? ' · <a href="https://www.openstreetmap.org/' + it.osm +
+                          '" target="_blank" rel="noopener">Fiche OpenStreetMap</a>' : "") +
+                      "</div></div>"
+                    : '<div class="loc"><i data-lucide="map-pin"></i><div>' +
+                      "Localisation exacte communiquée par notre équipe à la réservation." +
+                      "</div></div>") +
+                '<div class="fctas">' +
+                '<a class="btn" href="index.html#reservation">Réserver ici <i data-lucide="arrow-right"></i></a>' +
+                (it.province
+                    ? '<a class="btn ghost" href="province.html?p=' + encodeURIComponent(it.province) +
+                      '">Voir la province</a>'
+                    : "") +
+                '<a class="btn ghost" href="activite.html?cat=' + encodeURIComponent(cat) +
+                '">Plus de ' + esc(def ? def.label.toLowerCase() : "résultats") + "</a>" +
+                "</div></div>";
+
+            // autres elements proches
+            var near = ACT.items.filter(function (x) {
+                return x.cat === it.cat && x.slug !== it.slug;
+            }).slice(0, 6);
+            if (near.length) {
+                $("#fother").innerHTML = "<h3>Autres " +
+                    esc(it.catLabel.toLowerCase()) + "s</h3><ul>" +
+                    near.map(function (x) {
+                        return '<li><a href="activite.html?cat=' + encodeURIComponent(cat) +
+                            "&id=" + encodeURIComponent(x.slug) + '">' +
+                            '<i data-lucide="' + iconFor(x.cat) + '"></i>' + esc(x.name) +
+                            "</a></li>";
+                    }).join("") + "</ul>";
+            }
+
+            if (window.lucide) window.lucide.createIcons();
+        }
+
+        function boot() {
+            if (qs("id")) {
+                initFiche();
+            } else {
+                initList();
+            }
+        }
+
+        // Le script inline est en fin de body : le DOM est deja pret, mais on
+        // reste robuste si le navigateur a deja tire DOMContentLoaded.
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", boot);
+            setTimeout(boot, 300);
+        } else {
+            boot();
+        }
+"""
+
+
+def logo_svg():
+    return ('<svg width="42" height="42" viewBox="0 0 100 100" aria-hidden="true">'
+            '<defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1">'
+            '<stop offset="0" stop-color="#3dba4a"/><stop offset="1" stop-color="#b4d836"/>'
+            '</linearGradient></defs><circle cx="50" cy="50" r="48" fill="url(#lg)"/>'
+            '<path d="M8 78L34 52l10 10 14-26 12 20 8-8 8 30z" fill="#2F3437"/>'
+            '<circle cx="56" cy="30" r="6" fill="#2F3437"/></svg>')
+
+
+html = u"""<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Explorer — Lutete Travel</title>
+    <meta name="description"
+        content="Hôtels, restaurants, sites et expériences en République démocratique du Congo : cherchez, filtrez et réservez.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>%(css)s    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav wrap">
+            <a href="index.html" class="logo">%(logo)s<span>Lutete<small>TRAVEL</small></span></a>
+            <nav aria-label="Navigation principale">
+                <a href="index.html#destinations">Destinations</a>
+                <a href="index.html#circuits">Circuits</a>
+                <a href="index.html#provinces">Provinces</a>
+                <a href="activite.html?cat=hotels">Hôtels</a>
+                <a href="activite.html?cat=restaurants">Restaurants</a>
+            </nav>
+            <a class="btn sm" href="index.html#reservation">Réserver</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="rhead">
+            <svg class="bg" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M0 300V160l200-100 160 90 240-130 220 150 200-90 200 110 220-70v240z"
+                    fill="#9ED03A" />
+            </svg>
+            <div class="wrap">
+                <nav class="bc" aria-label="Fil d’Ariane" id="ebc"><a href="index.html">Accueil</a></nav>
+                <span class="eyebrow">Explorer la RDC</span>
+                <h1 id="etitle">Hôtels</h1>
+                <p class="lead" id="edesc" style="opacity:1;color:rgba(255,255,255,.9);max-width:620px"></p>
+            </div>
+        </section>
+
+        <div class="wrap layout">
+            <div>
+                <div class="filters" id="filters">
+                    <div class="fld"><label for="fq">Recherche</label>
+                        <input id="fq" type="search" placeholder="Nom, ville, description…"></div>
+                    <div class="fld"><label for="fp">Province</label>
+                        <select id="fp"></select></div>
+                    <div class="fld"><label for="ft">Type</label>
+                        <select id="ft"></select></div>
+                    <div class="fld"><label>&nbsp;</label>
+                        <button class="btn ghost" id="freset" type="button">Réinitialiser</button></div>
+                </div>
+                <p class="count" id="fcount"></p>
+                <div class="alist" id="alist"></div>
+                <div id="fbox" hidden></div>
+                <div class="oth" id="fother"></div>
+                <p class="attrib">Hébergements : visitrdc.org · Localisations et coordonnées :
+                    OpenStreetMap (contributeurs, licence ODbL 1.0) · Circuits : Lutete Travel.</p>
+            </div>
+
+            <aside class="aside" id="faside">
+                <div class="panel">
+                    <h3>Où se trouvent ces lieux</h3>
+                    <p>Les positions affichées proviennent d’OpenStreetMap et ont été vérifiées.</p>
+                    <div id="map-holder"></div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="copy">
+                <span>© 2026 Lutete Travel. Tous droits réservés.</span>
+                <span><a href="index.html#provinces">Provinces</a> ·
+                    <a href="index.html#contact">Contact</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/rdc-map.js"></script>
+    <script src="assets/provinces.js"></script>
+    <script src="assets/activites.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+    <script>%(js)s    </script>
+</body>
+
+</html>
+""" % {'css': CSS, 'js': JS, 'logo': logo_svg()}
+
+OUT = os.path.join(ROOT, 'activite.html')
+with io.open(OUT, 'w', encoding='utf-8') as f:
+    f.write(html)
+
+print('written:', OUT, '%.1f Ko' % (len(html.encode('utf-8')) / 1024.0))
+print('categories:', [c['slug'] for c in ACT['categories']])
+print('items:', len(ACT['items']))

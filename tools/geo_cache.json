@@ -1,0 +1,363 @@
+{
+ "hilton kinshasa": {
+  "lat": -4.2984253,
+  "lon": 15.3121237,
+  "display": "Hilton Kinshasa, 10, Avenue Wagenia, Révolution, Gombe, Kinshasa, République démocratique du Congo",
+  "osm": "way/553646171"
+ },
+ "fleuve congo hotel": {
+  "lat": -4.3126208,
+  "lon": 15.2702532,
+  "display": "Fleuve Congo Hotel by Blazon Hotels, 119, Avenue des Nations Unies, Cliniques, Gombe, Kinshasa, République démocratique du Congo",
+  "osm": "way/29200152"
+ },
+ "pullman kinshasa grand hotel": {
+  "lat": -4.3126626,
+  "lon": 15.2734852,
+  "display": "Le Pullman Kinshasa Grand Hôtel, 4, Avenue des Batetela, Cliniques, Gombe, Kinshasa, République démocratique du Congo",
+  "osm": "relation/2744501"
+ },
+ "hôtel memling": {
+  "lat": -4.3041968,
+  "lon": 15.3121363,
+  "display": "Hôtel Memling, 5B, Avenue du Tchad, Révolution, Gombe, Kinshasa, République démocratique du Congo",
+  "osm": "node/2144927306"
+ },
+ "four points by sheraton kinshasa": null,
+ "novotel kinshasa": null,
+ "béatrice hotel": {
+  "lat": -4.3001374,
+  "lon": 15.3174343,
+  "display": "Hôtel Béatrice, Place de la Gare, Gare, Gombe, Kinshasa, République démocratique du Congo",
+  "osm": "node/3445619264"
+ },
+ "sultani hotel": {
+  "lat": -4.3080261,
+  "lon": 15.2898539,
+  "display": "Hôtel Sultani, Avenue de la Justice, Croix-Rouge, Gombe, Kinshasa, République démocratique du Congo",
+  "osm": "way/441884925"
+ },
+ "golden tulip kin oasis": null,
+ "ibis styles kinshasa": null,
+ "hôtel ledya": {
+  "lat": -5.838121,
+  "lon": 13.4495173,
+  "display": "Ledya, Matadi - Ango Ango, Kinkanda, Matadi, Kongo-Central, République démocratique du Congo",
+  "osm": "node/10008667981"
+ },
+ "hôtel métropole": null,
+ "hôtel mangrove": null,
+ "hôtel mbanza-ngungu": {
+  "lat": -5.2647294,
+  "lon": 14.8566385,
+  "display": "Hôtel DOM, avenue du cercle, Mbanza-Ngungu, Kongo-Central, République démocratique du Congo",
+  "osm": "way/385163379"
+ },
+ "hôtel de kenge": null,
+ "guest-house de popokabaka": null,
+ "hôtel bandundu palace": null,
+ "hôtel de kikwit": {
+  "lat": -5.0389488,
+  "lon": 18.8256344,
+  "display": "Grand Hôtel de Kikwit, Boulevard National Numéro 34, Avenue Wazabanga, Kikwit, Lukolela, Kikwit, Kwilu, République démocratique du Congo",
+  "osm": "node/5403372575"
+ },
+ "hôtel du lac mai-ndombe": null,
+ "hôtel de tshikapa": {
+  "lat": -6.4095173,
+  "lon": 20.79969,
+  "display": "Hôtel de ville de Tshikapa, RP706, Commune Mambondo, Tshikapa, Kasaï, République démocratique du Congo",
+  "osm": "node/9929960746"
+ },
+ "hôtel musube": null,
+ "hôtel de l'immokasaï": null,
+ "hôtel sultani mbuji-mayi": null,
+ "hôtel le diamant": null,
+ "hôtel de kabinda": {
+  "lat": -7.0133614,
+  "lon": 23.4513469,
+  "display": "Hôtel de la Gare, Avenue Boende, Kabinda, Lomami, République démocratique du Congo",
+  "osm": "node/6445818337"
+ },
+ "hôtel de mwene-ditu": null,
+ "guest-house de lusambo": null,
+ "hôtel lwama": null,
+ "hôtel du maniema": {
+  "lat": -2.9459736,
+  "lon": 25.9267845,
+  "display": "Hôtel du Gouvernement Provincial du Maniema, Avenue Kilima, CAMP SNCC/KINDU, Kailo, Maniema, République démocratique du Congo",
+  "osm": "way/246398166"
+ },
+ "orchids safari club": {
+  "lat": -2.4978658,
+  "lon": 28.8748243,
+  "display": "Orchid, Avenue Lieutenant Dubois, Kimuti, Ibanda, Bukavu, Sud-Kivu, République démocratique du Congo",
+  "osm": "node/13901980552"
+ },
+ "hôtel résidence": {
+  "lat": -2.4988217,
+  "lon": 28.8553354,
+  "display": "Résidence Hôtel, Avenue Patrice Emery Lumumba, Ibanda, Bukavu, Sud-Kivu, République démocratique du Congo",
+  "osm": "node/13901980446"
+ },
+ "hôtel panorama": {
+  "lat": -2.4898565,
+  "lon": 28.856653,
+  "display": "Panorama Hotel, Boulevard Reine Elisabeth, Ibanda, Bukavu, Sud-Kivu, République démocratique du Congo",
+  "osm": "node/13901980499"
+ },
+ "serena hotel goma": {
+  "lat": -1.6962379,
+  "lon": 29.2329305,
+  "display": "Goma Serena Hotel, Avenue de la Corniche, Les Volcans, Goma, Nord-Kivu, République démocratique du Congo",
+  "osm": "relation/7348351"
+ },
+ "ihusi hotel": {
+  "lat": -1.6989242,
+  "lon": 29.2423494,
+  "display": "Ihusi, Avenue de la Corniche, Les Volcans, Goma, Nord-Kivu, République démocratique du Congo",
+  "osm": "way/257336200"
+ },
+ "lac kivu lodge": {
+  "lat": -1.6753174,
+  "lon": 29.2052659,
+  "display": "Lac Kivu Lodge, Avenue du lac, Katindo, Goma, Nord-Kivu, République démocratique du Congo",
+  "osm": "node/2862123471"
+ },
+ "mikeno lodge": null,
+ "hôtel ituri": {
+  "lat": 1.5581606,
+  "lon": 30.2526408,
+  "display": "Hôtel Canadia, Avenue Albert Sukisa, Salongo, Nyakasanza, Bunia, Ituri, République démocratique du Congo",
+  "osm": "node/9331685552"
+ },
+ "hôtel bunia palace": null,
+ "hôtel de l'uele": {
+  "lat": 2.782925,
+  "lon": 27.6145865,
+  "display": "Hôtel de l'Uele, RP426, Tely, Isiro, Haut-Uele, République démocratique du Congo",
+  "osm": "way/612061262"
+ },
+ "guest-house de garamba": null,
+ "hôtel de buta": null,
+ "palm beach hotel": {
+  "lat": 0.5102893,
+  "lon": 25.1849777,
+  "display": "Palm Beach, Avenue Reine Elisabeth, Makiso, Kisangani, Tshopo, République démocratique du Congo",
+  "osm": "node/1263182925"
+ },
+ "hôtel riviera": {
+  "lat": 0.5133331,
+  "lon": 25.187151,
+  "display": "Riviera, Avenue President Kasa Vubu, Makiso, Kisangani, Tshopo, République démocratique du Congo",
+  "osm": "node/1932180080"
+ },
+ "hôtel wagenia": null,
+ "hôtel de lisala": {
+  "lat": 2.372192,
+  "lon": 20.4957435,
+  "display": "Couvent des Soeurs de Binga, Pont Mbélé, Binga, Lisala, Mongala, République démocratique du Congo",
+  "osm": "node/10721829346"
+ },
+ "hôtel nzekele": null,
+ "hôtel de gemena": null,
+ "hôtel afrique": {
+  "lat": 0.0535828,
+  "lon": 18.2552819,
+  "display": "Afrique Hôtel, Avenue Bonsomi, Plateaux, Boyera, Mbandaka, Wangata, Équateur, République démocratique du Congo",
+  "osm": "node/2468532089"
+ },
+ "hôtel de l'équateur": null,
+ "guest-house de boende": null,
+ "hôtel du lac": {
+  "lat": -5.9444613,
+  "lon": 29.1966079,
+  "display": "Hotel du Lac, Avenue Lumumba, Kalemie, Tanganyika, République démocratique du Congo",
+  "osm": "way/237277447"
+ },
+ "hôtel tanganyika": {
+  "lat": -5.9444613,
+  "lon": 29.1966079,
+  "display": "Hotel du Lac, Avenue Lumumba, Kalemie, Tanganyika, République démocratique du Congo",
+  "osm": "way/237277447"
+ },
+ "hôtel de kamina": {
+  "lat": -8.7345485,
+  "lon": 25.0049508,
+  "display": "Hotel de la Gare, Avenue des Manguiers, Centre Urbain, Kamina, Haut-Lomami, République démocratique du Congo",
+  "osm": "relation/8540191"
+ },
+ "hôtel mimosa": null,
+ "hôtel kolwezi palace": null,
+ "pullman lubumbashi grand karavia": {
+  "lat": -11.6523888,
+  "lon": 27.4554227,
+  "display": "Hotel Grand Karavia, Route du Golf, Marché Lido, Bloc II, Iringi, Golf, Lubumbashi, Ville de Lubumbashi, Haut-Katanga, République démocratique du Congo",
+  "osm": "node/4253029489"
+ },
+ "hôtel lubumbashi (park hotel)": null,
+ "golf hotel": null,
+ "lola ya bonobo": {
+  "lat": -4.4894518,
+  "lon": 15.267161,
+  "display": "Lola ya Bonobo, Nzolantima, Kimwenza, Mont Ngafula, Kinshasa, République démocratique du Congo",
+  "osm": "way/63957909"
+ },
+ "parc de la vallée de la nsele": null,
+ "musée national de la rdc": null,
+ "jardin botanique de kinshasa": {
+  "lat": -4.3105702,
+  "lon": 15.3098304,
+  "display": "Jardin botanique de Kinshasa, Révolution, Gombe, Kinshasa, République démocratique du Congo",
+  "osm": "way/4421355"
+ },
+ "marché central (zando)": null,
+ "cathédrale notre-dame du congo": {
+  "lat": -4.3238125,
+  "lon": 15.294627,
+  "display": "Cathédrale Notre-Dame du Congo, Avenue de la Libération, Haut Commandement, Gombe, Kinshasa, République démocratique du Congo",
+  "osm": "way/4714383"
+ },
+ "rapides de kinsuka": null,
+ "chutes de la lukaya": {
+  "lat": -4.4846075,
+  "lon": 15.2675888,
+  "display": "Chutes de la Lukaya, Nzolantima, Kimwenza, Mont Ngafula, Kinshasa, République démocratique du Congo",
+  "osm": "node/789444242"
+ },
+ "chutes de zongo": null,
+ "parc marin des mangroves": null,
+ "plages de moanda et banana": null,
+ "jardin botanique de kisantu": null,
+ "grottes de mbanza-ngungu": {
+  "lat": -5.5805586,
+  "lon": 14.6322645,
+  "display": "Grottes de Ntadi, Nzovo, Mbanza-Ngungu, Kongo-Central, République démocratique du Congo",
+  "osm": "node/8871874111"
+ },
+ "pont maréchal": {
+  "lat": -5.8251789,
+  "lon": 13.4341235,
+  "display": "Pont Matadi, Kinkanda, Matadi, Kongo-Central, République démocratique du Congo",
+  "osm": "way/23510415"
+ },
+ "musée de boma & baobab de stanley": null,
+ "chutes guillaume (tembo)": null,
+ "rivière kwango": null,
+ "rivière kwilu à kikwit": null,
+ "ville de bandundu": null,
+ "lac mai-ndombe": null,
+ "forêts de mai-ndombe (redd+)": null,
+ "chutes de la tshikapa": null,
+ "chutes de kamwanga": null,
+ "chutes de katende": null,
+ "lac munkamba": {
+  "lat": -5.7544221,
+  "lon": 23.0645885,
+  "display": "Lac Munkamba, Bungibwabo, Lulua, Kasaï-Central, République démocratique du Congo",
+  "osm": "relation/6809823"
+ },
+ "lac fwa": null,
+ "mines de diamant (miba)": null,
+ "rivière sankuru à lusambo": null,
+ "parc national de la lomami": null,
+ "ville de kabinda": null,
+ "parc national de la salonga (sud)": null,
+ "rivière sankuru": null,
+ "fleuve congo à kindu": null,
+ "kasongo": {
+  "lat": -4.4283572,
+  "lon": 26.6700323,
+  "display": "Kasongo, Maniema, République démocratique du Congo",
+  "osm": "node/83517617"
+ },
+ "parc national de kahuzi-biega": null,
+ "lac kivu & presqu'îles de bukavu": null,
+ "île d'idjwi": null,
+ "parc national d'itombwe": null,
+ "parc national des virunga": null,
+ "volcan nyiragongo": {
+  "lat": -1.6786212,
+  "lon": 29.2251986,
+  "display": "Kiwango cha hali ya volkeno Nyiragongo, RN2, Les Volcans, Goma, Nord-Kivu, République démocratique du Congo",
+  "osm": "node/8567368728"
+ },
+ "lac kivu à goma": {
+  "lat": -1.6330118,
+  "lon": 29.1675155,
+  "display": "Centre Chretien du Lac-Kivu (CCLK), 22, RN2, Mugunga, Goma, Lac Vert, Nord-Kivu, République démocratique du Congo",
+  "osm": "way/1055973761"
+ },
+ "monts rwenzori": null,
+ "lac édouard": null,
+ "réserve de faune à okapis": null,
+ "lac albert": null,
+ "parc national de la garamba": null,
+ "station de domestication des éléphants": null,
+ "domaine de chasse de bili-uere": null,
+ "ville de buta": null,
+ "chutes wagenia (boyoma)": null,
+ "réserve de biosphère de yangambi": null,
+ "chutes de la tshopo": null,
+ "fleuve congo à lisala": null,
+ "bumba": {
+  "lat": -6.2376977,
+  "lon": 17.7249511,
+  "display": "Bumba, Kwango, République démocratique du Congo",
+  "osm": "way/1478679252"
+ },
+ "palais de gbadolite & kawele": {
+  "lat": 4.2342197,
+  "lon": 20.9043022,
+  "display": "Palais de Mobutu, Lisala-Gbadolite, Moanda, Nord-Ubangi, République démocratique du Congo",
+  "osm": "way/321809584"
+ },
+ "rivière ubangi": null,
+ "rivière ubangi à libenge": null,
+ "gemena": {
+  "lat": -11.7124884,
+  "lon": 27.470764,
+  "display": "Gemena, Divuma, Lufira, Katuba, Ville de Lubumbashi, Haut-Katanga, République démocratique du Congo",
+  "osm": "way/279140986"
+ },
+ "jardin botanique d'eala": null,
+ "ligne de l'équateur": null,
+ "lac tumba": {
+  "lat": -0.7371494,
+  "lon": 18.1249497,
+  "display": "EP Lac Tumba, RN21, Ipeko Village, Bikoro, Équateur, République démocratique du Congo",
+  "osm": "node/5811120404"
+ },
+ "parc national de la salonga (nord)": null,
+ "rivière tshuapa": null,
+ "lac tanganyika": {
+  "lat": -5.9444613,
+  "lon": 29.1966079,
+  "display": "Hotel du Lac, Avenue Lumumba, Kalemie, Tanganyika, République démocratique du Congo",
+  "osm": "way/237277447"
+ },
+ "rivière lukuga": null,
+ "parc national de l'upemba": null,
+ "lac upemba": {
+  "lat": -8.6210379,
+  "lon": 26.38732,
+  "display": "Lac Upemba, Bukama, Haut-Lomami, République démocratique du Congo",
+  "osm": "relation/14166440"
+ },
+ "lac nzilo (delcommune)": null,
+ "chutes de nzilo": null,
+ "chutes de la lofoi (kundelungu)": null,
+ "musée national de lubumbashi": {
+  "lat": -11.6496284,
+  "lon": 27.477091,
+  "display": "Musée national de Lubumbashi, Avenue du Musée, avenue kapanga, Lumumba, 30 Juin, Lumumba, Lubumbashi, Ville de Lubumbashi, Haut-Katanga, République démocratique",
+  "osm": "node/3906155721"
+ },
+ "lac kipopo": {
+  "lat": -11.6400833,
+  "lon": 27.4800783,
+  "display": "Avenue Lac Kipopo, avenue kapanga, Mpolo, Gambela 2, Lubumbashi, Ville de Lubumbashi, Haut-Katanga, République démocratique du Congo",
+  "osm": "way/260270913"
+ },
+ "lac moero": null
+}

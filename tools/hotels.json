@@ -1,0 +1,474 @@
+[
+ {
+  "province": "Kinshasa",
+  "chef_lieu": "Kinshasa",
+  "count": 10,
+  "items": [
+   {
+    "name": "Hilton Kinshasa",
+    "place": "Gombe, Kinshasa",
+    "desc": "Hôtel international face au fleuve, piscine, spa et salles de conférence."
+   },
+   {
+    "name": "Fleuve Congo Hotel",
+    "place": "Gombe, Kinshasa",
+    "desc": "Vue panoramique sur le fleuve Congo, chambres et suites haut de gamme."
+   },
+   {
+    "name": "Pullman Kinshasa Grand Hotel",
+    "place": "Gombe, Kinshasa",
+    "desc": "Grand hôtel emblématique avec jardins, piscine et restaurants."
+   },
+   {
+    "name": "Hôtel Memling",
+    "place": "Gombe, Kinshasa",
+    "desc": "Adresse historique du centre-ville, idéale pour les voyages d'affaires."
+   },
+   {
+    "name": "Four Points by Sheraton Kinshasa",
+    "place": "Gombe, Kinshasa",
+    "desc": "Hôtel moderne, piscine sur le toit et restaurant panoramique."
+   },
+   {
+    "name": "Novotel Kinshasa",
+    "place": "Gombe, Kinshasa",
+    "desc": "Confort contemporain au cœur du quartier des affaires."
+   },
+   {
+    "name": "Béatrice Hotel",
+    "place": "Gombe, Kinshasa",
+    "desc": "Hôtel élégant proche des ambassades et des bureaux."
+   },
+   {
+    "name": "Sultani Hotel",
+    "place": "Gombe, Kinshasa",
+    "desc": "Accueil chaleureux, piscine et cuisine internationale."
+   },
+   {
+    "name": "Golden Tulip Kin Oasis",
+    "place": "Kinshasa, RDC",
+    "desc": "Hôtel avec piscine, restaurant et salles de réunion, dans un cadre calme et verdoyant."
+   },
+   {
+    "name": "Ibis Styles Kinshasa",
+    "place": "Kinshasa, RDC",
+    "desc": "Hôtel au design moderne, chambres confortables et service disponible à toute heure."
+   }
+  ]
+ },
+ {
+  "province": "Kongo-Central",
+  "chef_lieu": "Matadi",
+  "count": 4,
+  "items": [
+   {
+    "name": "Hôtel Ledya",
+    "place": "Matadi, Kongo-Central",
+    "desc": "Hébergement à Matadi — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel Métropole",
+    "place": "Matadi, Kongo-Central",
+    "desc": "Hébergement à Matadi — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel Mangrove",
+    "place": "Moanda, Kongo-Central",
+    "desc": "Hébergement à Moanda — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel Mbanza-Ngungu",
+    "place": "Mbanza-Ngungu, Kongo-Central",
+    "desc": "Hébergement à Mbanza-Ngungu — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Kwango",
+  "chef_lieu": "Kenge",
+  "count": 2,
+  "items": [
+   {
+    "name": "Hôtel de Kenge",
+    "place": "Kenge, Kwango",
+    "desc": "Hébergement à Kenge — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Guest-house de Popokabaka",
+    "place": "Popokabaka, Kwango",
+    "desc": "Hébergement à Popokabaka — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Kwilu",
+  "chef_lieu": "Bandundu",
+  "count": 2,
+  "items": [
+   {
+    "name": "Hôtel Bandundu Palace",
+    "place": "Bandundu, Kwilu",
+    "desc": "Hébergement à Bandundu — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel de Kikwit",
+    "place": "Kikwit, Kwilu",
+    "desc": "Hébergement à Kikwit — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Mai-Ndombe",
+  "chef_lieu": "Inongo",
+  "count": 1,
+  "items": [
+   {
+    "name": "Hôtel du Lac Mai-Ndombe",
+    "place": "Inongo, Mai-Ndombe",
+    "desc": "Hébergement à Inongo — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Kasaï",
+  "chef_lieu": "Tshikapa",
+  "count": 1,
+  "items": [
+   {
+    "name": "Hôtel de Tshikapa",
+    "place": "Tshikapa, Kasaï",
+    "desc": "Hébergement à Tshikapa — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Kasaï-Central",
+  "chef_lieu": "Kananga",
+  "count": 2,
+  "items": [
+   {
+    "name": "Hôtel Musube",
+    "place": "Kananga, Kasaï-Central",
+    "desc": "Hébergement à Kananga — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel de l'Immokasaï",
+    "place": "Kananga, Kasaï-Central",
+    "desc": "Hébergement à Kananga — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Kasaï-Oriental",
+  "chef_lieu": "Mbuji-Mayi",
+  "count": 2,
+  "items": [
+   {
+    "name": "Hôtel Sultani Mbuji-Mayi",
+    "place": "Mbuji-Mayi, Kasaï-Oriental",
+    "desc": "Hébergement à Mbuji-Mayi — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel Le Diamant",
+    "place": "Mbuji-Mayi, Kasaï-Oriental",
+    "desc": "Hébergement à Mbuji-Mayi — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Lomami",
+  "chef_lieu": "Kabinda",
+  "count": 2,
+  "items": [
+   {
+    "name": "Hôtel de Kabinda",
+    "place": "Kabinda, Lomami",
+    "desc": "Hébergement à Kabinda — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel de Mwene-Ditu",
+    "place": "Mwene-Ditu, Lomami",
+    "desc": "Hébergement à Mwene-Ditu — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Sankuru",
+  "chef_lieu": "Lusambo",
+  "count": 1,
+  "items": [
+   {
+    "name": "Guest-house de Lusambo",
+    "place": "Lusambo, Sankuru",
+    "desc": "Hébergement à Lusambo — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Maniema",
+  "chef_lieu": "Kindu",
+  "count": 2,
+  "items": [
+   {
+    "name": "Hôtel Lwama",
+    "place": "Kindu, Maniema",
+    "desc": "Hébergement à Kindu — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel du Maniema",
+    "place": "Kindu, Maniema",
+    "desc": "Hébergement à Kindu — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Sud-Kivu",
+  "chef_lieu": "Bukavu",
+  "count": 3,
+  "items": [
+   {
+    "name": "Orchids Safari Club",
+    "place": "Bukavu, Sud-Kivu",
+    "desc": "Hébergement à Bukavu — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel Résidence",
+    "place": "Bukavu, Sud-Kivu",
+    "desc": "Hébergement à Bukavu — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel Panorama",
+    "place": "Bukavu, Sud-Kivu",
+    "desc": "Hébergement à Bukavu — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Nord-Kivu",
+  "chef_lieu": "Goma",
+  "count": 4,
+  "items": [
+   {
+    "name": "Serena Hotel Goma",
+    "place": "Goma, Nord-Kivu",
+    "desc": "Hébergement à Goma — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Ihusi Hotel",
+    "place": "Goma, Nord-Kivu",
+    "desc": "Hébergement à Goma — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Lac Kivu Lodge",
+    "place": "Goma, Nord-Kivu",
+    "desc": "Hébergement à Goma — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Mikeno Lodge",
+    "place": "Parc des Virunga, Nord-Kivu",
+    "desc": "Hébergement à Parc des Virunga — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Ituri",
+  "chef_lieu": "Bunia",
+  "count": 2,
+  "items": [
+   {
+    "name": "Hôtel Ituri",
+    "place": "Bunia, Ituri",
+    "desc": "Hébergement à Bunia — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel Bunia Palace",
+    "place": "Bunia, Ituri",
+    "desc": "Hébergement à Bunia — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Haut-Uele",
+  "chef_lieu": "Isiro",
+  "count": 2,
+  "items": [
+   {
+    "name": "Hôtel de l'Uele",
+    "place": "Isiro, Haut-Uele",
+    "desc": "Hébergement à Isiro — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Guest-house de Garamba",
+    "place": "Nagero (Parc de la Garamba), Haut-Uele",
+    "desc": "Hébergement à Nagero (Parc de la Garamba) — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Bas-Uele",
+  "chef_lieu": "Buta",
+  "count": 1,
+  "items": [
+   {
+    "name": "Hôtel de Buta",
+    "place": "Buta, Bas-Uele",
+    "desc": "Hébergement à Buta — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Tshopo",
+  "chef_lieu": "Kisangani",
+  "count": 3,
+  "items": [
+   {
+    "name": "Palm Beach Hotel",
+    "place": "Kisangani, Tshopo",
+    "desc": "Hébergement à Kisangani — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel Riviera",
+    "place": "Kisangani, Tshopo",
+    "desc": "Hébergement à Kisangani — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel Wagenia",
+    "place": "Kisangani, Tshopo",
+    "desc": "Hébergement à Kisangani — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Mongala",
+  "chef_lieu": "Lisala",
+  "count": 1,
+  "items": [
+   {
+    "name": "Hôtel de Lisala",
+    "place": "Lisala, Mongala",
+    "desc": "Hébergement à Lisala — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Nord-Ubangi",
+  "chef_lieu": "Gbadolite",
+  "count": 1,
+  "items": [
+   {
+    "name": "Hôtel Nzekele",
+    "place": "Gbadolite, Nord-Ubangi",
+    "desc": "Hébergement à Gbadolite — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Sud-Ubangi",
+  "chef_lieu": "Gemena",
+  "count": 1,
+  "items": [
+   {
+    "name": "Hôtel de Gemena",
+    "place": "Gemena, Sud-Ubangi",
+    "desc": "Hébergement à Gemena — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Équateur",
+  "chef_lieu": "Mbandaka",
+  "count": 2,
+  "items": [
+   {
+    "name": "Hôtel Afrique",
+    "place": "Mbandaka, Équateur",
+    "desc": "Hébergement à Mbandaka — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel de l'Équateur",
+    "place": "Mbandaka, Équateur",
+    "desc": "Hébergement à Mbandaka — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Tshuapa",
+  "chef_lieu": "Boende",
+  "count": 1,
+  "items": [
+   {
+    "name": "Guest-house de Boende",
+    "place": "Boende, Tshuapa",
+    "desc": "Hébergement à Boende — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Tanganyika",
+  "chef_lieu": "Kalemie",
+  "count": 2,
+  "items": [
+   {
+    "name": "Hôtel du Lac",
+    "place": "Kalemie, Tanganyika",
+    "desc": "Hébergement à Kalemie — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel Tanganyika",
+    "place": "Kalemie, Tanganyika",
+    "desc": "Hébergement à Kalemie — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Haut-Lomami",
+  "chef_lieu": "Kamina",
+  "count": 1,
+  "items": [
+   {
+    "name": "Hôtel de Kamina",
+    "place": "Kamina, Haut-Lomami",
+    "desc": "Hébergement à Kamina — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Lualaba",
+  "chef_lieu": "Kolwezi",
+  "count": 2,
+  "items": [
+   {
+    "name": "Hôtel Mimosa",
+    "place": "Kolwezi, Lualaba",
+    "desc": "Hébergement à Kolwezi — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel Kolwezi Palace",
+    "place": "Kolwezi, Lualaba",
+    "desc": "Hébergement à Kolwezi — réservation confirmée par notre équipe."
+   }
+  ]
+ },
+ {
+  "province": "Haut-Katanga",
+  "chef_lieu": "Lubumbashi",
+  "count": 3,
+  "items": [
+   {
+    "name": "Pullman Lubumbashi Grand Karavia",
+    "place": "Lubumbashi, Haut-Katanga",
+    "desc": "Hébergement à Lubumbashi — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Hôtel Lubumbashi (Park Hotel)",
+    "place": "Lubumbashi, Haut-Katanga",
+    "desc": "Hébergement à Lubumbashi — réservation confirmée par notre équipe."
+   },
+   {
+    "name": "Golf Hotel",
+    "place": "Lubumbashi, Haut-Katanga",
+    "desc": "Hébergement à Lubumbashi — réservation confirmée par notre équipe."
+   }
+  ]
+ }
+]
