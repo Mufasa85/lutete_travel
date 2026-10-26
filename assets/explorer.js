@@ -2,7 +2,7 @@
  *
  * Affiche les categories d'activites (hotels, restaurants, sites, experiences)
  * avec le nombre reel d'entrees dans le catalogue. Chaque carte mene a
- * activite.html?cat=<slug>, ou la liste est filtrable et geolocalisee.
+ * activite?cat=<slug>, ou la liste est filtrable et geolocalisee.
  *
  * Dependance : assets/activites.js (window.ACTIVITES).
  */
@@ -21,7 +21,7 @@
             var n = ACT.items.filter(function (it) {
                 return c.types.indexOf(it.cat) !== -1;
             }).length;
-            return '<a class="excard rv" href="activite.html?cat=' + encodeURIComponent(c.slug) + '">' +
+            return '<a class="excard rv" href="activite?cat=' + encodeURIComponent(c.slug) + '">' +
                 '<span class="exn">' + n + "</span>" +
                 '<div class="exic"><i data-lucide="' + (c.icon || "map-pin") + '"></i></div>' +
                 "<h3>" + c.label + "</h3>" +

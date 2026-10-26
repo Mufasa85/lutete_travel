@@ -134,6 +134,7 @@ def add(name, cat, place, province, desc, source, lat=None, lon=None, osm_ref=''
         'lon': lon,
         'osm': osm_ref,
         'hasCoords': lat is not None and lon is not None,
+        'image': '',
     }
     items.append(it)
     return it
@@ -325,6 +326,20 @@ CATEGORIES = [
 ]
 
 out = {'categories': CATEGORIES, 'items': items}
+
+# ---------------------------------------------------------- images reelles
+# tools/image_cache.json : slug -> nom de fichier dans assets/img/
+# (genere par tools/fetch_images.py - sources Wikipedia / Wikimedia Commons)
+IMG_CACHE = os.path.join(HERE, 'image_cache.json')
+if os.path.exists(IMG_CACHE):
+    img_cache = json.load(io.open(IMG_CACHE, encoding='utf-8'))
+    n_img = 0
+    for it in items:
+        f = img_cache.get(it['slug'])
+        if f and os.path.exists(os.path.join(ROOT, 'assets', 'img', f)):
+            it['image'] = 'assets/img/' + f
+            n_img += 1
+    print('images attachees: %d/%d' % (n_img, len(items)))
 
 # ecriture JS (window.ACTIVITES = ...)
 with io.open(ACT_JS, 'w', encoding='utf-8') as f:

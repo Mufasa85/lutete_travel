@@ -2,9 +2,9 @@
 """Genere la section "Que souhaitez-vous explorer" + les pages de categorie.
 
 Pages produites :
-  activite.html?cat=<categorie>  -> page de liste avec filtres (categorie,
+  activite?cat=<categorie>  -> page de liste avec filtres (categorie,
                                     province, recherche) et carte de localisation
-  activite.html?cat=<cat>&id=<slug> -> fiche detaillee d'un etablissement/site
+  activite?cat=<cat>&id=<slug> -> fiche detaillee d'un etablissement/site
 """
 import io, json, os, sys
 
@@ -360,13 +360,26 @@ CSS = """
             background: linear-gradient(135deg, var(--g), var(--g2));
             display: grid;
             place-items: center;
-            color: rgba(255, 255, 255, .9)
+            color: rgba(255, 255, 255, .9);
+            overflow: hidden
+        }
+
+        .acard .ah img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0
         }
 
         .acard .ah svg {
             width: 42px;
             height: 42px;
-            opacity: .85
+            opacity: .85;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .35))
         }
 
         .acard .ah .badge {
@@ -380,7 +393,16 @@ CSS = """
             letter-spacing: .05em;
             text-transform: uppercase;
             padding: 4px 11px;
-            border-radius: 99px
+            border-radius: 99px;
+            z-index: 2
+        }
+
+        .acard:hover .ah img {
+            transform: scale(1.06)
+        }
+
+        .acard .ah img {
+            transition: transform .5s
         }
 
         .acard .ab {
@@ -525,13 +547,26 @@ CSS = """
             background: linear-gradient(135deg, var(--g), var(--g2));
             display: grid;
             place-items: center;
-            color: rgba(255, 255, 255, .9)
+            color: rgba(255, 255, 255, .9);
+            overflow: hidden
+        }
+
+        .fbox .fh img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0
         }
 
         .fbox .fh svg {
             width: 64px;
             height: 64px;
-            opacity: .85
+            opacity: .85;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, .4))
         }
 
         .fbox .fh .badge {
@@ -545,7 +580,8 @@ CSS = """
             letter-spacing: .05em;
             text-transform: uppercase;
             padding: 5px 13px;
-            border-radius: 99px
+            border-radius: 99px;
+            z-index: 2
         }
 
         .fbox .fb {
@@ -687,8 +723,20 @@ JS = """
         var provBySlug = {};
         PROV.forEach(function (p) { provBySlug[p.slug] = p; });
 
+        // Le serveur statique (npx serve) redirige /page.html vers /page en
+        // PERDANT la query string : le fragment (#) lui survit. On lit donc
+        // les deux, query string en priorite.
+        function allParams() {
+            var p = new URLSearchParams(location.search);
+            if (location.hash && location.hash.length > 1) {
+                var h = new URLSearchParams(location.hash.replace(/^#/, ""));
+                h.forEach(function (v, k) { if (!p.get(k)) p.set(k, v); });
+            }
+            return p;
+        }
+
         function qs(name) {
-            return new URLSearchParams(location.search).get(name);
+            return allParams().get(name);
         }
 
         function esc(s) {
@@ -769,12 +817,17 @@ JS = """
             }
 
             $("#alist").innerHTML = items.map(function (it) {
-                var href = "activite.html?cat=" + encodeURIComponent(cat) + "&id=" + encodeURIComponent(it.slug);
+                var href = "activite?cat=" + encodeURIComponent(cat) + "&id=" + encodeURIComponent(it.slug);
                 var loc = it.hasCoords
                     ? '<span><i data-lucide="map-pin"></i>' + esc(it.place) + "</span>"
                     : '<span><i data-lucide="map-pin"></i>' + esc(it.place) + " (sur demande)</span>";
+                var head = it.image
+                    ? '<img src="' + esc(it.image) + '" alt="' + esc(it.name) +
+                      '" loading="lazy" onerror="this.remove()">'
+                    : "";
                 return '<a class="acard" href="' + href + '">' +
-                    '<div class="ah"><i data-lucide="' + iconFor(it.cat) + '"></i>' +
+                    '<div class="ah">' + head +
+                    '<i data-lucide="' + iconFor(it.cat) + '"></i>' +
                     '<span class="badge">' + esc(it.catLabel) + "</span></div>" +
                     '<div class="ab"><h3>' + esc(it.name) + "</h3>" +
                     '<div class="meta">' + loc +
@@ -828,7 +881,7 @@ JS = """
                 document.title = def.label + " — Lutete Travel";
                 $("#etitle").textContent = def.label;
                 $("#edesc").textContent = def.desc;
-                $("#ebc").innerHTML = '<a href="index.html">Accueil</a> / <span>' +
+                $("#ebc").innerHTML = '<a href="index">Accueil</a> / <span>' +
                     esc(def.label) + "</span>";
             }
 
@@ -883,7 +936,7 @@ JS = """
                 $("#fbox").hidden = false;
                 $("#fbox").innerHTML = '<div class="fb"><h2>Fiche introuvable</h2>' +
                     '<p class="lead">Cette fiche n\\'existe pas ou n\\'est plus disponible.</p>' +
-                    '<div class="fctas"><a class="btn" href="activite.html?cat=' +
+                    '<div class="fctas"><a class="btn" href="activite?cat=' +
                     encodeURIComponent(cat) + '">Retour à la liste</a></div></div>';
                 return;
             }
@@ -898,14 +951,19 @@ JS = """
 
             document.title = it.name + " — Lutete Travel";
             $("#etitle").textContent = it.name;
-            $("#ebc").innerHTML = '<a href="index.html">Accueil</a> / ' +
-                '<a href="activite.html?cat=' + encodeURIComponent(cat) + '">' +
+            $("#ebc").innerHTML = '<a href="index">Accueil</a> / ' +
+                '<a href="activite?cat=' + encodeURIComponent(cat) + '">' +
                 esc(catDef(cat) ? catDef(cat).label : "Explorer") + "</a> / <span>" +
                 esc(it.name) + "</span>";
 
             var def = catDef(cat);
+            var head = it.image
+                ? '<img src="' + esc(it.image) + '" alt="' + esc(it.name) +
+                  '" onerror="this.remove()">'
+                : "";
             $("#fbox").innerHTML =
-                '<div class="fh"><i data-lucide="' + iconFor(it.cat) + '"></i>' +
+                '<div class="fh">' + head +
+                '<i data-lucide="' + iconFor(it.cat) + '"></i>' +
                 '<span class="badge">' + esc(it.catLabel) + "</span></div>" +
                 '<div class="fb">' +
                 "<h2>" + esc(it.name) + "</h2>" +
@@ -928,12 +986,12 @@ JS = """
                       "Localisation exacte communiquée par notre équipe à la réservation." +
                       "</div></div>") +
                 '<div class="fctas">' +
-                '<a class="btn" href="index.html#reservation">Réserver ici <i data-lucide="arrow-right"></i></a>' +
+                '<a class="btn" href="index#reservation">Réserver ici <i data-lucide="arrow-right"></i></a>' +
                 (it.province
-                    ? '<a class="btn ghost" href="province.html?p=' + encodeURIComponent(it.province) +
+                    ? '<a class="btn ghost" href="province?p=' + encodeURIComponent(it.province) +
                       '">Voir la province</a>'
                     : "") +
-                '<a class="btn ghost" href="activite.html?cat=' + encodeURIComponent(cat) +
+                '<a class="btn ghost" href="activite?cat=' + encodeURIComponent(cat) +
                 '">Plus de ' + esc(def ? def.label.toLowerCase() : "résultats") + "</a>" +
                 "</div></div>";
 
@@ -945,7 +1003,7 @@ JS = """
                 $("#fother").innerHTML = "<h3>Autres " +
                     esc(it.catLabel.toLowerCase()) + "s</h3><ul>" +
                     near.map(function (x) {
-                        return '<li><a href="activite.html?cat=' + encodeURIComponent(cat) +
+                        return '<li><a href="activite?cat=' + encodeURIComponent(cat) +
                             "&id=" + encodeURIComponent(x.slug) + '">' +
                             '<i data-lucide="' + iconFor(x.cat) + '"></i>' + esc(x.name) +
                             "</a></li>";
@@ -1001,15 +1059,15 @@ html = u"""<!DOCTYPE html>
 <body>
     <header>
         <div class="nav wrap">
-            <a href="index.html" class="logo">%(logo)s<span>Lutete<small>TRAVEL</small></span></a>
+            <a href="index" class="logo">%(logo)s<span>Lutete<small>TRAVEL</small></span></a>
             <nav aria-label="Navigation principale">
-                <a href="index.html#destinations">Destinations</a>
-                <a href="index.html#circuits">Circuits</a>
-                <a href="index.html#provinces">Provinces</a>
-                <a href="activite.html?cat=hotels">Hôtels</a>
-                <a href="activite.html?cat=restaurants">Restaurants</a>
+                <a href="index#destinations">Destinations</a>
+                <a href="index#circuits">Circuits</a>
+                <a href="index#provinces">Provinces</a>
+                <a href="activite?cat=hotels">Hôtels</a>
+                <a href="activite?cat=restaurants">Restaurants</a>
             </nav>
-            <a class="btn sm" href="index.html#reservation">Réserver</a>
+            <a class="btn sm" href="index#reservation">Réserver</a>
         </div>
     </header>
 
@@ -1020,7 +1078,7 @@ html = u"""<!DOCTYPE html>
                     fill="#9ED03A" />
             </svg>
             <div class="wrap">
-                <nav class="bc" aria-label="Fil d’Ariane" id="ebc"><a href="index.html">Accueil</a></nav>
+                <nav class="bc" aria-label="Fil d’Ariane" id="ebc"><a href="index">Accueil</a></nav>
                 <span class="eyebrow">Explorer la RDC</span>
                 <h1 id="etitle">Hôtels</h1>
                 <p class="lead" id="edesc" style="opacity:1;color:rgba(255,255,255,.9);max-width:620px"></p>
@@ -1061,8 +1119,8 @@ html = u"""<!DOCTYPE html>
         <div class="wrap">
             <div class="copy">
                 <span>© 2026 Lutete Travel. Tous droits réservés.</span>
-                <span><a href="index.html#provinces">Provinces</a> ·
-                    <a href="index.html#contact">Contact</a></span>
+                <span><a href="index#provinces">Provinces</a> ·
+                    <a href="index#contact">Contact</a></span>
             </div>
         </div>
     </footer>

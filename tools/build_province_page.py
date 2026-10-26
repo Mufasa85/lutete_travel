@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Genere province.html : page detaillee d'une province (province.html?p=<slug>).
+"""Genere province.html : page detaillee d'une province (province?p=<slug>).
 
 Meme charte graphique que index.html (memes variables CSS, meme logo SVG).
 Les donnees viennent de assets/provinces.js (genere par tools/build_map.py).
@@ -541,10 +541,17 @@ JS = """
         PROV.forEach(function (p) { BY[p.slug] = p; });
 
         function slug() {
-            var q = new URLSearchParams(location.search).get("p");
+            // Le serveur statique (npx serve) redirige /province.html vers
+            // /province en perdant la query string : le fragment lui survit.
+            var p = new URLSearchParams(location.search);
+            if (!p.get("p") && location.hash && location.hash.length > 1) {
+                var h = new URLSearchParams(location.hash.replace(/^#/, ""));
+                if (h.get("p")) p.set("p", h.get("p"));
+            }
+            var q = p.get("p");
             if (q && BY[q]) return q;
-            var h = (location.hash.match(/^#([\\w-]+)$/) || [])[1];
-            if (h && BY[h]) return h;
+            var h2 = (location.hash.match(/^#([\w-]+)$/) || [])[1];
+            if (h2 && BY[h2]) return h2;
             return PROV.length ? PROV[0].slug : null;
         }
 
@@ -577,7 +584,7 @@ JS = """
 
             $("#pnbr").innerHTML = p.neighbours.map(function (n) {
                 var q = BY[n];
-                return '<li><a href="province.html?p=' + q.slug + '">' + q.name + "</a></li>";
+                return '<li><a href="province?p=' + q.slug + '">' + q.name + "</a></li>";
             }).join("");
 
             // carte : on met la province courante en evidence
@@ -586,8 +593,8 @@ JS = """
             });
 
             var link = $("#plink");
-            link.href = "index.html#provinces";
-            $("#pback").href = "index.html#provinces";
+            link.href = "index#provinces";
+            $("#pback").href = "index#provinces";
         }
 
         function load() {
@@ -606,7 +613,7 @@ JS = """
             svg.addEventListener("click", function (e) {
                 var el = e.target.closest("path");
                 if (!el) return;
-                location.href = "province.html?p=" + el.getAttribute("data-province");
+                location.href = "province?p=" + el.getAttribute("data-province");
             });
         }
 
@@ -647,14 +654,14 @@ html = u"""<!DOCTYPE html>
 <body>
     <header>
         <div class="nav wrap">
-            <a href="index.html" class="logo">%(logo)s<span>Lutete<small>TRAVEL</small></span></a>
+            <a href="index" class="logo">%(logo)s<span>Lutete<small>TRAVEL</small></span></a>
             <nav aria-label="Navigation principale">
-                <a href="index.html#destinations">Destinations</a>
-                <a href="index.html#circuits">Circuits</a>
-                <a href="index.html#provinces">Provinces</a>
-                <a href="index.html#reservation">Réserver</a>
+                <a href="index#destinations">Destinations</a>
+                <a href="index#circuits">Circuits</a>
+                <a href="index#provinces">Provinces</a>
+                <a href="index#reservation">Réserver</a>
             </nav>
-            <a class="btn sm" href="index.html#reservation">Réserver</a>
+            <a class="btn sm" href="index#reservation">Réserver</a>
         </div>
     </header>
 
@@ -666,8 +673,8 @@ html = u"""<!DOCTYPE html>
             </svg>
             <div class="wrap">
                 <nav class="bc" aria-label="Fil d’Ariane">
-                    <a href="index.html">Accueil</a> /
-                    <a href="index.html#provinces">Provinces</a> / <span id="pbreadcrumb">Province</span>
+                    <a href="index">Accueil</a> /
+                    <a href="index#provinces">Provinces</a> / <span id="pbreadcrumb">Province</span>
                 </nav>
                 <span class="eyebrow">République démocratique du Congo</span>
                 <h1 id="ptitle">Province</h1>
@@ -696,9 +703,9 @@ html = u"""<!DOCTYPE html>
                         professionnel sur place.</p>
                     <div id="pcircuits" style="margin-top:16px"></div>
                     <div class="ctas" style="justify-content:flex-start;margin-top:20px">
-                        <a class="btn" href="index.html#reservation">Réserver un circuit <i
+                        <a class="btn" href="index#reservation">Réserver un circuit <i
                                 data-lucide="arrow-right"></i></a>
-                        <a class="btn ghost" id="pback" href="index.html#provinces">Voir toutes les provinces</a>
+                        <a class="btn ghost" id="pback" href="index#provinces">Voir toutes les provinces</a>
                     </div>
                 </div>
             </article>
@@ -725,7 +732,7 @@ html = u"""<!DOCTYPE html>
                 <p class="lead" style="margin-inline:auto">Parcourez la carte interactive et choisissez votre
                     destination.</p>
                 <div class="ctas">
-                    <a class="btn" id="plink" href="index.html#provinces">Explorer la carte de la RDC <i
+                    <a class="btn" id="plink" href="index#provinces">Explorer la carte de la RDC <i
                             data-lucide="map"></i></a>
                 </div>
             </div>
@@ -736,7 +743,7 @@ html = u"""<!DOCTYPE html>
         <div class="wrap">
             <div class="copy">
                 <span>© 2026 Lutete Travel. Tous droits réservés.</span>
-                <span><a href="index.html#contact">Contact</a> · <a href="index.html#provinces">Provinces</a></span>
+                <span><a href="index#contact">Contact</a> · <a href="index#provinces">Provinces</a></span>
             </div>
         </div>
     </footer>

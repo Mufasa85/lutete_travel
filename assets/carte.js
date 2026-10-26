@@ -7,7 +7,7 @@
  *  - injection du SVG de la carte dans #map-holder ;
  *  - survol / focus clavier : apercu de la province dans la fiche de droite ;
  *  - clic sur une province (ou sur une puce de la liste) : redirection vers
- *    la page de la province (province.html?p=<slug>) ;
+ *    la page de la province (province?p=<slug>) ;
  *  - bouton "Reserver dans la province" : pre-remplit le formulaire de
  *    reservation sur index.html.
  *
@@ -74,7 +74,7 @@
                 '<p class="mdesc">' + p.desc + "</p>" +
                 (sites ? '<ul class="msites">' + sites + "</ul>" : "") +
                 '<div class="mcta">' +
-                '<a class="btn sm" href="province.html?p=' + p.slug + '">Voir la province <i data-lucide="arrow-right"></i></a>' +
+                '<a class="btn sm" href="province?p=' + p.slug + '">Voir la province <i data-lucide="arrow-right"></i></a>' +
                 '<button class="btn sm ghost2" data-res-prov="' + p.slug + '">Réserver dans la province</button>' +
                 "</div>" +
                 "</div>";
@@ -97,7 +97,7 @@
         /* ------------------------------------------------------ navigation */
         function goTo(slug) {
             if (!bySlug[slug]) return;
-            location.href = "province.html?p=" + slug;
+            location.href = "province?p=" + slug;
         }
 
         /* ------------------------------------------------------------ chips */
