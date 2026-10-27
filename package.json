@@ -1,0 +1,27 @@
+{
+  "name": "lutete_travel",
+  "version": "1.0.0",
+  "description": "Site vitrine Lutete Travel (RDC) - servi avec Vite",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check:loader": "node check-loader.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mufasa85/lutete_travel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mufasa85/lutete_travel/issues"
+  },
+  "homepage": "https://github.com/Mufasa85/lutete_travel#readme",
+  "devDependencies": {
+    "vite": "^8.3.5"
+  }
+}
